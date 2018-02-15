@@ -1,0 +1,135 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 50px;
+    width: 80%;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+.centered {
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lot-preview {
+    cursor: pointer;
+}
+
+    .lot-preview img {
+        -webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
+        transition: opacity 1s;
+    }
+
+        .lot-preview img:hover {
+            opacity: 0.3;
+        }
+
+    .lot-preview:hover .centered {
+        color: black;
+    }
+
+.btn-bid {
+    display: none;
+    font-size: 18px;
+    -webkit-transition: display 1s; /* For Safari 3.1 to 6.0 */
+    transition: display 1s;
+    padding: 0 50px 0 10px;
+}
+
+.lot-preview:hover .btn-bid {
+    display: block;
+}
+
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 0;
+}
+
+.lot-name {
+    font-weight: 500;
+    font-size: 27px;
+    font-family: Sylfaen !important;
+    font-style: normal
+}
+
+.timer {
+    text-align: center;
+    font-size: 60px;
+}
+
+.lot-price {
+    background-color: #f5f5f5;
+    border: 1px solid #fff;
+    padding: 10px 10px;
+}
+
+.lot-input {
+    width: 100%;
+    font-size: 24px;
+    height: 66px;
+    border: 2px solid #DCDCDC;
+    box-shadow: none;
+    background-color: #FFF;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.btn-lot-bid {
+    width: 100%;
+    font-size: 16px;
+    height: 62px;
+    margin: 5px 0;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+    .vertical-menu a:hover {
+        background-color: #ccc;
+    }
+
+    .vertical-menu a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+.category-header {
+    background-color: #eee;
+    padding:20px 10px;
+    margin-bottom:20px;
+}
+.category-header-name {
+    float: left;
+    font-size: 25px;
+    font-weight: 700;
+    color: #808080;
+    font-family: Sylfaen;
+}

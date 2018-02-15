@@ -1,0 +1,20 @@
+﻿@model List<CharrityAuction.Models.CategoryModel>
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+<div class="container">
+    @foreach (var category in Model)
+    {
+        <div class="row">
+            <div class="col-sm-10">
+                <span>@category.Name <a href="/Admin/EditCategory/@category.Id">Edit</a></span>
+
+            </div>
+            <div class="col-sm-2">
+                <input class="btn btn-info" type="button"value="Delete" onclick="removeCategory(@category.Id)" />
+            </div>
+        </div>
+    }
+</div>

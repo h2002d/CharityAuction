@@ -1,0 +1,203 @@
+﻿@model CharrityAuction.Models.LotModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="@Model.ImageSource" style="width:100%; height:auto;" />
+            <br />
+            <p>@Html.Raw(Model.Description)</p>
+            <hr />
+            <div class="row">
+                <div class="col-sm-3">
+                    <p>Date</p>
+                </div>
+                <div class="col-sm-9">
+                    <ul>
+                        <li>Occure Date:</li>
+                    </ul>
+                    <p>@Model.OccureDate</p>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p>Additional Lot Detail</p>
+                </div>
+                <div class="col-sm-9">
+                    <p>@Html.Raw(Model.Info)</p>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p> Rules & Regulations</p>
+                </div>
+                <div class="col-sm-9">
+                    <p>@Html.Raw(Model.Info)</p>
+                    <hr />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <p class="lot-name">@Model.Name</p>
+            <br />
+            <div class="row">
+                <div class="col-sm-12" style="background-color:#f5f5f5; padding:10px 10px;">
+                    <p style="font-weight:700;">TIME LEFT TO BID  <span style="color:#c8c5c5;">@Model.DeadLine</span></p>
+                    <ul class="countdown">
+                        <li>
+                            <span class="days"></span>
+                            <p class="timeRefDays"></p>
+                        </li>
+                        <li>
+                            <span class="hours"></span>
+                            <p class="timeRefHours"></p>
+                        </li>
+                        <li>
+                            <span class="minutes"></span>
+                            <p class="timeRefMinutes"></p>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7 lot-price">
+                    <p style="font-weight:700;">CURRENT BID</p>
+                    <p>@Model.CurrentBid Դրամ</p>
+                </div>
+                <div class="col-sm-5 lot-price">
+                    <p style="font-weight:700;">ESTIMATED VALUE</p>
+                    <p>@Model.EstimatedValue Դրամ</p>
+                </div>
+
+            </div>
+            <div class="row">
+
+                    <input type="number" min="@(Model.CurrentBid+Model.Step)" id="txtBid" value="@(Model.CurrentBid+Model.Step)" class="lot-input form-control"/>
+                    <input type="button" value="BID" class="btn btn-danger btn-lot-bid" />
+               
+            </div>
+            <div class="row">
+                    <input type="button" value="WATCHLIST" class="btn btn-info btn-lot-bid" style="background-color:#041F56;" />
+               </div>
+        </div>
+    </div>
+</div>
+<script>
+    //Countdown plugin
+
+    (function ($) {
+        $.fn.countdown = function (options, callback) {
+
+            //custom 'this' selector
+            var thisEl = $(this);
+
+            //array of custom settings
+            var settings = {
+                'date': null,
+                'format': null
+            };
+
+            //append the settings array to options
+            if (options) {
+                $.extend(settings, options);
+            }
+
+            //main countdown function
+            var countdown_proc = function () {
+
+                var eventDate = Date.parse(settings['date']) / 1000;
+                var currentDate = Math.floor($.now() / 1000);
+
+                if (eventDate <= currentDate) {
+                    callback.call(this);
+                    clearInterval(interval);
+                };
+
+                var seconds = eventDate - currentDate;
+
+                var days = Math.floor(seconds / (60 * 60 * 24)); //calculate the number of days
+                seconds -= days * 60 * 60 * 24; //update the seconds variable with no. of days removed
+
+                var hours = Math.floor(seconds / (60 * 60));
+                seconds -= hours * 60 * 60; //update the seconds variable with no. of hours removed
+
+                var minutes = Math.floor(seconds / 60);
+                seconds -= minutes * 60; //update the seconds variable with no. of minutes removed
+
+                //conditional Ss
+                if (days == 1) { thisEl.find(".timeRefDays").text("Day"); } else { thisEl.find(".timeRefDays").text("Days"); }
+                if (hours == 1) { thisEl.find(".timeRefHours").text("Hour"); } else { thisEl.find(".timeRefHours").text("Hours"); }
+                if (minutes == 1) { thisEl.find(".timeRefMinutes").text("Minute"); } else { thisEl.find(".timeRefMinutes").text("Minutes"); }
+                
+                //logic for the two_digits ON setting
+                if (settings['format'] == "on") {
+                    days = (String(days).length >= 2) ? days : "0" + days;
+                    hours = (String(hours).length >= 2) ? hours : "0" + hours;
+                    minutes = (String(minutes).length >= 2) ? minutes : "0" + minutes;
+                    seconds = (String(seconds).length >= 2) ? seconds : "0" + seconds;
+                }
+
+                //update the countdown's html values.
+                if (!isNaN(eventDate)) {
+                    thisEl.find(".days").text(days);
+                    thisEl.find(".hours").text(hours);
+                    thisEl.find(".minutes").text(minutes);
+                } else {
+                    alert("Invalid date. Here's an example: 12 Tuesday 2012 17:30:00");
+                    clearInterval(interval);
+                }
+            }
+
+            //run the function
+            countdown_proc();
+
+            //loop the function
+            interval = setInterval(countdown_proc, 1000);
+
+        }
+    })(jQuery);
+
+
+    //Call countdown plugin
+    $(".countdown").countdown({
+        date: "@Model.DeadLine.ToString("dd MMMM yyyy hh:mm:ss")", // add the countdown's end date (i.e. 3 november 2012 12:00:00)
+        format: "on" // on (03:07:52) | off (3:7:52) - two_digits set to ON maintains layout consistency
+    },
+
+        function () {
+
+            // the code here will run when the countdown ends
+            alert("done!")
+
+        });
+
+
+
+
+
+
+</script>
+<style>
+    .countdown {
+        list-style: none;
+    }
+
+    .countdown li {
+        width: 24.4333%;
+        display: inline-block;
+        text-align: center;
+    }
+
+        .countdown li span {
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+
+</style>

@@ -1,0 +1,79 @@
+﻿@model List<CharrityAuction.Models.LotModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 lot-preview" id="@ViewBag.Top.Id">
+            <img src="@ViewBag.Top.ImageSource" style="width:100%;height:auto;" />
+            <p class="centered" style="font-size:30px;">@ViewBag.Top.Name</p>
+        </div>
+        <div class="col-sm-4 lot-preview" id="@ViewBag.SecondTop.Id">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="@ViewBag.SecondTop.ImageSource" style="width:100%;height:auto;" />
+                    <p class="centered">@ViewBag.SecondTop.Name</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 lot-preview" id="@ViewBag.ThirdTop.Id">
+                    <img src="@ViewBag.ThirdTop.ImageSource" style="width:100%;height:auto;" />
+                    <p class="centered">@ViewBag.ThirdTop.Name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="vertical-menu">
+                @foreach (var item in ViewBag.Categories)
+                {
+                    <a href="/home/category/@item.Id">@item.Name</a>
+                }
+            </div>
+        </div>
+        <div class="col-sm-9">
+            @{
+    var count = 0;
+            }
+            @foreach (var item in Model)
+            {
+                if (count % 3 == 0 && count == 0)
+                {
+                    @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }
+
+                <div class="col-md-4">
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <a href="/home/editlot/@item.Id">Edit lot</a>
+                    }
+                    <div class="row lot-preview" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
+                        <div class="col-sm-12 container" style="padding:0;">
+
+                            <img style="width:100%; height:auto;" src="@item.ImageSource" />
+                            <input type="button" class="btn btn-danger top-right btn-bid" value="Bid" />
+
+                        </div>
+                        <p class="product-header">
+                            @item.Name<br />
+                            Արժեքը: @item.CurrentBid ֏.
+                        </p>
+                    </div>
+                </div>
+                if (count % 2 == 0 && count != 0)
+                {
+                    @Html.Raw("</div>");
+                    count = 0;
+                }
+                else
+                {
+                    count++;
+                }
+
+            }
+        </div>
+    </div>
+</div>

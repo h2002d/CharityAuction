@@ -1,0 +1,33 @@
+﻿@model List<CharrityAuction.Models.LotModel>
+@{
+    ViewBag.Title = "Lots";
+}
+
+<h2>Lots</h2>
+<div class="container">
+    @foreach (var lot in Model)
+    {
+        <div class="row">
+            <div class="col-sm-2">#@lot.Id @lot.Name</div>
+            <div class="col-sm-2"><img src="@lot.ImageSource" style="width:100%; height:auto;" /></div>
+           
+
+            <div class="col-sm-2"><span class="admin-label">Estimated value: </span> @lot.EstimatedValue<br />
+                <span class="admin-label">Current Bid: </span>@lot.CurrentBid
+            </div>
+            <div class="col-sm-2">
+                <span class="admin-label">Closing Date: </span>@lot.DeadLine<br />
+                <span class="admin-label">Occuring Date: </span>@lot.OccureDate
+            </div>
+            <div class="col-sm-2">
+                <input type="button" value="TOP 1" onclick="saveTopLot(1,@lot.Id)" class="btn btn-primary"/>
+                <input type="button" value="TOP 2" onclick="saveTopLot(2,@lot.Id)" class="btn btn-success" />
+                <input type="button" value="TOP 3" onclick="saveTopLot(3,@lot.Id)" class="btn btn-danger" />
+            </div>
+
+            <div class="col-sm-2">
+                <a href="/admin/editlot/@lot.Id">Edit</a>
+            </div>
+            </div>
+    }
+</div>

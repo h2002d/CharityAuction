@@ -1,0 +1,60 @@
+﻿@model List<CharrityAuction.Models.LotModel>
+@{
+    ViewBag.Title = ViewBag.Category.Name;
+}
+<div class="row category-header" >
+    <div class="col-sm-6 category-header-name">@ViewBag.Category.Name</div>
+    <div class="col-sm-6">
+        <select class="form-control" style="float:right;" id="sort-select" onchange="orderBy(@ViewBag.Category.Id)">
+            <option value="1">Closing next</option>
+            <option value="2">Recently added</option>
+            <option value="3">Bid amount(high to low)</option>
+        </select>
+    </div>
+</div>
+<div class="row" id="items">
+
+    <div class="col-sm-12">
+        @{
+            var count = 0;
+        }
+        @foreach (var item in Model)
+            {
+                if (count % 3 == 0 && count == 0)
+                {
+                @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }
+
+            <div class="col-sm-4">
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <a href="/home/editlot/@item.Id">Edit lot</a>
+                }
+                <div class="row lot-preview" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
+                    <div class="col-sm-12 container" style="padding:0;">
+
+                        <img style="width:100%; height:auto;" src="@item.ImageSource" />
+                        <input type="button" class="btn btn-danger top-right btn-bid" value="Bid" />
+
+                    </div>
+                    <p class="product-header">
+                        @item.Name<br />
+                        Արժեքը: @item.CurrentBid ֏.
+                    </p>
+                </div>
+            </div>
+            if (count % 2 == 0 && count != 0)
+            {
+                @Html.Raw("</div>");
+                    count = 0;
+                }
+                else
+                {
+                    count++;
+                }
+
+            }
+    </div>
+
+
+</div>
