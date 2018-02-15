@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace CharrityAuction.Controllers
 {
     
-    public class BidController : Controller
+    public class BidController : BaseController
     {
         // GET: Bid
         public ActionResult Index()

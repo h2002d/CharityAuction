@@ -18,10 +18,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Charity Auction", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(CharrityAuction.Resource.Name, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @{
+                        foreach (var i in CharrityAuction.SiteLanguages.AvailableLanguages)
+                        {
+                            <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText" }) <text>&nbsp;</text></li>
+                        }
+                    }
                     @if (this.User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Categories", "Categories", "Admin")</li>

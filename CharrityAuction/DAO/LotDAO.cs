@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 
 namespace CharrityAuction.DAO
@@ -27,17 +28,27 @@ namespace CharrityAuction.DAO
                         else
                             command.Parameters.AddWithValue("@Id", id);
 
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
                         SqlDataReader rdr = command.ExecuteReader();
                         List<LotModel> lotList = new List<LotModel>();
                         while (rdr.Read())
                         {
                             LotModel lot = new LotModel();
                             lot.Id = Convert.ToInt32(rdr["Id"]);
-                            lot.Description = rdr["Description"].ToString();
-                            lot.Info = rdr["Info"].ToString();
                             lot.ImageSource = rdr["ImageSource"].ToString();
-                            lot.Policy = rdr["Policy"].ToString();
-                            lot.Name = rdr["Name"].ToString();
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
+
                             lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
                             lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
                             lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
@@ -70,6 +81,7 @@ namespace CharrityAuction.DAO
                         sqlConnection.Open();
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@CategoryId", categoryId);
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
 
                         SqlDataReader rdr = command.ExecuteReader();
                         List<LotModel> lotList = new List<LotModel>();
@@ -77,11 +89,20 @@ namespace CharrityAuction.DAO
                         {
                             LotModel lot = new LotModel();
                             lot.Id = Convert.ToInt32(rdr["Id"]);
-                            lot.Description = rdr["Description"].ToString();
-                            lot.Info = rdr["Info"].ToString();
                             lot.ImageSource = rdr["ImageSource"].ToString();
-                            lot.Name = rdr["Name"].ToString();
-                            lot.Policy = rdr["Policy"].ToString();
+
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
                             lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
                             lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
                             lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
@@ -126,6 +147,7 @@ namespace CharrityAuction.DAO
                     {
                         sqlConnection.Open();
                         command.CommandType = CommandType.Text;
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
 
                         SqlDataReader rdr = command.ExecuteReader();
                         List<LotModel> lotList = new List<LotModel>();
@@ -133,11 +155,20 @@ namespace CharrityAuction.DAO
                         {
                             LotModel lot = new LotModel();
                             lot.Id = Convert.ToInt32(rdr["Id"]);
-                            lot.Description = rdr["Description"].ToString();
-                            lot.Info = rdr["Info"].ToString();
                             lot.ImageSource = rdr["ImageSource"].ToString();
-                            lot.Name = rdr["Name"].ToString();
-                            lot.Policy = rdr["Policy"].ToString();
+
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
                             lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
                             lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
                             lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
@@ -176,16 +207,22 @@ namespace CharrityAuction.DAO
                         else
                             command.Parameters.AddWithValue("@Id", lot.Id);
 
-                        command.Parameters.AddWithValue("@Info", lot.Info);
-                        command.Parameters.AddWithValue("@Name", lot.Name);
+                        command.Parameters.AddWithValue("@Name_AM", lot.Name_AM);
+                        command.Parameters.AddWithValue("@Name_EN", lot.Name_EN);
+                        command.Parameters.AddWithValue("@Info_AM", lot.Info_AM);
+                        command.Parameters.AddWithValue("@Info_EN", lot.Info_EN);
+
+                        command.Parameters.AddWithValue("@Description_AM", lot.Description_AM);
+                        command.Parameters.AddWithValue("@Description_EN", lot.Description_EN);
+
+                        command.Parameters.AddWithValue("@Policy_AM", lot.Policy_AM);
+                        command.Parameters.AddWithValue("@Policy_EN", lot.Policy_EN);
                         command.Parameters.AddWithValue("@OccureDate", lot.OccureDate);
-                        command.Parameters.AddWithValue("@Policy", lot.Policy);
                         command.Parameters.AddWithValue("@Step", lot.Step);
                         command.Parameters.AddWithValue("@CategoryId", lot.CategoryId);
                         command.Parameters.AddWithValue("@CurrentBid", lot.CurrentBid);
                         command.Parameters.AddWithValue("@ImageSource", lot.ImageSource);
                         command.Parameters.AddWithValue("@DeadLine", lot.DeadLine);
-                        command.Parameters.AddWithValue("@Description", lot.Description);
                         command.Parameters.AddWithValue("@EstimatedValue", lot.EstimatedValue);
 
                         return Convert.ToInt32(command.ExecuteScalar());
@@ -235,17 +272,27 @@ namespace CharrityAuction.DAO
                         sqlConnection.Open();
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@Index", index);
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
 
                         SqlDataReader rdr = command.ExecuteReader();
                         if (rdr.Read())
                         {
                             LotModel lot = new LotModel();
                             lot.Id = Convert.ToInt32(rdr["Id"]);
-                            lot.Description = rdr["Description"].ToString();
-                            lot.Info = rdr["Info"].ToString();
                             lot.ImageSource = rdr["ImageSource"].ToString();
-                            lot.Policy = rdr["Policy"].ToString();
-                            lot.Name = rdr["Name"].ToString();
+
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
                             lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
                             lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
                             lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());

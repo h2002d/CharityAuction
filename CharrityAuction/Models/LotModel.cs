@@ -14,14 +14,41 @@ namespace CharrityAuction.Models
 
         public int? Id { get; set; }
         public int CategoryId { get; set; }
-
+        [Required]
         public string Name { get; set; }
+        [Required]
+        public string Name_AM { get; set; }
+        [Required]
+        public string Name_EN { get; set; }
+        [Required]
         [AllowHtml]
         public string Description { get; set; }
+        [Required]
+        [AllowHtml]
+        public string Description_AM { get; set; }
+        [Required]
+        [AllowHtml]
+        public string Description_EN { get; set; }
+        [Required]
         [AllowHtml]
         public string Info { get; set; }
+        [Required]
         [AllowHtml]
+        public string Info_AM { get; set; }
+        [Required]
+        [AllowHtml]
+        public string Info_EN { get; set; }
+
+        [AllowHtml]
+        [Required]
         public string Policy { get; set; }
+        [AllowHtml]
+        [Required]
+        public string Policy_AM { get; set; }
+        [AllowHtml]
+        [Required]
+        public string Policy_EN { get; set; }
+        [Required]
         public string ImageSource { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime DeadLine { get; set; }

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CharrityAuction.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -25,7 +25,11 @@ namespace CharrityAuction.Controllers
 
             return View(lots);
         }
-
+        public ActionResult ChangeLanguage(string lang)
+        {
+            new SiteLanguages().SetLanguage(lang);
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

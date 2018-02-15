@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace CharrityAuction.Controllers
 {
     [Authorize(Roles = "Administrator")]
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         // GET: Admin
         public ActionResult Index()
