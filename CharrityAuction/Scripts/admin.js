@@ -25,7 +25,24 @@ function saveTopLot(index,lotId) {
         }
     });
 }
+function deleteLot(id) {
+    $.ajax({
+        type: "POST",
+        url: "/Admin/DeleteLot/" + id,
+        success: function (data) {
+            alert(data);
+            location.reload();
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
 
+}
+function categoryChanged() {
+    var categoryId = $('#Category').find(":selected").val();
+    window.location.href = '/admin/lots/' + categoryId;
+}
 $(document).ready(function () {
     $(".fileUpload").click(function () {
     var parent = $(this).parent();

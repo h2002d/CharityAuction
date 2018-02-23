@@ -217,12 +217,12 @@ namespace CharrityAuction.DAO
 
                         command.Parameters.AddWithValue("@Policy_AM", lot.Policy_AM);
                         command.Parameters.AddWithValue("@Policy_EN", lot.Policy_EN);
-                        command.Parameters.AddWithValue("@OccureDate", lot.OccureDate);
+                        command.Parameters.AddWithValue("@OccureDate", Convert.ToDateTime(lot.OccureDate.ToString("dd MMMM yyyy hh:mm:ss", System.Globalization.CultureInfo.InvariantCulture)));
                         command.Parameters.AddWithValue("@Step", lot.Step);
                         command.Parameters.AddWithValue("@CategoryId", lot.CategoryId);
                         command.Parameters.AddWithValue("@CurrentBid", lot.CurrentBid);
                         command.Parameters.AddWithValue("@ImageSource", lot.ImageSource);
-                        command.Parameters.AddWithValue("@DeadLine", lot.DeadLine);
+                        command.Parameters.AddWithValue("@DeadLine", Convert.ToDateTime(lot.DeadLine.ToString("dd MMMM yyyy hh:mm:ss", System.Globalization.CultureInfo.InvariantCulture)));
                         command.Parameters.AddWithValue("@EstimatedValue", lot.EstimatedValue);
 
                         return Convert.ToInt32(command.ExecuteScalar());

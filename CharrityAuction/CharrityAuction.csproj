@@ -194,6 +194,7 @@
     <Compile Include="Controllers\BidController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAO\BidDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\LotDAO.cs" />
@@ -201,6 +202,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BidModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LotModel.cs" />
@@ -383,12 +385,13 @@
     <Content Include="Views\Home\Item.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\CategoryPartial.cshtml" />
+    <Content Include="Views\Bid\_LotLastBidPartial.cshtml" />
+    <Content Include="Views\Account\_LoginPartialBid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\lots\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Bid\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

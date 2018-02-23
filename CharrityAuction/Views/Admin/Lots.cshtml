@@ -2,8 +2,16 @@
 @{
     ViewBag.Title = "Lots";
 }
-
-<h2>Lots</h2>
+<div class="row">
+    <h2 style="float:left;">Lots   <a href="/Admin/CreateLot">+</a></h2>
+    <div style="float:right;">
+        @Html.DropDownList("Category",
+                                 new SelectList(ViewBag.Categories,
+                                           "Id", "Name"),
+                                            "--Select category--",
+                                new { @class = "form-control" ,@onchange="categoryChanged()"})
+       </div>
+</div>
 <div class="container">
     @foreach (var lot in Model)
     {
@@ -27,6 +35,7 @@
 
             <div class="col-sm-2">
                 <a href="/admin/editlot/@lot.Id">Edit</a>
+                <input type="button" value="Delete" onclick="deleteLot(@lot.Id)" class="btn btn-danger" />
             </div>
             </div>
     }

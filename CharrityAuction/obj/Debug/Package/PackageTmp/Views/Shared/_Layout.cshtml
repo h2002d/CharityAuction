@@ -18,18 +18,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Charity Auction", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(CharrityAuction.Resource.Name, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (this.User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Categories", "Categories", "Admin")</li>
-                        <li>@Html.ActionLink("New Category", "CreateCategory", "Admin")</li>
-
                         <li>@Html.ActionLink("Lots", "Lots", "Admin")</li>
-                        <li>@Html.ActionLink("Create Lot", "CreateLot", "Admin")</li>
-
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -43,13 +39,13 @@
             <p>&copy; @DateTime.Now.Year - Deveoped by Novir</p>
         </footer>
     </div>
-   
+
     @Scripts.Render("~/bundles/bootstrap")
     @if (this.User.IsInRole("Administrator"))
     {
         <script src="~/Scripts/admin.js"></script>
     }
-        @RenderSection("scripts", required: false)
-        <script src="~/Scripts/main.js"></script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/main.js"></script>
 </body>
 </html>

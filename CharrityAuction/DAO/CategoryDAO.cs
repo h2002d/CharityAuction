@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace CharrityAuction.DAO
@@ -24,6 +25,7 @@ namespace CharrityAuction.DAO
                             command.Parameters.AddWithValue("@Id", DBNull.Value);
                         else
                             command.Parameters.AddWithValue("@Id", id);
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
 
                         SqlDataReader rdr = command.ExecuteReader();
                         List<CategoryModel> categoryList = new List<CategoryModel>();
@@ -31,7 +33,7 @@ namespace CharrityAuction.DAO
                         {
                             CategoryModel category = new CategoryModel();
                             category.Id = Convert.ToInt32(rdr["Id"]);
-                            category.Name = rdr["Name"].ToString();
+                            category.Name = rdr["Name_"+culture].ToString();
                             categoryList.Add(category);
                         }
                         return categoryList;
@@ -59,8 +61,8 @@ namespace CharrityAuction.DAO
                             command.Parameters.AddWithValue("@Id", DBNull.Value);
                         else
                             command.Parameters.AddWithValue("@Id", category.Id);
-                        command.Parameters.AddWithValue("@Name", category.Name);
-
+                        command.Parameters.AddWithValue("@Name_EN", category.Name_EN);
+                        command.Parameters.AddWithValue("@Name_AM", category.Name_AM);
                         return Convert.ToInt32(command.ExecuteScalar());
 
 

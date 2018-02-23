@@ -24,13 +24,13 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" style="margin-top:10px;">
     <div class="row">
         <div class="col-sm-3">
             <div class="vertical-menu">
                 @foreach (var item in ViewBag.Categories)
                 {
-                    <a href="/home/category/@item.Id">@item.Name</a>
+                    <a class="category-menu" href="/home/category/@item.Id">@item.Name</a>
                 }
             </div>
         </div>
@@ -48,7 +48,7 @@
                 <div class="col-md-4">
                     @if (this.User.IsInRole("Administrator"))
                     {
-                        <a href="/home/editlot/@item.Id">Edit lot</a>
+                        <a href="/admin/editlot/@item.Id">Edit lot</a>
                     }
                     <div class="row lot-preview" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
                         <div class="col-sm-12 container" style="padding:0;">

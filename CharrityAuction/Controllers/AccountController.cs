@@ -60,7 +60,12 @@ namespace CharrityAuction.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        [AllowAnonymous]
+        public ActionResult _LoginPartialBid(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return PartialView();
+        }
         //
         // POST: /Account/Login
         [HttpPost]

@@ -61,7 +61,7 @@
                             <span class="minutes"></span>
                             <p class="timeRefMinutes"></p>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -77,15 +77,33 @@
 
             </div>
             <div class="row">
-
-                    <input type="number" min="@(Model.CurrentBid+Model.Step)" id="txtBid" value="@(Model.CurrentBid+Model.Step)" class="lot-input form-control"/>
-                    <input type="button" value="BID" class="btn btn-danger btn-lot-bid" />
-               
+                <p style="font-weight:700;">Last bids</p>
+                <hr />
+                @Html.Action("_LotLastBidPartial", "Bid", Model.Id)
+                <hr />
             </div>
             <div class="row">
-                    <input type="button" value="WATCHLIST" class="btn btn-info btn-lot-bid" style="background-color:#041F56;" />
-               </div>
+
+                <input type="number" min="@(Model.CurrentBid+Model.Step)" id="txtBid" value="@(Model.CurrentBid+Model.Step)" class="lot-input form-control" />
+                @if (Request.IsAuthenticated)
+                {
+                    <input type="button" value="BID" onclick="makeBid()" class="btn btn-danger btn-lot-bid" />
+                }
+                else
+                {
+                    <input type="button" value="BID" onclick="bidRegistration()" class="btn btn-danger btn-lot-bid" />
+                }
+            </div>
+            <div class="row">
+                <input type="button" value="WATCHLIST" class="btn btn-info btn-lot-bid" style="background-color:#041F56;" />
+            </div>
         </div>
+    </div>
+</div>
+<div class="container h-100 createModule" id="bidLogin">
+    <span class="close close-login" style="float:right">x</span>
+    <div class="row h-100 justify-content-center align-items-center" style="padding:10px;">
+       @Html.Action("_LoginPartialBid","Account","/home/lot/"+Model.Id)
     </div>
 </div>
 <script>
@@ -134,7 +152,7 @@
                 if (days == 1) { thisEl.find(".timeRefDays").text("Day"); } else { thisEl.find(".timeRefDays").text("Days"); }
                 if (hours == 1) { thisEl.find(".timeRefHours").text("Hour"); } else { thisEl.find(".timeRefHours").text("Hours"); }
                 if (minutes == 1) { thisEl.find(".timeRefMinutes").text("Minute"); } else { thisEl.find(".timeRefMinutes").text("Minutes"); }
-                
+
                 //logic for the two_digits ON setting
                 if (settings['format'] == "on") {
                     days = (String(days).length >= 2) ? days : "0" + days;
@@ -166,18 +184,33 @@
 
     //Call countdown plugin
     $(".countdown").countdown({
-        date: "@Model.DeadLine.ToString("dd MMMM yyyy hh:mm:ss")", // add the countdown's end date (i.e. 3 november 2012 12:00:00)
+        date: "@Model.DeadLine.ToString("dd MMMM yyyy hh:mm:ss", System.Globalization.CultureInfo.InvariantCulture)", // add the countdown's end date (i.e. 3 november 2012 12:00:00)
         format: "on" // on (03:07:52) | off (3:7:52) - two_digits set to ON maintains layout consistency
     },
 
         function () {
 
             // the code here will run when the countdown ends
-            alert("done!")
+            //alert("done!")
 
         });
-
-
+    function bidRegistration() {
+        $("#bidLogin").css("display","block");
+    }
+    function makeBid() {
+        var amount = $('#txtBid').val();
+        $.ajax({
+            type: "POST",
+            url: "/Bid/CreateBid/",
+            data: { Amount: amount, LotId: @Model.Id },
+            success: function (data) {
+                alert(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
 
 
 
@@ -188,16 +221,14 @@
         list-style: none;
     }
 
-    .countdown li {
-        width: 24.4333%;
-        display: inline-block;
-        text-align: center;
-    }
-
-        .countdown li span {
-            font-size: 42px;
-            font-weight: bold;
+        .countdown li {
+            width: 24.4333%;
+            display: inline-block;
+            text-align: center;
         }
 
-
+            .countdown li span {
+                font-size: 42px;
+                font-weight: bold;
+            }
 </style>

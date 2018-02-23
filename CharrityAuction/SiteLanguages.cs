@@ -31,6 +31,8 @@ namespace CharrityAuction
                 if (!IsLanguageAvailable(lang))
                     lang = GetDefaultLanguage();
                 var cultureInfo = new CultureInfo(lang);
+                cultureInfo.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy hh:mm:ss";
+                cultureInfo.DateTimeFormat.DateSeparator = "-";
                 Thread.CurrentThread.CurrentUICulture = cultureInfo;
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureInfo.Name);
                 HttpCookie langCookie = new HttpCookie("culture", lang);

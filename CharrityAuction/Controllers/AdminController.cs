@@ -42,6 +42,8 @@ namespace CharrityAuction.Controllers
             if (id == null)
                 id = CategoryModel.GetCategoryById(null).First().Id;
             var lots = LotModel.GetLotByCategoryId(Convert.ToInt32(id));
+            ViewBag.Categories = CategoryModel.GetCategoryById(null);
+            
             return View(lots);
         }
 

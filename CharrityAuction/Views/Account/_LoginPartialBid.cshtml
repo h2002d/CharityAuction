@@ -1,0 +1,48 @@
+﻿@using CharrityAuction.Models
+@model LoginViewModel
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+    @Html.AntiForgeryToken()
+    <h5 style="text-align:center;">
+        Please login to make a bid
+        <br />
+        <span>
+            Don't have account? <a style="float:none !important;"href="/account/register">register</a> as a new user
+        </span>
+    </h5>
+    <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <p>Email</p>
+                        @Html.TextBoxFor(m => m.Email, new { @class = " login-partial-input" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <p>Password</p>
+                        @Html.PasswordFor(m => m.Password, new { @class = " login-partial-input" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox" style="float:right;">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class=" col-md-12">
+                        <input type="submit" value="Log in" class="btn btn-info btn-lot-bid btn-login-partial" />
+                    </div>
+                </div>
+
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+}
