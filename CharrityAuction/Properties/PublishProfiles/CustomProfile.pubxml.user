@@ -23,13 +23,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:27:03</publishTime>
     </File>
     <File Include="bin/CharrityAuction.dll">
-      <publishTime>02/21/2018 20:56:31</publishTime>
+      <publishTime>02/25/2018 17:22:24</publishTime>
     </File>
     <File Include="bin/CharrityAuction.pdb">
-      <publishTime>02/21/2018 20:56:31</publishTime>
+      <publishTime>02/25/2018 17:22:24</publishTime>
     </File>
     <File Include="bin/en/CharrityAuction.resources.dll">
-      <publishTime>02/16/2018 16:04:34</publishTime>
+      <publishTime>02/25/2018 17:22:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 20:32:26</publishTime>
@@ -467,7 +467,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/13/2018 12:04:02</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/18/2018 14:32:24</publishTime>
+      <publishTime>02/25/2018 10:45:09</publishTime>
     </File>
     <File Include="Content/_bootstrap-datetimepicker.less">
       <publishTime>02/13/2018 12:04:06</publishTime>
@@ -575,7 +575,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:50</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>02/07/2018 08:26:50</publishTime>
+      <publishTime>02/25/2018 12:52:33</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
       <publishTime>02/07/2018 08:26:50</publishTime>
@@ -608,25 +608,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/19/2018 23:06:25</publishTime>
     </File>
     <File Include="Views/Bid/_LotLastBidPartial.cshtml">
-      <publishTime>02/17/2018 10:54:20</publishTime>
+      <publishTime>02/25/2018 17:18:00</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
     <File Include="Views/Home/Category.cshtml">
-      <publishTime>02/19/2018 07:25:59</publishTime>
+      <publishTime>02/23/2018 22:55:01</publishTime>
     </File>
     <File Include="Views/Home/CategoryPartial.cshtml">
-      <publishTime>02/14/2018 13:33:50</publishTime>
+      <publishTime>02/23/2018 22:54:42</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>02/18/2018 12:15:18</publishTime>
+      <publishTime>02/23/2018 22:54:07</publishTime>
     </File>
     <File Include="Views/Home/Item.cshtml">
-      <publishTime>02/18/2018 14:50:38</publishTime>
+      <publishTime>02/25/2018 08:57:57</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>02/07/2018 08:26:50</publishTime>
@@ -653,7 +653,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/18/2018 11:35:56</publishTime>
+      <publishTime>02/23/2018 22:31:50</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>02/16/2018 16:27:46</publishTime>
@@ -665,7 +665,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/21/2018 20:56:49</publishTime>
+      <publishTime>02/25/2018 17:24:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

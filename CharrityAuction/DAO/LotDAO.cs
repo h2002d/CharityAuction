@@ -70,6 +70,9 @@ namespace CharrityAuction.DAO
             }
         }
 
+       
+
+        
         internal List<LotModel> getLotByCategoryId(int categoryId)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -330,6 +333,64 @@ namespace CharrityAuction.DAO
                         command.ExecuteNonQuery();
 
 
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+        #endregion
+        #region LotImages
+        internal void saveLotImages(LotImages lotImages)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_SaveLotImages", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                       
+                        command.Parameters.AddWithValue("@Name_EN", lotImages.Imagesource);
+                        command.Parameters.AddWithValue("@Info_AM", lotImages.LotId);
+                        command.ExecuteNonQuery();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+
+        }
+
+        internal List<LotImages> getImagesByLotId(int lotId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_GetLots", sqlConnection))
+                {
+                    try
+                    {
+                        
+                            command.Parameters.AddWithValue("@LotId", lotId);
+
+                         SqlDataReader rdr = command.ExecuteReader();
+                        List<LotImages> lotList = new List<LotImages>();
+                        while (rdr.Read())
+                        {
+                            LotImages lot = new LotImages();
+                            lot.Id = Convert.ToInt32(rdr["Id"]);
+                            lot.Imagesource = rdr["Imagesource"].ToString();
+                            lot.LotId = Convert.ToInt32(rdr["LotId"]);
+                            lotList.Add(lot);
+                        }
+                        return lotList;
                     }
                     catch (Exception ex)
                     {

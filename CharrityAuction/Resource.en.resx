@@ -117,7 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AMD" xml:space="preserve">
+    <value>AMD</value>
+  </data>
+  <data name="Bid" xml:space="preserve">
+    <value>BID</value>
+  </data>
+  <data name="CurrentBid" xml:space="preserve">
+    <value>CURRENT BID</value>
+  </data>
+  <data name="DeadLine" xml:space="preserve">
+    <value>TIME LEFT TO BID</value>
+  </data>
+  <data name="EstimatedValue" xml:space="preserve">
+    <value>ESTIMATED VALUE</value>
+  </data>
+  <data name="LastBids" xml:space="preserve">
+    <value>Last bids</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
   </data>
 </root>

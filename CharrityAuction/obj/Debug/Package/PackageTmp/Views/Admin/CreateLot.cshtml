@@ -7,7 +7,11 @@
 <h2>CreateLot</h2>
 
 
-@using (Html.BeginForm("CreateLot", "Admin"))
+@using (Ajax.BeginForm("CreateLot", new AjaxOptions()
+{
+    OnSuccess = "OnSuccess()",
+    OnFailure = "OnFailure()"
+}))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -91,7 +95,7 @@
             @Html.LabelFor(model => model.DeadLine, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="input-group  col-md-10">
                
-                <input id="DeadLine" class="form-control" name="DeadLine" type="datetime-local" />
+                <input id="DeadLine" class="form-control" name="DeadLine" type="datetime-local"value="@Model.DeadLine.ToString("yyyy-MM-ddTmm:hh")" />
                 @Html.ValidationMessageFor(model => model.DeadLine, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -100,7 +104,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OccureDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="input-group  col-md-10">
-                <input id="OccureDate" class="form-control" name="OccureDate" type="datetime-local" />
+                <input id="OccureDate" class="form-control" name="OccureDate" type="datetime-local" value="@Model.OccureDate.ToString("yyyy-MM-ddTmm:hh")"/>
 
                 @Html.ValidationMessageFor(model => model.OccureDate, "", new { @class = "text-danger" })
             </div>
@@ -142,7 +146,15 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+<script>
+    function OnSuccess() {
+        alert("Lot added successfully");
+        window.location.href = "/admin/lots";
+    }
+    function OnFailure() {
+        alert("Some errors were occured");
+    }
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

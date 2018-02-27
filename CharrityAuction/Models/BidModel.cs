@@ -14,6 +14,7 @@ namespace CharrityAuction.Models
         public string UserId { get; set; }
         public int LotId { get; set; }
         public DateTime CreateDate { get; set; }
+        public UserViewModel User { get { return new UserViewModel(UserId); } }
         #endregion
 
         #region Methods

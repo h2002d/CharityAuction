@@ -99,4 +99,21 @@ namespace CharrityAuction.Models
         }
         #endregion
     }
+    public class LotImages
+    {
+        public int Id { get; set; }
+        public int LotId { get; set; }
+        public string Imagesource { get; set; }
+        static DAO.LotDAO DAO = new CharrityAuction.DAO.LotDAO();
+
+        public List<LotImages> GetImagesByLotId(int lotId)
+        {
+            return DAO.getImagesByLotId(lotId);
+        }
+
+        public void Save()
+        {
+            DAO.saveLotImages(this);
+        }
+    }
 }

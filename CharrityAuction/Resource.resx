@@ -117,7 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AMD" xml:space="preserve">
+    <value>Դրամ</value>
+  </data>
+  <data name="Bid" xml:space="preserve">
+    <value>ՀԱՅՏ</value>
+  </data>
+  <data name="CurrentBid" xml:space="preserve">
+    <value>ԸՆԹԱՑԻԿ ՀԱՅՏԵՐ</value>
+  </data>
+  <data name="DeadLine" xml:space="preserve">
+    <value>Հայտերի ընդունման վերջնաժամկետը</value>
+  </data>
+  <data name="EstimatedValue" xml:space="preserve">
+    <value>ԳՆԱՀԱՏՎԱԾ ԱՐԺԵՔԸ</value>
+  </data>
+  <data name="LastBids" xml:space="preserve">
+    <value>Վերջին հայտերը</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Անուն</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Արժեքը</value>
   </data>
 </root>

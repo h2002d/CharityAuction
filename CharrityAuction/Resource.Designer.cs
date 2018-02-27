@@ -61,11 +61,74 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Դրամ.
+        /// </summary>
+        public static string AMD {
+            get {
+                return ResourceManager.GetString("AMD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ՀԱՅՏ.
+        /// </summary>
+        public static string Bid {
+            get {
+                return ResourceManager.GetString("Bid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ԸՆԹԱՑԻԿ ՀԱՅՏԵՐ.
+        /// </summary>
+        public static string CurrentBid {
+            get {
+                return ResourceManager.GetString("CurrentBid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Հայտերի ընդունման վերջնաժամկետը.
+        /// </summary>
+        public static string DeadLine {
+            get {
+                return ResourceManager.GetString("DeadLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ԳՆԱՀԱՏՎԱԾ ԱՐԺԵՔԸ.
+        /// </summary>
+        public static string EstimatedValue {
+            get {
+                return ResourceManager.GetString("EstimatedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Վերջին հայտերը.
+        /// </summary>
+        public static string LastBids {
+            get {
+                return ResourceManager.GetString("LastBids", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Անուն.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Արժեքը.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
     }

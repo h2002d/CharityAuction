@@ -8,7 +8,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>test User</td>
+            <td>@item.User.Name @item.User.LastName</td>
             <td>@item.Amount</td>
             <td>@item.CreateDate.ToString("mm:HH:ss")</td>
             <td>@item.CreateDate.ToString("dd MM yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
