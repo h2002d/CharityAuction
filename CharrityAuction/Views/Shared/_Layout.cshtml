@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -10,25 +10,107 @@
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar">
         <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4" style="margin-bottom:1px;margin-top:20px;" align="center">
+                    <a class="navbar-brand navbar-logo non-float" href="/">
+                        <img src='/images/logo.png' class='navbar-image' />
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 col-sm-offset-4" align="center">
+                    <h4>
+                        Մասնակցի՛ր, հաղթի՛ր, օգնի՛ր
+                    </h4>
+                 
+                </div>
+                <div class="col-sm-4">
+                    @Html.Partial("_LoginPartial")
+                </div>
+               
+            </div>
+        </div>
+        <div class="menu-header" align="center">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink(CharrityAuction.Resource.Name, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse" align="center">
+                <ul class="nav navbar-nav main-nav non-float">
+                    <li>@Html.ActionLink(CharrityAuction.Resource.Main, "Index", "Home")</li>
+                   @if (!this.User.IsInRole("Administrator"))
+                   {
+                    <li>@Html.ActionLink(CharrityAuction.Resource.AboutUs, "AboutUs", "Home")</li>
+                    <li>@Html.ActionLink(CharrityAuction.Resource.News, "NewsFeed", "Home")</li>
+
+                    @*<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuMedia</a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="#" id="">@CharrityAuction.Resource.MenuPhoto</a>
+                            </li>
+                            <li>
+                                <a href="#" id="">@CharrityAuction.Resource.MenuVideo</a>
+                            </li>
+
+                        </ul>
+                    </li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuCoWorkers</a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="#" id="">@CharrityAuction.Resource.MenuStars</a>
+                            </li>
+                            
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuRules</a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="#" id="">@CharrityAuction.Resource.MenuPayment</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuReport</a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="/Home/Charities" id="">@CharrityAuction.Resource.MenuWhoWeHelp</a>
+                            </li>
+                            <li>
+                                <a href="#" id="">@CharrityAuction.Resource.MenuGoodBuyers</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                   }
                     @if (this.User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Categories", "Categories", "Admin")</li>
                         <li>@Html.ActionLink("Lots", "Lots", "Admin")</li>
+                        <li>@Html.ActionLink("Charities", "Charities", "Admin")</li>
+                        <li>@Html.ActionLink("News", "Newsfeed", "Admin")</li>
+
                     }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                
             </div>
         </div>
     </div>

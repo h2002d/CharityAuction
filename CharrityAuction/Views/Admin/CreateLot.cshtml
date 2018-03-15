@@ -15,6 +15,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
+    @Html.Hidden("AnswerCount", Model.Images.Count, new { @id = "AnswerCount" })
 
     <div class="form-horizontal">
         <h4>LotModel</h4>
@@ -47,7 +48,7 @@
             </div>
         </div>
 
-       
+
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
@@ -94,8 +95,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DeadLine, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="input-group  col-md-10">
-               
-                <input id="DeadLine" class="form-control" name="DeadLine" type="datetime-local"value="@Model.DeadLine.ToString("yyyy-MM-ddTmm:hh")" />
+
+                <input id="DeadLine" class="form-control" name="DeadLine" type="datetime-local" value="@Model.DeadLine.ToString("yyyy-MM-ddTmm:hh")" />
                 @Html.ValidationMessageFor(model => model.DeadLine, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -104,7 +105,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OccureDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="input-group  col-md-10">
-                <input id="OccureDate" class="form-control" name="OccureDate" type="datetime-local" value="@Model.OccureDate.ToString("yyyy-MM-ddTmm:hh")"/>
+                <input id="OccureDate" class="form-control" name="OccureDate" type="datetime-local" value="@Model.OccureDate.ToString("yyyy-MM-ddTmm:hh")" />
 
                 @Html.ValidationMessageFor(model => model.OccureDate, "", new { @class = "text-danger" })
             </div>
@@ -134,10 +135,48 @@
                 @Html.ValidationMessageFor(model => model.EstimatedValue, "", new { @class = "text-danger" })
             </div>
         </div>
+        @if (Model.Id == null)
+        {
+
 
         <div class="form-group">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10" id="AnswerContainer">
+                @for (int i = 0; i < Model.Images.Count(); i++)
+                {
+                    <div id="answerDiv@(Model.Images[i].Id)">
+                        @Html.HiddenFor(m => m.Images[i].Id)
+                        @Html.HiddenFor(m => m.Images[i].LotId)
+                        <img src="@Model.Images[i].Imagesource" style="width:200px; height:200px;" />
+                        <a onclick="removeLotImage(@Model.Images[i].Id)">
+                            <img src="~/images/removeIcon.png" />
+                        </a>
+                        <br />
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+          
+            <div class="col-md-10 col-sm-offset-2">
+                <input type="file" class="form-control uploadEditorImage" />
+                <input type="button" value="Upload"id="@Model.Id" class="btn btn-default fileNewsUploadAdditional" />
+                @Html.TextBoxFor(model => model.ImageSource, new { @class = "image", @style = "display:none;" })
+            </div>
+        </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                  <p>Please save news to add images</p>
+                </div>
+            </div>
+        }
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Պահպանել" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -1,0 +1,29 @@
+﻿@model List<CharrityAuction.Models.NewsModel>
+@{
+    ViewBag.Title = "Newsfeed";
+}
+
+<h2>Newsfeed <a style="color:black" href="/Admin/CreateNews">+</a></h2>
+
+<div class="container">
+    @foreach (var news in Model)
+    {
+        <div class="row">
+            <div class="col-sm-2">
+                <span>@news.CreateDate.ToString("dd MM yyyy", System.Globalization.CultureInfo.InvariantCulture)</span>
+            </div>
+            <div class="col-sm-2">
+                <span>@news.Name</span>
+            </div>
+            <div class="col-sm-6">
+                @Html.Raw(news.Description.Length>300?news.Description.Substring(300):news.Description)
+            </div>
+            <div class="col-sm-2">
+                <a style="color:black" href="/Admin/EditNews/@news.Id">Edit</a>
+               
+                <input type="button" onclick="removeNews(@news.Id)" class="btn btn-danger" value="Delete" />
+            </div>
+
+        </div>
+    }
+</div>

@@ -60,8 +60,16 @@ namespace CharrityAuction.Models
         public Decimal CurrentBid { get; set; }
         public Decimal Step { get; set; }
         public Decimal EstimatedValue { get; set; }
-
+        public List<LotImages> Images { get
+            {
+                return LotImages.GetImagesByLotId(Convert.ToInt32(this.Id));
+            }
+            set { } }
         #endregion
+        public LotModel()
+        {
+            this.Images = new List<LotImages>();
+        }
         #region Static methods
         public static List<LotModel> GetLotById(int? Id)
         {
@@ -72,6 +80,13 @@ namespace CharrityAuction.Models
         {
             return DAO.getLotByCategoryId(CategoryId);
         }
+
+        public static List<LotModel> GetLotByOrder(int id)
+        {
+            return DAO.getLotByOrderId(id);
+
+        }
+
         public static List<LotModel> GetLotByCategoryIdOrder(int CategoryId,int OrderId)
         {
             return DAO.getLotByCategoryIdOrder(CategoryId,OrderId);
@@ -101,19 +116,22 @@ namespace CharrityAuction.Models
     }
     public class LotImages
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int LotId { get; set; }
         public string Imagesource { get; set; }
         static DAO.LotDAO DAO = new CharrityAuction.DAO.LotDAO();
 
-        public List<LotImages> GetImagesByLotId(int lotId)
+        public static List<LotImages> GetImagesByLotId(int lotId)
         {
             return DAO.getImagesByLotId(lotId);
         }
-
-        public void Save()
+        public static void Delete(int id)
         {
-            DAO.saveLotImages(this);
+            DAO.deleteLotImage(id);
+        }
+        public int Save()
+        {
+           return DAO.saveLotImages(this);
         }
     }
 }

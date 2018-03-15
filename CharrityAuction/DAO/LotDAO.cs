@@ -70,9 +70,74 @@ namespace CharrityAuction.DAO
             }
         }
 
-       
+        internal List<LotModel> getLotByOrderId(int orderId)
+        {
 
-        
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                StringBuilder str = new StringBuilder("SELECT * FROM Lot WHERE isDeleted=0");
+                switch (orderId)
+                {
+                    case 1:
+                        str.Append(" ORDER BY DeadLine DESC");
+                        break;
+                    case 2:
+                        str.Append(" ORDER BY Id DESC");
+
+                        break;
+                    case 3:
+                        str.Append(" ORDER BY CurrentBid DESC");
+                        break;
+                }
+                using (SqlCommand command = new SqlCommand(str.ToString(), sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.Text;
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
+
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<LotModel> lotList = new List<LotModel>();
+                        while (rdr.Read())
+                        {
+                            LotModel lot = new LotModel();
+                            lot.Id = Convert.ToInt32(rdr["Id"]);
+                            lot.ImageSource = rdr["ImageSource"].ToString();
+
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
+                            lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
+                            lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
+                            lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
+
+                            lot.CategoryId = Convert.ToInt32(rdr["CategoryId"]);
+                            lot.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
+                            lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
+
+                            lotList.Add(lot);
+                        }
+                        return lotList;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+
         internal List<LotModel> getLotByCategoryId(int categoryId)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -126,11 +191,14 @@ namespace CharrityAuction.DAO
                 }
             }
         }
+
+        
+
         internal List<LotModel> getLotByCategoryIdOrder(int categoryId,int orderId)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                StringBuilder str = new StringBuilder("SELECT * FROM Lot WHERE CategoryId=" + categoryId);
+                StringBuilder str = new StringBuilder("SELECT * FROM Lot WHERE isDeleted=0 AND CategoryId=" + categoryId);
                 switch(orderId)
                 {
                     case 1:
@@ -343,20 +411,44 @@ namespace CharrityAuction.DAO
         }
         #endregion
         #region LotImages
-        internal void saveLotImages(LotImages lotImages)
+        internal void deleteLotImage(int id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand("sp_SaveLotImages", sqlConnection))
+                using (SqlCommand command = new SqlCommand("sp_DeleteLotImage", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@Id", id);
+                        command.ExecuteNonQuery();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+        internal int saveLotImages(LotImages lotImages)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_SaveLotImage", sqlConnection))
                 {
                     try
                     {
                         sqlConnection.Open();
                         command.CommandType = CommandType.StoredProcedure;
                        
-                        command.Parameters.AddWithValue("@Name_EN", lotImages.Imagesource);
-                        command.Parameters.AddWithValue("@Info_AM", lotImages.LotId);
-                        command.ExecuteNonQuery();
+                        command.Parameters.AddWithValue("@Imagesource", lotImages.Imagesource);
+                        command.Parameters.AddWithValue("@LotId", lotImages.LotId);
+                        return Convert.ToInt32(command.ExecuteScalar());
 
 
                     }
@@ -373,14 +465,15 @@ namespace CharrityAuction.DAO
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand("sp_GetLots", sqlConnection))
+                using (SqlCommand command = new SqlCommand("sp_GetLotImagesByLotId", sqlConnection))
                 {
                     try
                     {
-                        
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
                             command.Parameters.AddWithValue("@LotId", lotId);
 
-                         SqlDataReader rdr = command.ExecuteReader();
+                        SqlDataReader rdr = command.ExecuteReader();
                         List<LotImages> lotList = new List<LotImages>();
                         while (rdr.Read())
                         {
@@ -394,7 +487,7 @@ namespace CharrityAuction.DAO
                     }
                     catch (Exception ex)
                     {
-                        throw ex;
+                      throw ex;
                     }
                 }
             }

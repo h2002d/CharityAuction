@@ -1,0 +1,133 @@
+﻿@model CharrityAuction.Models.NewsModel
+
+@{
+    ViewBag.Title = "Create News";
+}
+
+<h2>Create News</h2>
+
+@using (Ajax.BeginForm("CreateNews", new AjaxOptions()
+{
+    OnSuccess = "OnSuccess()",
+    OnFailure = "OnFailure()"
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.Hidden("AnswerCount", Model.Images.Count, new { @id = "AnswerCount" })
+
+
+    <div class="form-horizontal">
+        <h4>NewsModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_EN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name_EN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name_EN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_AM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name_AM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name_AM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description_EN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description_EN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description_EN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description_AM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description_AM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description_AM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VideoSource, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VideoSource, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VideoSource, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @if (!(Model.Id == null))
+        {
+            <div class="form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-10" id="AnswerContainer">
+                    @for (int i = 0; i < Model.Images.Count(); i++)
+                {
+                <div id="answerDiv@(Model.Images[i].Id)">
+                    @Html.HiddenFor(m => m.Images[i].Id)
+                    @Html.HiddenFor(m => m.Images[i].NewsId)
+                    <img src="@Model.Images[i].ImageSource" style="width:200px; height:200px;" />
+                    <a onclick="removeNewsImage(@Model.Images[i].Id)">
+                        <img src="~/images/removeIcon.png" />
+                    </a>
+                    <br />
+                </div>
+                }
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <input type="file" class="form-control uploadEditorImage" />
+                    <input type="button" value="Upload" id="@Model.Id" class="btn btn-default fileNewsUploadAdditional" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Please save news to add images</p>
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    function OnSuccess() {
+        alert("News added successfully");
+        window.location.href = "/admin/newsfeed";
+    }
+    function OnFailure() {
+        alert("Some errors were occured");
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

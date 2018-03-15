@@ -1,14 +1,25 @@
 ﻿body {
-    padding-top: 50px;
+
     padding-bottom: 20px;
 }
-
+.news-item a {
+    color:black;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     margin-top: 50px;
-    width: 85%;
+    width: 80%;
 }
-
+.navbar {
+    background-color: #1565C0;
+}
+.navbar-image{
+    width:100%;
+    height:auto;
+}
+.dropdown-menu {
+    background: linear-gradient(rgb(126,212,227), rgb(76,168,183), rgb(119,208,222));
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -29,36 +40,50 @@ textarea {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
-
+.nav>li{
+    display:inline-flex !important;
+    float:none !important;
+}
 .lot-preview {
     cursor: pointer;
 }
 
-    .lot-preview img {
-        -webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
-        transition: opacity 1s;
+.bordered:hover {
+    border: 1px solid black;
+}
+
+.lot-preview img {
+    -webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 1s;
+}
+
+    .lot-preview img:hover {
+        opacity: 0.3;
     }
 
-        .lot-preview img:hover {
-            opacity: 0.3;
-        }
+.lot-preview:hover .centered {
+    color: black;
+}
 
-    .lot-preview:hover .centered {
-        color: black;
-    }
+.lot-preview:hover .bottom-left {
+    color: black;
+}
 
 .btn-bid {
-    display: none;
     font-size: 18px;
     -webkit-transition: display 1s; /* For Safari 3.1 to 6.0 */
     transition: display 1s;
-    padding: 0 50px 0 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #1565C0;
+    border:none !important;
 }
+    .btn-bid:hover {
+        background-color: #0D47A1;
 
-.lot-preview:hover .btn-bid {
-    display: block;
-}
+    }
 
 .top-right {
     position: absolute;
@@ -72,7 +97,10 @@ textarea {
     font-family: Sylfaen !important;
     font-style: normal
 }
-
+.lot-headings{
+    font-size:16px;
+    font-weight:800;
+}
 .timer {
     text-align: center;
     font-size: 60px;
@@ -103,7 +131,20 @@ textarea {
     height: 62px;
     margin: 5px 0;
 }
-
+.navbar-collapse .nav li a:hover, .navbar-collapse .nav li a:focus {
+    background-color: black;
+    background: linear-gradient(rgb(220,243,249), rgb(120,208,222), rgb(220,243,249));
+    color: rgb(21,113,128) !important;
+}
+.navbar-logo{
+    font-size:30px;
+    font-weight:800;
+    font-family:Sylfaen;
+    color:black;
+}
+.navbar-logo:hover{
+    color:black;
+}
 .category-header {
     background-color: #eee;
     padding: 20px 10px;
@@ -184,9 +225,10 @@ textarea {
     background-color: #42DA80;
 }
 
-.btn-login-partial :hover{
-    background-color: #23b55f;
-}
+    .btn-login-partial :hover {
+        background-color: #23b55f;
+    }
+
 .login-partial-input {
     color: #000;
     border: 1px solid #D5D9DD;
@@ -195,14 +237,16 @@ textarea {
     margin-bottom: 0;
     background-color: #FFF;
     box-shadow: none;
-    width:100%;
+    width: 100%;
 }
+
 .registration-header {
     text-align: center;
     background-color: #F8F8F8;
     border-bottom: 1px solid #E6E6E6;
     padding: 20px 0;
 }
+
     .registration-header h3 {
         font-style: normal;
         text-transform: uppercase;
@@ -213,38 +257,46 @@ textarea {
         line-height: 27px;
         letter-spacing: 1px;
     }
-.registration-container{
-    width:45%;
-    margin-top:0 !important;
-    background-color:#F1F1F1;
-    border:1px solid #E6E6E6;
-    border-top:none;
-    padding:0;
+
+.registration-container {
+    width: 45%;
+    margin-top: 0 !important;
+    background-color: #F1F1F1;
+    border: 1px solid #E6E6E6;
+    border-top: none;
+    padding: 0;
+    min-width:500px;
 }
+
 .registration-input {
     height: 54px;
     font-size: 18px;
-    width:100%;
+    width: 100%;
 }
+
 .registration-input-description {
     font-size: 14px;
     line-height: 14px;
     margin-bottom: 10px;
-    color:#656565
+    color: #656565
 }
-.form-registration{
-    padding:10px 40px;
+
+.form-registration {
+    padding: 10px 40px;
 }
-.registration-row{
-    margin-top:40px;
+
+.registration-row {
+    margin-top: 40px;
 }
+
 .screenname-side-note {
     color: #808083;
-    padding-left:7px;
-    font-size:14px;
+    padding-left: 7px;
+    font-size: 14px;
 }
+
 .registration-btn {
-    background-color: #42DA80; 
+    background-color: #42DA80;
     font-size: 15px;
     color: #FFF;
     border: none;
@@ -261,7 +313,237 @@ textarea {
     -moz-box-shadow: 0px 0px 6px 0px rgba(165, 165, 165, 1);
     box-shadow: 0px 0px 6px 0px rgba(165, 165, 165, 1);
 }
+
     .registration-btn:hover {
         background: #23b55f;
     }
 
+.menu-header {
+    color: white !important;
+    letter-spacing: normal;
+    font-weight: 600;
+    font-size: 13px;
+    width: 100%;
+    overflow: visible;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    border-color: #D9D9D9;
+}
+
+    .menu-header a {
+        color: white;
+        text-transform: uppercase;
+    }
+
+.non-float {
+    float: none !important;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.main-nav {
+    margin: 0 auto;
+}
+
+#charities {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #charities td, #charities th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #charities tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #charities tr:hover {
+        background-color: #ddd;
+    }
+
+    #charities th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #1565C0;
+        color: white;
+    }
+
+span.arrow-left, span.arrow-right {
+    display: block;
+    color: white;
+    cursor: pointer;
+}
+
+span.arrow-left {
+}
+
+span.arrow-right {
+}
+
+.arrowlft {
+    margin-top: 50px;
+}
+
+.arrowrgt {
+    margin-top: 50px;
+}
+.offer-pg-cont {
+    padding: 0px;
+    overflow-x: auto;
+    margin: 0px;
+    background-color: rgba(40, 40, 40, 0.85);
+}
+.category-scroll-content {
+    width: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.58);
+}
+.nullBox {
+    height: 50px;
+}
+.offer-pg {
+    width: 800px;
+}
+
+.item-wrapper.offer-con {
+    background-color: transparent;
+}
+
+.offer-con .left-item h4 {
+    color: #fff;
+    font-weight: normal;
+    margin: 0px;
+}
+
+.offer-con .right-item {
+    float: right;
+    padding: 10px;
+}
+
+    .offer-con .right-item h5 {
+        color: #cb9944;
+        margin: 0px;
+        font-size: 14px;
+    }
+
+.offer-pg > .portfolio-item {
+    width: 150px;
+    margin-left: 10px;
+    float: left;
+    cursor: pointer;
+    color: white;
+    font-size: 10px;
+}
+
+    .offer-pg > .portfolio-item:hover {
+        color: red !important;
+    }
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999999999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}

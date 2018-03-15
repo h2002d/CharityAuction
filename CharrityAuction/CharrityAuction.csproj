@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.4.2.0\lib\net45\ImageResizer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -196,8 +199,10 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAO\BidDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\CharityDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\LotDAO.cs" />
+    <Compile Include="DAO\NewsModelDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,9 +210,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BidModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Charity.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LotModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
@@ -236,6 +243,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\addIcon.png" />
+    <Content Include="images\arrow_left.gif" />
+    <Content Include="images\arrow_right.gif" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\removeIcon.png" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -389,10 +401,21 @@
     <Content Include="Views\Home\CategoryPartial.cshtml" />
     <Content Include="Views\Bid\_LotLastBidPartial.cshtml" />
     <Content Include="Views\Account\_LoginPartialBid.cshtml" />
+    <Content Include="Views\Admin\ImagePartial.cshtml" />
+    <Content Include="Views\Admin\CharityCreate.cshtml" />
+    <Content Include="Views\Admin\Charities.cshtml" />
+    <Content Include="Views\Home\Charities.cshtml" />
+    <Content Include="Views\Home\IndexPartial.cshtml" />
+    <Content Include="Views\Admin\Newsfeed.cshtml" />
+    <Content Include="Views\Admin\CreateNews.cshtml" />
+    <Content Include="Views\Admin\NewsImagePartial.cshtml" />
+    <Content Include="Views\Home\NewsFeed.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\lots\" />
+    <Folder Include="images\news\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

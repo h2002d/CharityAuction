@@ -61,6 +61,15 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Մեր մասին.
+        /// </summary>
+        public static string AboutUs {
+            get {
+                return ResourceManager.GetString("AboutUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Դրամ.
         /// </summary>
         public static string AMD {
@@ -88,6 +97,15 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to օր.
+        /// </summary>
+        public static string Day {
+            get {
+                return ResourceManager.GetString("Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Հայտերի ընդունման վերջնաժամկետը.
         /// </summary>
         public static string DeadLine {
@@ -106,6 +124,15 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ժամ.
+        /// </summary>
+        public static string Hours {
+            get {
+                return ResourceManager.GetString("Hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Վերջին հայտերը.
         /// </summary>
         public static string LastBids {
@@ -115,11 +142,173 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Անուն.
+        ///   Looks up a localized string similar to Մուտք.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գլխավոր.
+        /// </summary>
+        public static string Main {
+            get {
+                return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Մասնակցել.
+        /// </summary>
+        public static string MainDetails {
+            get {
+                return ResourceManager.GetString("MainDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գործընկերներ.
+        /// </summary>
+        public static string MenuCoWorkers {
+            get {
+                return ResourceManager.GetString("MenuCoWorkers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Բարի գնորդներ.
+        /// </summary>
+        public static string MenuGoodBuyers {
+            get {
+                return ResourceManager.GetString("MenuGoodBuyers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Մեդիա.
+        /// </summary>
+        public static string MenuMedia {
+            get {
+                return ResourceManager.GetString("MenuMedia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to վճարում.
+        /// </summary>
+        public static string MenuPayment {
+            get {
+                return ResourceManager.GetString("MenuPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ֆոտո.
+        /// </summary>
+        public static string MenuPhoto {
+            get {
+                return ResourceManager.GetString("MenuPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Հաշվետվություն.
+        /// </summary>
+        public static string MenuReport {
+            get {
+                return ResourceManager.GetString("MenuReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Կանոնները.
+        /// </summary>
+        public static string MenuRules {
+            get {
+                return ResourceManager.GetString("MenuRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Աստղեր.
+        /// </summary>
+        public static string MenuStars {
+            get {
+                return ResourceManager.GetString("MenuStars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Վիդեո.
+        /// </summary>
+        public static string MenuVideo {
+            get {
+                return ResourceManager.GetString("MenuVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ում ենք օգնում.
+        /// </summary>
+        public static string MenuWhoWeHelp {
+            get {
+                return ResourceManager.GetString("MenuWhoWeHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to րոպե.
+        /// </summary>
+        public static string Minutes {
+            get {
+                return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Բարեգործական աճուրդ.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Նորություններ.
+        /// </summary>
+        public static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Իմ էջը.
+        /// </summary>
+        public static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Գրանցվել.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ՄՆԱՑԵԼ Է.
+        /// </summary>
+        public static string Remains {
+            get {
+                return ResourceManager.GetString("Remains", resourceCulture);
             }
         }
         

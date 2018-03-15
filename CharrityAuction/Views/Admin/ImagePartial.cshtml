@@ -1,0 +1,10 @@
+﻿@model CharrityAuction.Models.LotImages
+<div id="answerDiv@(Model.Id)">
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.LotId)
+    <img src="@Model.Imagesource" style="width:200px; height:200px;" />
+    <a onclick="removeLotImage(@Model.Id)">
+        <img src="~/images/removeIcon.png" />
+    </a>
+    <br />
+</div>

@@ -23,19 +23,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:27:03</publishTime>
     </File>
     <File Include="bin/CharrityAuction.dll">
-      <publishTime>02/25/2018 17:22:24</publishTime>
+      <publishTime>03/14/2018 14:32:56</publishTime>
     </File>
     <File Include="bin/CharrityAuction.pdb">
-      <publishTime>02/25/2018 17:22:24</publishTime>
+      <publishTime>03/14/2018 14:32:56</publishTime>
     </File>
     <File Include="bin/en/CharrityAuction.resources.dll">
-      <publishTime>02/25/2018 17:22:25</publishTime>
+      <publishTime>03/14/2018 14:32:57</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 20:32:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>03/02/2015 20:32:26</publishTime>
+    </File>
+    <File Include="bin/ImageResizer.dll">
+      <publishTime>11/28/2017 02:13:10</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/01/2016 03:07:42</publishTime>
@@ -230,7 +233,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/13/2018 12:04:58</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>02/13/2018 11:53:15</publishTime>
+      <publishTime>03/06/2018 19:34:41</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
       <publishTime>02/13/2018 12:04:53</publishTime>
@@ -467,7 +470,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/13/2018 12:04:02</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/25/2018 10:45:09</publishTime>
+      <publishTime>03/15/2018 07:35:50</publishTime>
     </File>
     <File Include="Content/_bootstrap-datetimepicker.less">
       <publishTime>02/13/2018 12:04:06</publishTime>
@@ -490,11 +493,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
+    <File Include="images/addIcon.png">
+      <publishTime>02/27/2018 10:46:47</publishTime>
+    </File>
+    <File Include="images/arrow_left.gif">
+      <publishTime>03/09/2018 21:07:42</publishTime>
+    </File>
+    <File Include="images/arrow_right.gif">
+      <publishTime>03/09/2018 21:07:43</publishTime>
+    </File>
+    <File Include="images/logo.png">
+      <publishTime>03/04/2018 11:59:18</publishTime>
+    </File>
+    <File Include="images/removeIcon.png">
+      <publishTime>02/28/2018 15:51:56</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>02/13/2018 12:05:07</publishTime>
+      <publishTime>02/27/2018 18:23:06</publishTime>
     </File>
     <File Include="Scripts/admin.js">
-      <publishTime>02/19/2018 23:17:50</publishTime>
+      <publishTime>03/11/2018 11:54:28</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datetimepicker.js">
       <publishTime>02/13/2018 12:04:06</publishTime>
@@ -530,7 +548,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:48</publishTime>
     </File>
     <File Include="Scripts/main.js">
-      <publishTime>02/19/2018 23:57:11</publishTime>
+      <publishTime>03/15/2018 07:40:35</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>02/07/2018 08:26:45</publishTime>
@@ -598,17 +616,35 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Admin/Categories.cshtml">
       <publishTime>02/15/2018 23:03:14</publishTime>
     </File>
+    <File Include="Views/Admin/Charities.cshtml">
+      <publishTime>03/05/2018 14:48:20</publishTime>
+    </File>
+    <File Include="Views/Admin/CharityCreate.cshtml">
+      <publishTime>03/05/2018 14:33:36</publishTime>
+    </File>
     <File Include="Views/Admin/CreateCategory.cshtml">
       <publishTime>02/15/2018 22:59:27</publishTime>
     </File>
     <File Include="Views/Admin/CreateLot.cshtml">
-      <publishTime>02/21/2018 22:44:12</publishTime>
+      <publishTime>03/11/2018 11:15:17</publishTime>
+    </File>
+    <File Include="Views/Admin/CreateNews.cshtml">
+      <publishTime>03/11/2018 14:24:21</publishTime>
+    </File>
+    <File Include="Views/Admin/ImagePartial.cshtml">
+      <publishTime>02/28/2018 16:30:37</publishTime>
     </File>
     <File Include="Views/Admin/Lots.cshtml">
       <publishTime>02/19/2018 23:06:25</publishTime>
     </File>
+    <File Include="Views/Admin/Newsfeed.cshtml">
+      <publishTime>03/11/2018 14:41:27</publishTime>
+    </File>
+    <File Include="Views/Admin/NewsImagePartial.cshtml">
+      <publishTime>03/11/2018 12:01:11</publishTime>
+    </File>
     <File Include="Views/Bid/_LotLastBidPartial.cshtml">
-      <publishTime>02/25/2018 17:18:00</publishTime>
+      <publishTime>03/10/2018 13:36:49</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>02/07/2018 08:26:13</publishTime>
@@ -619,14 +655,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/CategoryPartial.cshtml">
       <publishTime>02/23/2018 22:54:42</publishTime>
     </File>
+    <File Include="Views/Home/Charities.cshtml">
+      <publishTime>03/06/2018 08:11:52</publishTime>
+    </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>02/23/2018 22:54:07</publishTime>
+      <publishTime>03/11/2018 13:39:42</publishTime>
+    </File>
+    <File Include="Views/Home/IndexPartial.cshtml">
+      <publishTime>03/08/2018 21:07:32</publishTime>
     </File>
     <File Include="Views/Home/Item.cshtml">
-      <publishTime>02/25/2018 08:57:57</publishTime>
+      <publishTime>03/11/2018 13:42:24</publishTime>
+    </File>
+    <File Include="Views/Home/News.cshtml">
+      <publishTime>03/15/2018 16:38:46</publishTime>
+    </File>
+    <File Include="Views/Home/NewsFeed.cshtml">
+      <publishTime>03/12/2018 15:38:50</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>02/07/2018 08:26:50</publishTime>
@@ -653,10 +701,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/23/2018 22:31:50</publishTime>
+      <publishTime>03/12/2018 15:54:58</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>02/16/2018 16:27:46</publishTime>
+      <publishTime>03/06/2018 20:32:03</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/07/2018 08:26:13</publishTime>
@@ -665,7 +713,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/25/2018 17:24:26</publishTime>
+      <publishTime>02/27/2018 22:31:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -195,3 +195,5 @@ D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.csproj.Gene
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\en\CharrityAuction.resources.dll
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.dll
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.pdb
+D:\Projects\CharityAuction\CharrityAuction\bin\ImageResizer.dll
+D:\Projects\CharityAuction\CharrityAuction\bin\ImageResizer.xml

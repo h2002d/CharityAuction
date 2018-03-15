@@ -1,4 +1,5 @@
 ﻿using CharrityAuction.Models;
+using ImageResizer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,8 @@ namespace CharrityAuction.Controllers
         public ActionResult CreateLot()
         {
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
-            return View();
+            var lot = new LotModel();
+            return View(lot);
         }
 
         public ActionResult EditLot(int id)
@@ -36,7 +38,20 @@ namespace CharrityAuction.Controllers
             int id = newLot.Save();
             return RedirectToAction("Lots");
         }
+        [HttpPost]
+        public JsonResult DeleteLotImage(int id)
+        {
+            try
+            {
+                LotImages.Delete(id);
+                return Json("Նկարը հաջողությամբ ջբջված է", JsonRequestBehavior.AllowGet);
 
+            }
+            catch (Exception ex)
+            {
+                return Json("Ձախողում! չի հաջողվել ջնջել:",JsonRequestBehavior.AllowGet);
+            }
+        }
         public ActionResult Lots(int? id)
         {
             if (id == null)
@@ -47,6 +62,39 @@ namespace CharrityAuction.Controllers
             return View(lots);
         }
 
+        [HttpPost]
+        public ActionResult GalleryUpload(int id)
+        {
+            try
+            {
+                HttpPostedFile file = null;
+                if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+                {
+                    file = System.Web.HttpContext.Current.Request.Files["HttpPostedFileBase"];
+                }
+                string stamp = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
+                string filename = file.FileName.Split('.')[0] + stamp + "." + file.FileName.Split('.')[1];
+                string pic = System.IO.Path.GetFileName(filename);
+                string path = System.IO.Path.Combine(
+                                       Server.MapPath("~/images/lots"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+                LotImages images = new LotImages();
+                images.Imagesource = "/images/lots/"+pic;
+                images.LotId = id;
+               images.Id= images.Save();
+                // after successfully uploading redirect the user
+                return PartialView("ImagePartial",images);
+            }
+            catch(Exception ex)
+            {
+                return Json("ՁՍԽՈՂՈՒՄ:Աշխատանքը վերբեռնված չէ");
+            }
+        }
+        public ActionResult ImagePartial(int id)
+        {
+            return PartialView(id);
+        }
         public ActionResult Lot(int id)
         {
             LotModel lot = LotModel.GetLotById(id).First();
@@ -100,6 +148,118 @@ namespace CharrityAuction.Controllers
             return null;
         }
         #endregion
+        #region Charity logic
+        public ActionResult CharityCreate()
+        {
+            return View();
+        }
+
+        public ActionResult Charities()
+        {
+            var charities = Charity.GetCharityById(null);
+            return View(charities);
+        }
+
+        public ActionResult EditCharity(int id)
+        {
+            var charity = Charity.GetCharityById(id);
+            return View("CharityCreate", charity);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteCharity(int id)
+        {
+            Charity.Delete(id);
+            return Json("Charity is deleted");
+        }
+
+        [HttpPost]
+        public ActionResult CharityCreate(Charity charity)
+        {
+            charity.Save();
+            return RedirectToAction("Charities");
+        }
+        #endregion
+        #region News logic
+        public ActionResult Newsfeed()
+        {
+            var news = NewsModel.GetNewsById(null);
+            return View(news);
+        }
+
+        public ActionResult CreateNews()
+        {
+            NewsModel model = new NewsModel();
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateNews(NewsModel news)
+        {
+            news.Save();
+            return RedirectToAction("Newsfeed");
+        }
+
+        public ActionResult EditNews(int id)
+        {
+            NewsModel model = NewsModel.GetNewsById(id).First();
+            return View("CreateNews", model);
+        }
+
+        public ActionResult DeleteNews(int id)
+        {
+            NewsModel.Delete(id);
+            return Json("News is deleted");
+        }
+        [HttpPost]
+        public ActionResult NewsImageUpload(int id)
+        {
+            try
+            {
+                HttpPostedFile file = null;
+                if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+                {
+                    file = System.Web.HttpContext.Current.Request.Files["HttpPostedFileBase"];
+                }
+                string stamp = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
+                string filename = file.FileName.Split('.')[0] + stamp + "." + file.FileName.Split('.')[1];
+                string pic = System.IO.Path.GetFileName(filename);
+                string path = System.IO.Path.Combine(
+                                       Server.MapPath("~/images/news"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+                NewsImages images = new NewsImages();
+                images.ImageSource = "/images/news/" + pic;
+                images.NewsId = id;
+                images.Id = images.Save();
+                // after successfully uploading redirect the user
+                return PartialView("NewsImagePartial", images);
+            }
+            catch (Exception ex)
+            {
+                return Json("Error occured");
+            }
+        }
+        public ActionResult NewsImagePartial(int id)
+        {
+            return PartialView(id);
+        }
+        [HttpPost]
+        public JsonResult DeleteNewsImage(int id)
+        {
+            try
+            {
+                NewsImages.Delete(id);
+                return Json("Նկարը հաջողությամբ ջբջված է", JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                return Json("Ձախողում! չի հաջողվել ջնջել:", JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
+
         public JsonResult FileUpload()
         {
             try
@@ -112,11 +272,23 @@ namespace CharrityAuction.Controllers
                 string stamp = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
                 string filename = file.FileName;
                 string pic = System.IO.Path.GetFileName(filename);
+                string thumbnailpic = System.IO.Path.GetFileName(file.FileName.Split('.')[0] + "_thumb." + file.FileName.Split('.')[1]);
+
                 string path = System.IO.Path.Combine(
                                        Server.MapPath("~/images/lots"), pic);
+                string thumbpath = System.IO.Path.Combine(
+                                        Server.MapPath("~/images/lots"), thumbnailpic);
                 // file is uploaded
                 file.SaveAs(path);
-             
+
+                ResizeSettings resizeSetting = new ResizeSettings
+                {
+
+                    Width = 220,
+                    Height=220,
+                    Format = file.FileName.Split('.')[1]
+                };
+                ImageBuilder.Current.Build(path, thumbpath, resizeSetting);
                 // after successfully uploading redirect the user
                 return Json("File Uploaded", JsonRequestBehavior.AllowGet);
             }

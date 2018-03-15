@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Մեր մասին</value>
+  </data>
   <data name="AMD" xml:space="preserve">
     <value>Դրամ</value>
   </data>
@@ -135,10 +138,70 @@
   <data name="LastBids" xml:space="preserve">
     <value>Վերջին հայտերը</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Մուտք</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Գլխավոր</value>
+  </data>
+  <data name="MainDetails" xml:space="preserve">
+    <value>Մասնակցել</value>
+  </data>
   <data name="Name" xml:space="preserve">
-    <value>Անուն</value>
+    <value>Բարեգործական աճուրդ</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Իմ էջը</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value> Գրանցվել</value>
   </data>
   <data name="Value" xml:space="preserve">
     <value>Արժեքը</value>
+  </data>
+  <data name="MenuGoodBuyers" xml:space="preserve">
+    <value>Բարի գնորդներ</value>
+  </data>
+  <data name="MenuMedia" xml:space="preserve">
+    <value>Մեդիա</value>
+  </data>
+  <data name="MenuPhoto" xml:space="preserve">
+    <value>Ֆոտո</value>
+  </data>
+  <data name="MenuReport" xml:space="preserve">
+    <value>Հաշվետվություն</value>
+  </data>
+  <data name="MenuVideo" xml:space="preserve">
+    <value>Վիդեո</value>
+  </data>
+  <data name="MenuWhoWeHelp" xml:space="preserve">
+    <value>Ում ենք օգնում</value>
+  </data>
+  <data name="MenuCoWorkers" xml:space="preserve">
+    <value>Գործընկերներ</value>
+  </data>
+  <data name="MenuPayment" xml:space="preserve">
+    <value>վճարում</value>
+  </data>
+  <data name="MenuRules" xml:space="preserve">
+    <value>Կանոնները</value>
+  </data>
+  <data name="MenuStars" xml:space="preserve">
+    <value>Աստղեր</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>օր</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>ժամ</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>րոպե</value>
+  </data>
+  <data name="Remains" xml:space="preserve">
+    <value>ՄՆԱՑԵԼ Է</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Նորություններ</value>
   </data>
 </root>

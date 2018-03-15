@@ -335,15 +335,15 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color: white;
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
-  color: #2a6496;
-  text-decoration: underline;
-}
+    a:hover,
+    a:focus {
+        color: white;
+        text-decoration: underline;
+    }
 
 a:focus {
   outline: thin dotted #333;
@@ -4123,12 +4123,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
     border-top: 0;
     box-shadow: none;
   }
-  .navbar-collapse.collapse {
-    display: block !important;
-    height: auto !important;
-    padding-bottom: 0;
-    overflow: visible !important;
-  }
+    .navbar-collapse.collapse {
+        background: linear-gradient(rgb(126,212,227), rgb(76,168,183), rgb(119,208,222));
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
   .navbar-collapse.in {
     overflow-y: visible;
   }

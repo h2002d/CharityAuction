@@ -54,7 +54,7 @@ namespace CharrityAuction.DAO
                         while (rdr.Read())
                         {
                             UserViewModel user = new UserViewModel();
-                            user.UserId =rdr["Id"].ToString();
+                            user.UserId =rdr["UserId"].ToString();
                             user.Name = rdr["Name"].ToString();
                             user.LastName = rdr["LastName"].ToString();
                             user.Nickname=rdr["Nickname"].ToString();

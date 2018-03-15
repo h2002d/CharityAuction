@@ -62,5 +62,29 @@ namespace CharrityAuction.Controllers
             return PartialView(lots);
 
         }
+        public ActionResult Charities()
+        {
+            var charities = Charity.GetCharityById(null);
+            return View(charities);
+        }
+
+        public ActionResult IndexPartial(string sortId)
+        {
+            var lots = LotModel.GetLotByOrder( Convert.ToInt32(sortId));
+            return PartialView(lots);
+
+        }
+
+        public ActionResult NewsFeed()
+        {
+            var news = NewsModel.GetNewsById(null);
+            return View(news);
+        }
+
+        public ActionResult News(int id)
+        {
+            var news = NewsModel.GetNewsById(id).First();
+            return View(news);
+        }
     }
 }
