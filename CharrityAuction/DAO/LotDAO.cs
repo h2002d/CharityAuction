@@ -57,6 +57,8 @@ namespace CharrityAuction.DAO
                             lot.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
                             lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
                             lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity= Convert.ToBoolean(rdr["isShownCelebrity"]);
 
                             lotList.Add(lot);
                         }
@@ -68,6 +70,65 @@ namespace CharrityAuction.DAO
                     }
                 }
             }
+        }
+
+        internal List<LotModel> getLotByPartnerId(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_GetLotsByParent", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                       
+
+                            command.Parameters.AddWithValue("@Id", id);
+
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<LotModel> lotList = new List<LotModel>();
+                        while (rdr.Read())
+                        {
+                            LotModel lot = new LotModel();
+                            lot.Id = Convert.ToInt32(rdr["Id"]);
+                            lot.ImageSource = rdr["ImageSource"].ToString();
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
+
+                            lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
+                            lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
+                            lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
+
+                            lot.CategoryId = Convert.ToInt32(rdr["CategoryId"]);
+                            lot.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
+                            lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity = Convert.ToBoolean(rdr["isShownCelebrity"]);
+
+                            lotList.Add(lot);
+                        }
+                        return lotList;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+
         }
 
         internal List<LotModel> getLotByOrderId(int orderId)
@@ -126,6 +187,8 @@ namespace CharrityAuction.DAO
                             lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
                             lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
 
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity = Convert.ToBoolean(rdr["isShownCelebrity"]);
                             lotList.Add(lot);
                         }
                         return lotList;
@@ -180,6 +243,8 @@ namespace CharrityAuction.DAO
                             lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
                             lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
 
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity = Convert.ToBoolean(rdr["isShownCelebrity"]);
                             lotList.Add(lot);
                         }
                         return lotList;
@@ -249,6 +314,8 @@ namespace CharrityAuction.DAO
                             lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
                             lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
 
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity = Convert.ToBoolean(rdr["isShownCelebrity"]);
                             lotList.Add(lot);
                         }
                         return lotList;
@@ -295,6 +362,8 @@ namespace CharrityAuction.DAO
                         command.Parameters.AddWithValue("@ImageSource", lot.ImageSource);
                         command.Parameters.AddWithValue("@DeadLine", Convert.ToDateTime(lot.DeadLine.ToString("dd MMMM yyyy hh:mm:ss", System.Globalization.CultureInfo.InvariantCulture)));
                         command.Parameters.AddWithValue("@EstimatedValue", lot.EstimatedValue);
+                        command.Parameters.AddWithValue("@PartnerId", lot.PartnerId);
+                        command.Parameters.AddWithValue("@isShownCelebrity", lot.isShownCelebrity);
 
                         return Convert.ToInt32(command.ExecuteScalar());
 

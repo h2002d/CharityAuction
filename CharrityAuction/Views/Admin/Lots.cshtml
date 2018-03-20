@@ -32,8 +32,10 @@
                 <input type="button" value="TOP 2" onclick="saveTopLot(2,@lot.Id)" class="btn btn-success" />
                 <input type="button" value="TOP 3" onclick="saveTopLot(3,@lot.Id)" class="btn btn-danger" />
             </div>
-
-            <div class="col-sm-2">
+            <div class="col-sm-1">
+                <a href="/Admin/Bids/@lot.Id">BIDS</a>
+            </div>
+            <div class="col-sm-1">
                 <a href="/admin/editlot/@lot.Id">Edit</a>
                 <input type="button" value="Delete" onclick="deleteLot(@lot.Id)" class="btn btn-danger" />
             </div>

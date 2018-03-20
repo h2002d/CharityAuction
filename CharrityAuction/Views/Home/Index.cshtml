@@ -13,11 +13,18 @@
             @{
                 var spantop = ViewBag.Top.DeadLine - DateTime.Now;
             }
-            <b class="bottom-left">
+            @if (spantop.TotalMilliseconds >= 0)
+            {
+                <b class="bottom-left">
 
-                @CharrityAuction.Resource.Remains @spantop.Days @CharrityAuction.Resource.Day @spantop.Hours @CharrityAuction.Resource.Hours @spantop.Minutes @CharrityAuction.Resource.Minutes<br />
-            </b>
+                    @CharrityAuction.Resource.Remains @spantop.Days @CharrityAuction.Resource.Day @spantop.Hours @CharrityAuction.Resource.Hours @spantop.Minutes @CharrityAuction.Resource.Minutes<br />
+                </b>
+            }
 
+            else
+            {
+                <b class="bottom-left">Տվյալ աճուրդն արդեն ավարտվել է</b>
+            }
         </div>
         <div class="col-sm-4 lot-preview short-div" id="@ViewBag.SecondTop.Id" style="height:268px;">
 
@@ -29,10 +36,19 @@
             @{
                 var spanSecondtop = ViewBag.SecondTop.DeadLine - DateTime.Now;
             }
-            <b class="bottom-left">
+            @if (spanSecondtop.TotalMilliseconds >= 0)
+            {
+                <b class="bottom-left">
 
-               @CharrityAuction.Resource.Remains @spanSecondtop.Days @CharrityAuction.Resource.Day @spanSecondtop.Hours @CharrityAuction.Resource.Hours @spanSecondtop.Minutes @CharrityAuction.Resource.Minutes<br />
-            </b>
+                    @CharrityAuction.Resource.Remains @spanSecondtop.Days @CharrityAuction.Resource.Day @spanSecondtop.Hours @CharrityAuction.Resource.Hours @spanSecondtop.Minutes @CharrityAuction.Resource.Minutes<br />
+                </b>
+
+            }
+
+            else
+            {
+                <b class="bottom-left">Տվյալ աճուրդն արդեն ավարտվել է</b>
+            }
         </div>
         <div class="col-sm-4 lot-preview short-div" id="@ViewBag.ThirdTop.Id" style="height:268px;">
             <img src="@ViewBag.ThirdTop.ImageSource" style="width:100%;height:100%;" />
@@ -42,10 +58,17 @@
             @{
                 var spanThirdtop = ViewBag.ThirdTop.DeadLine - DateTime.Now;
             }
+            @if (spanThirdtop.TotalMilliseconds >= 0)
+            {
+                <b class="bottom-left">
+                    @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
+                </b>
+            }
 
-            <b class="bottom-left">
-                @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
-            </b>
+            else
+            {
+                <b class="bottom-left">Տվյալ աճուրդն արդեն ավարտվել է</b>
+            }
         </div>
 
     </div>
@@ -60,7 +83,7 @@
         </div>
         <div class="col-sm-9">
             <div class="row">
-               
+
                 <div class="col-sm-12">
                     <select class="form-control" style="float:right;" id="sort-select" onchange="orderIndexBy()">
                         <option value="1">Closing next</option>
@@ -99,6 +122,10 @@
                                     <b>@span.Days @CharrityAuction.Resource.Day @span.Hours @CharrityAuction.Resource.Hours @span.Minutes @CharrityAuction.Resource.Minutes</b><br />
                                     <b>@CharrityAuction.Resource.Value: @item.CurrentBid ֏.</b><br />
                                 }
+                                else
+                                {
+                                    <b>Տվյալ աճուրդն արդեն ավարտվել է</b>
+                                }
                             </p>
                             <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
 
@@ -119,3 +146,13 @@
         </div>
     </div>
 </div>
+@*@if (ViewBag.WinnedBids!=null) {
+    <div class="container h-100 createModule" style="display: @(ViewBag.WinnedBids.Count > 0 ? "block" : "none") !important" id="bidLogin">
+        <span class="close close-login close-winbid" style="float:right">x</span>
+        <br />
+        <div class="row h-100 justify-content-center align-items-center" style="padding:10px;">
+            Շնորհավորում ենք: Դուք հաղթել եք բարեգործական Աճուրդում: Խնդրում ենք մինչև _______________ կատարել _________________ դրամ վճարումը Ձեր նախընտրած եղանակով(քարտով, կանխիկ, փոխանցում)` հաղթած ԼՈՏ-ը ստանալու համար:
+            Կարող եք նաև զանգահարել XXX-XX-XX-XX հեռախոսահամարով, և մեր աշխատակիցը ավելի մանրամասն տեղեկատվություն կտրամադրի Ձեզ վճարման կարգի և ԼՈՏ-ի ստացման պայմանների մասին
+        </div>
+    </div>
+    }*@

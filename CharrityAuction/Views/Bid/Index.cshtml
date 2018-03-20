@@ -1,0 +1,20 @@
+﻿@model CharrityAuction.Models.BidModel
+@{
+    ViewBag.Title = "Payment";
+}
+<div class="container registration-container" align="center">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="registration-header">Վճարման էջ</h2>
+            <span class="text-info">Ընտրեք վճարման տեսակը</span><br />
+            <input type="radio" name="paymentType" value="0" checked /> Կանխիկ
+            <input type="radio" name="paymentType" value="1" /> Քարտով
+            <br />
+            <input type="button" class="btn-payment registration-btn" onclick="makePayment(@Model.Id);" value="ՎՃԱՐԵԼ" />
+        </div>
+    </div>
+</div>
+
+
+
+

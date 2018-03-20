@@ -13,6 +13,7 @@ namespace CharrityAuction.Models
         public Decimal Amount { get; set; }
         public string UserId { get; set; }
         public int LotId { get; set; }
+        public bool isWinner { get; set; }
         public DateTime CreateDate { get; set; }
         public UserViewModel User { get { return new UserViewModel(UserId); } }
         #endregion
@@ -23,6 +24,10 @@ namespace CharrityAuction.Models
             return DAO.saveBid(this);
         }
 
+        public static void SetWinner(int id)
+        {
+            DAO.setBidWinner(id);
+        }
         public static List<BidModel> GetBidById(int? Id)
         {
             return DAO.getBidById(Id);
@@ -33,11 +38,15 @@ namespace CharrityAuction.Models
             return DAO.getBidByLotId(Id);
         }
 
-        public static List<BidModel> GetBidByUserId(int Id)
+        public static List<BidModel> GetBidByUserId(string Id)
         {
             return DAO.getBidByUserId(Id);
         }
 
+        public static  List<BidModel> GetWinnerBids(string userId)
+        {
+            return DAO.getWinnerBidByUserId(userId);
+        }
         #endregion
 
     }

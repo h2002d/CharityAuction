@@ -24,9 +24,22 @@
 
                 </div>
                 <p class="product-header">
-                    @item.Name<br />
-                    @CharrityAuction.Resource.Value: @item.CurrentBid ֏.
+                    @(item.Name.Length <= 50 ? item.Name : item.Name.Substring(0, 50))<br />
+                    @{
+                        var span = item.DeadLine - DateTime.Now;
+                    }
+                    @if (span.TotalMilliseconds >= 0)
+                    {
+                        <b>@span.Days @CharrityAuction.Resource.Day @span.Hours @CharrityAuction.Resource.Hours @span.Minutes @CharrityAuction.Resource.Minutes</b><br />
+                                    <b>@CharrityAuction.Resource.Value: @item.CurrentBid ֏.</b><br />
+                    }
+                    else
+                    {
+                        <b>Տվյալ աճուրդն արդեն ավարտվել է</b>
+                    }
                 </p>
+                <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
+
             </div>
         </div>
         if (count % 2 == 0 && count != 0)

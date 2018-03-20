@@ -1,22 +1,26 @@
 ﻿body {
-
     padding-bottom: 20px;
 }
-.news-item a {
-    color:black;
+
+a {
+    color: black;
 }
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     margin-top: 50px;
     width: 80%;
 }
+
 .navbar {
     background-color: #1565C0;
 }
-.navbar-image{
-    width:100%;
-    height:auto;
+
+.navbar-image {
+    width: 100%;
+    height: auto;
 }
+
 .dropdown-menu {
     background: linear-gradient(rgb(126,212,227), rgb(76,168,183), rgb(119,208,222));
 }
@@ -26,7 +30,9 @@
 .dl-horizontal dt {
     white-space: normal;
 }
-
+.login-form-container{
+    width:45%;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 /*input,
 select,
@@ -42,10 +48,12 @@ textarea {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-.nav>li{
-    display:inline-flex !important;
-    float:none !important;
+
+.nav > li {
+    display: inline-flex !important;
+    float: none !important;
 }
+
 .lot-preview {
     cursor: pointer;
 }
@@ -78,11 +86,11 @@ textarea {
     padding: 10px;
     width: 100%;
     background-color: #1565C0;
-    border:none !important;
+    border: none !important;
 }
+
     .btn-bid:hover {
         background-color: #0D47A1;
-
     }
 
 .top-right {
@@ -97,10 +105,12 @@ textarea {
     font-family: Sylfaen !important;
     font-style: normal
 }
-.lot-headings{
-    font-size:16px;
-    font-weight:800;
+
+.lot-headings {
+    font-size: 16px;
+    font-weight: 800;
 }
+
 .timer {
     text-align: center;
     font-size: 60px;
@@ -131,20 +141,26 @@ textarea {
     height: 62px;
     margin: 5px 0;
 }
+
 .navbar-collapse .nav li a:hover, .navbar-collapse .nav li a:focus {
     background-color: black;
     background: linear-gradient(rgb(220,243,249), rgb(120,208,222), rgb(220,243,249));
     color: rgb(21,113,128) !important;
 }
-.navbar-logo{
-    font-size:30px;
-    font-weight:800;
-    font-family:Sylfaen;
+.login-menu a:hover{
     color:black;
 }
-.navbar-logo:hover{
-    color:black;
+.navbar-logo {
+    font-size: 30px;
+    font-weight: 800;
+    font-family: Sylfaen;
+    color: black;
 }
+
+    .navbar-logo:hover {
+        color: black;
+    }
+
 .category-header {
     background-color: #eee;
     padding: 20px 10px;
@@ -265,7 +281,7 @@ textarea {
     border: 1px solid #E6E6E6;
     border-top: none;
     padding: 0;
-    min-width:500px;
+    min-width: 500px;
 }
 
 .registration-input {
@@ -330,22 +346,27 @@ textarea {
     border-color: #D9D9D9;
 }
 
-    .menu-header a {
+    .menu-header a,.login-menu-item {
         color: white;
         text-transform: uppercase;
     }
-
+    .login-menu-item:hover{
+        color:black;
+    }
 .non-float {
     float: none !important;
 }
-
+.non-padding{
+    padding-left:0 !important;
+    padding-right:0 !important;
+}
 .bottom-left {
     position: absolute;
     bottom: 20px;
     left: 20px;
     color: white;
-    font-weight:800;
-    text-transform:uppercase;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .main-nav {
@@ -398,20 +419,24 @@ span.arrow-right {
 .arrowrgt {
     margin-top: 50px;
 }
+
 .offer-pg-cont {
     padding: 0px;
     overflow-x: auto;
     margin: 0px;
     background-color: rgba(40, 40, 40, 0.85);
 }
+
 .category-scroll-content {
     width: 100%;
     left: 0;
     background: rgba(0, 0, 0, 0.58);
 }
+
 .nullBox {
     height: 50px;
 }
+
 .offer-pg {
     width: 800px;
 }
@@ -528,7 +553,7 @@ span.arrow-right {
     position: absolute;
     top: 15px;
     right: 35px;
-    color: #f1f1f1;
+    color: rgba(165, 165, 165, 1);
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
@@ -536,14 +561,82 @@ span.arrow-right {
 
     .close:hover,
     .close:focus {
-        color: #bbb;
+        color: rgba(0, 0, 0, 0.4);
         text-decoration: none;
         cursor: pointer;
     }
 
+.close-winbid {
+    color: rgba(165, 165, 165, 1)
+}
+
+    .close-winbid:hover {
+        color: rgba(0, 0, 0, 0.4);
+    }
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
     }
+}
+
+.payment-form {
+    width: 60%;
+}
+
+.btn-payment {
+    margin-top: 50px;
+}
+
+.lot-partners {
+    border-bottom: 1px solid #f74a4a;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.news-item {
+    border-bottom: 1px solid rgba(165, 165, 165, 1);
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+    .news-item a {
+        color: #1565C0;
+    }
+
+        .news-item a:hover {
+            color: #134176;
+        }
+
+    .news-item:after {
+        display: block;
+        content: '';
+        border-bottom: solid 3px #019fb6;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+
+    .news-item:hover:after {
+        transform: scaleX(1);
+    }
+
+.payment-item {
+    padding: 10px 5px 0px 5px;
+}
+/*h1.fromRight:after {
+    transform-origin: 100% 50%;
+}
+
+h1.fromLeft:after {
+    transform-origin: 0% 50%;
+}*/
+#cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999999;
+    width: 100%;
+    height: 100%;
+    display: none;
 }

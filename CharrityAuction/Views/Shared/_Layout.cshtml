@@ -11,7 +11,7 @@
 <body>
     @Scripts.Render("~/bundles/jquery")
     <div class="navbar">
-        <div class="container">
+        <div class="container non-padding">
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-4" style="margin-bottom:1px;margin-top:20px;" align="center">
                     <a class="navbar-brand navbar-logo non-float" href="/">
@@ -26,7 +26,7 @@
                     </h4>
                  
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 ">
                     @Html.Partial("_LoginPartial")
                 </div>
                
@@ -45,7 +45,7 @@
                     <li>@Html.ActionLink(CharrityAuction.Resource.Main, "Index", "Home")</li>
                    @if (!this.User.IsInRole("Administrator"))
                    {
-                    <li>@Html.ActionLink(CharrityAuction.Resource.AboutUs, "AboutUs", "Home")</li>
+                    <li>@Html.ActionLink(CharrityAuction.Resource.AboutUs, "About", "Home")</li>
                     <li>@Html.ActionLink(CharrityAuction.Resource.News, "NewsFeed", "Home")</li>
 
                     @*<li class="dropdown">
@@ -68,10 +68,11 @@
                         <ul class="dropdown-menu">
 
                             <li>
-                                <a href="#" id="">@CharrityAuction.Resource.MenuStars</a>
+                                <a href="/Home/Partners/0" id="">@CharrityAuction.Resource.MenuStars</a>
                             </li>
-                            
-
+                            <li>
+                                <a href="/Home/Partners/1" id="">@CharrityAuction.Resource.MenuCoWorkers</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -107,6 +108,8 @@
                         <li>@Html.ActionLink("Lots", "Lots", "Admin")</li>
                         <li>@Html.ActionLink("Charities", "Charities", "Admin")</li>
                         <li>@Html.ActionLink("News", "Newsfeed", "Admin")</li>
+                        <li>@Html.ActionLink("Co-Workers", "Partners", "Admin")</li>
+                        <li>@Html.ActionLink("Payments", "Index", "Payment")</li>
 
                     }
                 </ul>

@@ -16,7 +16,7 @@
                 <span>@news.Name</span>
             </div>
             <div class="col-sm-6">
-                @Html.Raw(news.Description.Length>300?news.Description.Substring(300):news.Description)
+                @Html.Raw(news.Description.Length>300?news.Description.Substring(0,300):news.Description)
             </div>
             <div class="col-sm-2">
                 <a style="color:black" href="/Admin/EditNews/@news.Id">Edit</a>

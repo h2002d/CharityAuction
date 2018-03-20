@@ -39,7 +39,19 @@ function deleteCharity(id){
         }
     });
 }
-
+function deletePartner(id) {
+    $.ajax({
+        type: "POST",
+        url: "/Admin/DeletePartner/" + id,
+        success: function (data) {
+            alert(data);
+            location.reload();
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
+}
 function removeNews(id) {
     $.ajax({
         type: "POST",
@@ -73,7 +85,28 @@ function categoryChanged() {
     var categoryId = $('#Category').find(":selected").val();
     window.location.href = '/admin/lots/' + categoryId;
 }
-
+function partnerChanged() {
+    var categoryId = $('#partner-select').find(":selected").val();
+    $('#partners').load('/admin/partnersPartial?category=' + categoryId);
+}
+function statusChange(id) {
+    var status = $('#status-select').find(":selected").val();
+    $.ajax({
+        type: "POST",
+        url: "/Payment/ChangeStatus/",
+        data: {
+            paymentId: id,
+            status:status
+        },
+        success: function (data) {
+            alert(data);
+            location.reload();
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
+}
 var GlobalIndex = 0;
 $(document).on('click', '.fileUploadAdditional', function () {
     var parent = $(this).parent();
@@ -158,6 +191,35 @@ $(document).on('click', '.fileUpload', function () {
 
     });
 });
+
+
+$(document).on('click', '.filePartnersUpload', function () {
+    var parent = $(this).parent();
+    var data = new FormData();
+    var files = $(this).parent().find(".uploadEditorImage").get(0).files;
+    if (files.length > 0) {
+        data.append("HttpPostedFileBase", files[0]);
+        $(this).parent().find('.image').val('/images/partners/' + files[0].name)
+    }
+    //.val('/images/' + files[0].name);
+    $.ajax({
+        url: "/Admin/FilePartnersUpload/",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: data,
+        success: function (response) {
+            //code after success
+            alert(response)
+        },
+        error: function (er) {
+
+            alert(er.responseText);
+        }
+
+    });
+});
+
 $(document).ready(function () {
     GlobalIndex = $('#AnswerCount').val();
     $("#DeadLine").datetimepicker();
@@ -201,6 +263,7 @@ function removeLotImage(id) {
 
     });
 }
+
 function addAnswers(index) {
 
     $.ajax({
@@ -217,4 +280,20 @@ function addAnswers(index) {
             // Handle the error somehow
         }
     }); // end ajax call
+}
+
+
+function setWinner(index) {
+    $.ajax({
+        type: "POST",
+        url: "/Manage/SetBidwinner/",
+        data: { id: index },
+        success: function (data) {
+            alert(data);
+            location.reload();
+        },
+        error: function (data) {
+            alert("Error! topic not added.");
+        }
+    });
 }

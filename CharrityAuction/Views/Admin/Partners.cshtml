@@ -1,0 +1,60 @@
+﻿@model List<CharrityAuction.Models.Partner>
+@{
+    ViewBag.Title = "Partners";
+}
+<div class="row category-header">
+    <h2 class="col-md-6">Partners   <a href="/Admin/CreatePartner">+</a></h2> 
+    <div class="col-sm-6">
+        <select class="form-control" style="float:right;" id="partner-select" onchange="partnerChanged()">
+            <option value="0" selected>Celebrities</option>
+            <option value="1">Organizations</option>
+        </select>
+    </div>
+</div>
+<div class="row" id="partners">
+    <div class="col-sm-12">
+        @{
+            var count = 0;
+        }
+        @foreach (var item in Model)
+            {
+                if (count % 3 == 0 && count == 0)
+                {
+                @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }
+
+            <div class="col-sm-12">
+                
+                <div class="row" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
+                    <div class="col-sm-2 container" style="padding:0;">
+                        <img style="width:100%; height:auto;" src="@item.ImageSource" />
+                    </div>
+                    <div class="col-sm-6">
+                        <p style="color:#808080;font-size:15px;">@item.Name</p>
+                        <br />
+                        <p class="product-header">
+                            @item.Description<br />
+                        </p>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="/Admin/EditPartner/@item.Id">Edit</a>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="button" value="Delete" class="btn btn-danger" onclick="deletePartner(@item.Id)" />
+                    </div>
+                </div>
+            </div>
+            if (count % 2 == 0 && count != 0)
+            {
+                @Html.Raw("</div>");
+                    count = 0;
+                }
+                else
+                {
+                    count++;
+                }
+
+            }
+    </div>
+</div>
+

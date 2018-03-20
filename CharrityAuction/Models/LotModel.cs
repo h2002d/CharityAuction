@@ -65,6 +65,9 @@ namespace CharrityAuction.Models
                 return LotImages.GetImagesByLotId(Convert.ToInt32(this.Id));
             }
             set { } }
+
+        public bool isShownCelebrity { get; set; }
+        public int PartnerId { get; set; }
         #endregion
         public LotModel()
         {
@@ -84,6 +87,12 @@ namespace CharrityAuction.Models
         public static List<LotModel> GetLotByOrder(int id)
         {
             return DAO.getLotByOrderId(id);
+
+        }
+
+        public static List<LotModel> GetLotByPartnerId(int id)
+        {
+            return DAO.getLotByPartnerId(id);
 
         }
 

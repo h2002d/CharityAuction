@@ -115,6 +115,16 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Շնորհավորում ենք: Դուք հաղթել եք բարեգործական Աճուրդում: Խնդրում ենք մինչև _______________ կատարել _________________ դրամ վճարումը Ձեր նախընտրած եղանակով(քարտով, կանխիկ, փոխանցում)` հաղթած ԼՈՏ-ը ստանալու համար:
+        ///Կարող եք նաև զանգահարել XXX-XX-XX-XX հեռախոսահամարով, և մեր աշխատակիցը ավելի մանրամասն տեղեկատվություն կտրամադրի Ձեզ վճարման կարգի և ԼՈՏ-ի ստացման պայմանների մասին:Վճարելու համար անցեք հետևյալ  &lt;a href=&apos;{0}&apos;&gt;հղումով&lt;/a&gt;.
+        /// </summary>
+        public static string EmailConfirmationBid {
+            get {
+                return ResourceManager.GetString("EmailConfirmationBid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ԳՆԱՀԱՏՎԱԾ ԱՐԺԵՔԸ.
         /// </summary>
         public static string EstimatedValue {
@@ -282,6 +292,15 @@ namespace CharrityAuction {
         public static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ձեր վճարումը կատարված է մեր աշխատակիցները կկապվնեն ձեզ հետ:&lt;br&gt; Ձեր հայտի համարն է  &lt;b&gt;#{0}&lt;/b&gt;.
+        /// </summary>
+        public static string PaymentApproved {
+            get {
+                return ResourceManager.GetString("PaymentApproved", resourceCulture);
             }
         }
         

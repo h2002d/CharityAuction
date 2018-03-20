@@ -384,6 +384,21 @@ namespace CharrityAuction.Controllers
             Error
         }
 
-#endregion
+        #endregion
+        [HttpPost]
+        [Authorize(Roles="Administrator")]
+        public JsonResult SetBidWinner(int id)
+        {
+            BidModel.SetWinner(id);
+            BidModel bid = BidModel.GetBidById(id).First();
+            MailModel mail = new MailModel();
+            mail.Subject = "Դուք հաղթել եք";
+            mail.Email = UserManager.FindById(bid.UserId).Email;
+            var callbackUrl = Url.Action("Index", "Bid", new { id = id }, protocol: Request.Url.Scheme);
+
+            mail.Body = string.Format(Resource.EmailConfirmationBid,callbackUrl);
+            mail.SendMail();
+            return Json(string.Format("Bid set as winner"), JsonRequestBehavior.AllowGet);
+        }
     }
 }

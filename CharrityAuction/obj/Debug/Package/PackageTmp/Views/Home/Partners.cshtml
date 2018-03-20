@@ -1,0 +1,42 @@
+﻿@model List<CharrityAuction.Models.Partner>
+@{
+    ViewBag.Title = "Co-worker";
+}
+
+
+<div class="col-sm-12">
+    @{
+        var count = 0;
+    }
+    @foreach (var item in Model)
+            {
+                if (count % 3 == 0 && count == 0)
+                {
+            @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }
+
+        <div class="col-sm-4 bordered">
+            <div class="row lot-partners-div" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
+                <div class="col-sm-12 container" style="padding:0;">
+                    <img style="width:100%; height:auto;" src="@item.ImageSource" />
+                </div>
+                <br />
+                <div class="col-sm-12" align="center">
+                    <p style="color:#808080 ;font-size:15px;">@item.Name</p>
+                </div>
+               
+            </div>
+        </div>
+        if (count % 2 == 0 && count != 0)
+        {
+            @Html.Raw("</div>");
+                    count = 0;
+                }
+                else
+                {
+                    count++;
+                }
+
+            }
+</div>
+

@@ -61,6 +61,7 @@ namespace CharrityAuction.DAO
                             bid.UserId = rdr["UserId"].ToString();
                             bid.Amount = Convert.ToDecimal(rdr["Amount"]);
                             bid.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            bid.isWinner = Convert.ToBoolean(rdr["isWinner"]);
                             bidList.Add(bid);
                         }
                         return bidList;
@@ -95,6 +96,7 @@ namespace CharrityAuction.DAO
                             bid.Id = Convert.ToInt32(rdr["Id"]);
                             bid.LotId = Convert.ToInt32(rdr["LotId"]);
                             bid.UserId = rdr["UserId"].ToString();
+                            bid.isWinner = Convert.ToBoolean(rdr["isWinner"]);
 
                             bid.Amount = Convert.ToDecimal(rdr["Amount"]);
                             bid.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
@@ -112,8 +114,7 @@ namespace CharrityAuction.DAO
 
         }
 
-
-        internal List<BidModel> getBidByUserId(int id)
+        internal List<BidModel> getBidByUserId(string id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -135,6 +136,8 @@ namespace CharrityAuction.DAO
                             bid.UserId = rdr["UserId"].ToString();
                             bid.Amount = Convert.ToDecimal(rdr["Amount"]);
                             bid.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            bid.isWinner = Convert.ToBoolean(rdr["isWinner"]);
+
                             bidList.Add(bid);
                         }
                         return bidList;
@@ -148,5 +151,69 @@ namespace CharrityAuction.DAO
             }
 
         }
+
+
+        internal List<BidModel> getWinnerBidByUserId(string id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_GetWinnerBidByUser", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserId", id);
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<BidModel> bidList = new List<BidModel>();
+                        while (rdr.Read())
+                        {
+                            BidModel bid = new BidModel();
+                            bid.Id = Convert.ToInt32(rdr["Id"]);
+                            bid.LotId = Convert.ToInt32(rdr["LotId"]);
+                            bid.UserId = rdr["UserId"].ToString();
+                            bid.Amount = Convert.ToDecimal(rdr["Amount"]);
+                            bid.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            bid.isWinner = Convert.ToBoolean(rdr["isWinner"]);
+
+                            bidList.Add(bid);
+                        }
+                        return bidList;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw ex;
+                    }
+                }
+            }
+
+        }
+
+        internal int setBidWinner(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_UserBidSetWinner", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@Id", id);
+
+                        return Convert.ToInt32(command.ExecuteScalar());
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+
     }
 }

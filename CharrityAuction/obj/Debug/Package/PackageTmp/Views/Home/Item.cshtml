@@ -5,7 +5,7 @@
 }
 <div class="container">
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-8">
             <div class="container">
                 <div id="myCarousel" class="carousel">
                     <!-- Indicators -->
@@ -81,20 +81,19 @@
             </div>
 
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <p class="lot-name">@Model.Name</p>
             <br />
             <div class="row">
                 <div class="col-sm-12" style="background-color:#f5f5f5; padding:10px 10px;">
-                    <p style="font-weight:700;">@CharrityAuction.Resource.DeadLine<span style="color:#c8c5c5;">@Model.DeadLine.ToString("dd MM yyyy hh:mm ",
+                    <p style="font-weight:700;">@CharrityAuction.Resource.DeadLine  <span style="color:#c8c5c5;">@Model.DeadLine.ToString("dd MM yyyy hh:mm ",
                                                System.Globalization.CultureInfo.InvariantCulture)</span></p>
                     @{
                         var span = Model.DeadLine - DateTime.Now;
                     }
                     @if (span.TotalMilliseconds >= 0)
                     {
-                        <b>@span.Days @CharrityAuction.Resource.Day @span.Hours @CharrityAuction.Resource.Hours @span.Minutes @CharrityAuction.Resource.Minutes</b><br />
-                    }
+
                     <ul class="countdown">
                         <li>
                             <span class="days">@span.Days</span>
@@ -110,6 +109,11 @@
                         </li>
 
                     </ul>
+                    }
+                    else
+                    {
+                        <p style="color:red;">Աճուրդն արդեն ավարտված է</p>
+                    }
                 </div>
             </div>
             <div class="row">
@@ -132,14 +136,21 @@
             <div class="row">
 
                 <input type="number" min="@(Model.CurrentBid+Model.Step)" id="txtBid" value="@(Model.CurrentBid+Model.Step)" class="lot-input form-control" />
-                @if (Request.IsAuthenticated)
-                {
+               @if (Model.DeadLine > DateTime.Now)
+               {
+                   if (Request.IsAuthenticated)
+                   {
                     <input type="button" value="@CharrityAuction.Resource.Bid" onclick="makeBid()" class="btn btn-danger btn-lot-bid" />
-                }
-                else
-                {
+                   }
+                   else
+                   {
                     <input type="button" value="@CharrityAuction.Resource.Bid" onclick="bidRegistration()" class="btn btn-danger btn-lot-bid" />
-                }
+                   }
+               }
+               else
+               {
+                <input type="button" value="@CharrityAuction.Resource.Bid" onclick="deadlinePassed()" class="btn btn-danger btn-lot-bid" />
+               }
             </div>
             <div class="row">
                 <input type="button" value="WATCHLIST" class="btn btn-info btn-lot-bid" style="background-color:#041F56;" />
@@ -153,12 +164,17 @@
         @Html.Action("_LoginPartialBid", "Account", "/home/lot/" + Model.Id)
     </div>
 </div>
+<div id="cover">
+
+</div>
 <script>
     //Countdown plugin
 
    
     function bidRegistration() {
-        $("#bidLogin").css("display","block");
+        $("#bidLogin").css("display", "block");
+        $("#cover").css("display", "block");
+
     }
     function makeBid() {
         var amount = $('#txtBid').val();
@@ -175,7 +191,9 @@
             }
         });
     }
-
+    function deadlinePassed() {
+        alert('Տվյալ աճուրդն արդեն ավարտվել է')
+    }
 
 
 

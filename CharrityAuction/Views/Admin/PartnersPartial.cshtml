@@ -1,0 +1,46 @@
+﻿@model List<CharrityAuction.Models.Partner>
+
+<div class="col-sm-12">
+    @{
+        var count = 0;
+    }
+    @foreach (var item in Model)
+            {
+                if (count % 3 == 0 && count == 0)
+                {
+            @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }
+
+        <div class="col-sm-12">
+            <div class="row lot-preview" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
+                <div class="col-sm-2 container" style="padding:0;">
+                    <img style="width:100%; height:auto;" src="@item.ImageSource" />
+                </div>
+                <div class="col-sm-6">
+                    <p>@item.Name</p>
+                    <br />
+                    <p class="product-header">
+                        @item.Description
+                    </p>
+                </div>
+                <div class="col-sm-2">
+                    <a href="/Admin/EditPartner/@item.Id">Edit</a>
+                </div>
+                <div class="col-sm-2">
+                    <input type="button" value="Delete" class="btn btn-danger" onclick="deletePartner(@item.Id)" />
+                </div>
+            </div>
+        </div>
+        if (count % 2 == 0 && count != 0)
+        {
+            @Html.Raw("</div>");
+                    count = 0;
+                }
+                else
+                {
+                    count++;
+                }
+
+            }
+</div>
+

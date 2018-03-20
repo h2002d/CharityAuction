@@ -15,12 +15,14 @@ namespace CharrityAuction.Controllers
         public ActionResult Index()
         {
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
+            
             return View();
         }
         #region Lot logic
         public ActionResult CreateLot()
         {
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
+            ViewBag.Partners = Partner.GetPartner(null, null);
             var lot = new LotModel();
             return View(lot);
         }
@@ -28,6 +30,7 @@ namespace CharrityAuction.Controllers
         public ActionResult EditLot(int id)
         {
             LotModel lot = LotModel.GetLotById(id).First();
+            ViewBag.Partners = Partner.GetPartner(null, null);
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
             return View("CreateLot", lot);
         }
@@ -91,10 +94,12 @@ namespace CharrityAuction.Controllers
                 return Json("ՁՍԽՈՂՈՒՄ:Աշխատանքը վերբեռնված չէ");
             }
         }
+
         public ActionResult ImagePartial(int id)
         {
             return PartialView(id);
         }
+
         public ActionResult Lot(int id)
         {
             LotModel lot = LotModel.GetLotById(id).First();
@@ -114,6 +119,14 @@ namespace CharrityAuction.Controllers
         {
             LotModel.SaveTopLot(index, lotId);
             return Json(string.Format("Lot saved on Top {0}", index), JsonRequestBehavior.AllowGet);
+        }
+
+       
+
+        public ActionResult Bids(int id)
+        {
+            var bids = BidModel.GetBidByLotId(id);
+            return View(bids);
         }
         #endregion
         #region Category logic
@@ -259,7 +272,89 @@ namespace CharrityAuction.Controllers
             }
         }
         #endregion
+        #region Partners logic
+        public ActionResult CreatePartner()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreatePartner(Partner partner)
+        {
+            try
+            {
+                partner.Save();
+                return RedirectToAction("Partners");
+            }
+            catch(Exception e )
+            {
+                return View();
+            }
+        }
 
+        public ActionResult EditPartner(int id)
+        {
+            Partner partner = Partner.GetPartner(id, null).First();
+            return View("CreatePartner", partner);
+        }
+
+        [HttpPost]
+        public JsonResult DeletePartner(int id)
+        {
+            try
+            {
+                Partner.Delete(id);
+                return Json("Partner deleted successfully.", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public ActionResult Partners()
+        {
+            var partner = Partner.GetPartner(null, 0);
+            return View(partner);
+        }
+
+        public ActionResult PartnersPartial(int category)
+        {
+            var partners = Partner.GetPartner(null, category);
+            return PartialView(partners);
+        }
+
+        [HttpPost]
+        public JsonResult FilePartnersUpload()
+        {
+            try
+            {
+                HttpPostedFile file = null;
+                if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+                {
+                    file = System.Web.HttpContext.Current.Request.Files["HttpPostedFileBase"];
+                }
+                string stamp = string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now);
+                string filename = file.FileName;
+                string pic = System.IO.Path.GetFileName(filename);
+                string thumbnailpic = System.IO.Path.GetFileName(file.FileName.Split('.')[0] + "_thumb." + file.FileName.Split('.')[1]);
+
+                string path = System.IO.Path.Combine(
+                                       Server.MapPath("~/images/partners"), pic);
+                string thumbpath = System.IO.Path.Combine(
+                                        Server.MapPath("~/images/partners"), thumbnailpic);
+                // file is uploaded
+                file.SaveAs(path);
+                // after successfully uploading redirect the user
+                return Json("File Uploaded", JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json("Eror");
+            }
+        }
+        #endregion
+
+        [HttpPost]
         public JsonResult FileUpload()
         {
             try

@@ -20,12 +20,12 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right login-menu">
         @foreach (var i in CharrityAuction.SiteLanguages.AvailableLanguages)
         {
-            <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText" })</li>
+            <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText login-menu-item" })</li>
         }
-        <li>@Html.ActionLink(CharrityAuction.Resource.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink(CharrityAuction.Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink(CharrityAuction.Resource.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink",@class="login-menu-item" })</li>
+        <li>@Html.ActionLink(CharrityAuction.Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink",@class="login-menu-item" })</li>
     </ul>
 }

@@ -135,42 +135,64 @@
                 @Html.ValidationMessageFor(model => model.EstimatedValue, "", new { @class = "text-danger" })
             </div>
         </div>
-        @if (Model.Id == null)
+
+        <div class="form-group">
+            @Html.Label("Partner", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.PartnerId,
+                                 new SelectList(ViewBag.Partners,
+                                           "Id", "Name"),
+                                            "--Select category--",
+                                new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PartnerId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-5">
+                @Html.Label("Show in celebrity", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.isShownCelebrity)
+                        @Html.ValidationMessageFor(model => model.isShownCelebrity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (Model.Id != null)
         {
 
 
-        <div class="form-group">
-            <div class="col-md-2">
+            <div class="form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-10" id="AnswerContainer">
+                    @for (int i = 0; i < Model.Images.Count(); i++)
+                    {
+                        <div id="answerDiv@(Model.Images[i].Id)">
+                            @Html.HiddenFor(m => m.Images[i].Id)
+                            @Html.HiddenFor(m => m.Images[i].LotId)
+                            <img src="@Model.Images[i].Imagesource" style="width:200px; height:200px;" />
+                            <a onclick="removeLotImage(@Model.Images[i].Id)">
+                                <img src="~/images/removeIcon.png" />
+                            </a>
+                            <br />
+                        </div>
+                    }
+                </div>
             </div>
-            <div class="col-md-10" id="AnswerContainer">
-                @for (int i = 0; i < Model.Images.Count(); i++)
-                {
-                    <div id="answerDiv@(Model.Images[i].Id)">
-                        @Html.HiddenFor(m => m.Images[i].Id)
-                        @Html.HiddenFor(m => m.Images[i].LotId)
-                        <img src="@Model.Images[i].Imagesource" style="width:200px; height:200px;" />
-                        <a onclick="removeLotImage(@Model.Images[i].Id)">
-                            <img src="~/images/removeIcon.png" />
-                        </a>
-                        <br />
-                    </div>
-                }
+            <div class="form-group">
+
+                <div class="col-md-10 col-sm-offset-2">
+                    <input type="file" class="form-control uploadEditorImage" />
+                    <input type="button" value="Upload" id="@Model.Id" class="btn btn-default fileNewsUploadAdditional" />
+                    @Html.TextBoxFor(model => model.ImageSource, new { @class = "image", @style = "display:none;" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-          
-            <div class="col-md-10 col-sm-offset-2">
-                <input type="file" class="form-control uploadEditorImage" />
-                <input type="button" value="Upload"id="@Model.Id" class="btn btn-default fileNewsUploadAdditional" />
-                @Html.TextBoxFor(model => model.ImageSource, new { @class = "image", @style = "display:none;" })
-            </div>
-        </div>
         }
         else
         {
             <div class="form-group">
                 <div class="col-md-10">
-                  <p>Please save news to add images</p>
+                    <p>Please save news to add images</p>
                 </div>
             </div>
         }

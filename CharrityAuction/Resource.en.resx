@@ -204,4 +204,11 @@
   <data name="News" xml:space="preserve">
     <value>News</value>
   </data>
+  <data name="EmailConfirmationBid" xml:space="preserve">
+    <value>Շնորհավորում ենք: Դուք հաղթել եք բարեգործական Աճուրդում: Խնդրում ենք մինչև _______________ կատարել _________________ դրամ վճարումը Ձեր նախընտրած եղանակով(քարտով, կանխիկ, փոխանցում)` հաղթած ԼՈՏ-ը ստանալու համար:
+Կարող եք նաև զանգահարել XXX-XX-XX-XX հեռախոսահամարով, և մեր աշխատակիցը ավելի մանրամասն տեղեկատվություն կտրամադրի Ձեզ վճարման կարգի և ԼՈՏ-ի ստացման պայմանների մասին:Վճարելու համար անցեք հետևյալ  &lt;a href='{0}'&gt;հղումով&lt;/a&gt;</value>
+  </data>
+  <data name="PaymentApproved" xml:space="preserve">
+    <value>Your payment approved our staff will contact you for further information.&lt;br&gt;Your bid number is &lt;b&gt;#{0}&lt;/b&gt;</value>
+  </data>
 </root>

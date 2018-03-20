@@ -13,9 +13,37 @@ namespace CharrityAuction.Controllers
     public class BidController : BaseController
     {
         // GET: Bid
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult Index(int id)
         {
-            return View();
+            BidModel model = BidModel.GetBidById(id).First();
+            if (!model.UserId.Equals(User.Identity.GetUserId()))
+            {
+                throw new HttpException(404, "Wrong user");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult MakePaymentCard(int id)
+        {
+            BidModel model = BidModel.GetBidById(id).First();
+            return View(model);
+        }
+
+        public ActionResult PaymentApproved(int id)
+        {
+            BidModel bid = BidModel.GetBidById(id).First();
+            if (bid.UserId.Equals(User.Identity.GetUserId()))
+            {
+                ViewBag.BidId = id;
+                return View();
+            }
+            else
+            {
+                throw new HttpException(404, "User not found");
+            }
         }
         [HttpPost]
         [Authorize]
@@ -24,6 +52,9 @@ namespace CharrityAuction.Controllers
             try
             {
                 LotModel lot = LotModel.GetLotById(bid.LotId).First();
+                if(lot.DeadLine<DateTime.Now)
+                    return Json("Տվյալ աճուրդն արդեն ավարտվել է", JsonRequestBehavior.AllowGet);
+
                 if (bid.Amount < lot.CurrentBid + lot.Step)
                     return Json("Amount is low than the current bid's", JsonRequestBehavior.AllowGet);
                 else

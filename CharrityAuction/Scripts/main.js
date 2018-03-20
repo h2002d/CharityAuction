@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+  
     // Get the modal
     var modal = document.getElementById('myModal');
 
@@ -52,12 +52,12 @@
     }).bind("mouseout", function (event) {
         scrolling = false;
     });
-    $('.lot-preview').click(function () {
-        window.location.href = '/home/item/' + $(this).prop('id');
-    });
+   
 
     $('.close-login').click(function () {
         $("#bidLogin").hide();
+        $("#cover").css("display", "none");
+
     });
     $("#txtBid").keydown(function (e) {
 
@@ -86,6 +86,13 @@
         }
     });
 });
+$(document).on('click', '.lot-preview', function () {
+        window.location.href = '/home/item/' + $(this).prop('id');
+});
+
+$(document).on('click', '.lot-partners-div', function () {
+    window.location.href = '/home/partneritems/' + $(this).prop('id');
+});
 function orderBy(id) {
     var orderId = $('#sort-select').find(":selected").val();
     $('#items').load('/Home/CategoryPartial?id=' + id + '&sortId=' + orderId);
@@ -93,4 +100,10 @@ function orderBy(id) {
 function orderIndexBy() {
     var orderId = $('#sort-select').find(":selected").val();
     $('#items').load('/Home/IndexPartial?sortId=' + orderId);
+}
+
+function makePayment(id) {
+    var type = $('input[name=paymentType]:checked').val()
+
+    window.location.href = '/Payment/MakePayment?id='+id+'&type='+type;
 }

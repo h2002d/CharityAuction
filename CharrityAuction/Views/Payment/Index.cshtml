@@ -1,0 +1,29 @@
+﻿@model List<CharrityAuction.Models.Payment>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Payments</h2>
+
+<div class="container">
+    @foreach (var payment in Model)
+    {
+        <div class="row news-item payment-item" style="background-color:@(payment.Status==0?"yellow":"green")">
+            <div class="col-sm-1">#@payment.Id</div>
+            <div class="col-sm-2"><span class="admin-label">Bid:</span> #@payment.BidId</div>
+            <div class="col-sm-2"><span class="admin-label">Payment type:</span>@(payment.Type==0?"Cash":"Card")<br />
+            <span class="admin-label">Amount:</span> @payment.Amount</div>
+            <div class="col-sm-3"><span class="admin-label">User:</span> @payment.User.Name @payment.User.LastName</div>
+            <div class="col-sm-2">
+                <span class="admin-label">Status:</span>
+                <select class="form-control" style="float:right;" id="status-select">
+                    <option value="0" @(payment.Status==0?"selected":"")>Process</option>
+                    <option value="1" @(payment.Status==1?"selected":"") >Paid</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <input type="button" class="btn btn-info" value="Submit" onclick="statusChange(@payment.Id)" />
+            </div>
+        </div>
+    }
+</div>

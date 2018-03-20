@@ -1,14 +1,14 @@
 ﻿@model List<CharrityAuction.Models.NewsModel>
 @{
-    ViewBag.Title = "Newsfeed";
+    ViewBag.Title = @Resource.News;
 }
 
-<h2>Newsfeed <a style="color:black" href="/Admin/CreateNews">+</a></h2>
 
 <div class="container">
+    <h2 style="color:#0094ff;margin-bottom:40px;">@Resource.News</h2>
     @foreach (var news in Model)
     {
-        <div class="row news-item">
+        <div class="row news-item draw">
             <div class="col-sm-2">
                 <span>@news.CreateDate.ToString("dd MM yyyy", System.Globalization.CultureInfo.InvariantCulture)</span>
             </div>
@@ -16,7 +16,7 @@
                 <span>@news.Name</span>
             </div>
             <div class="col-sm-8">
-                @Html.Raw(news.Description.Length > 300 ? news.Description.Substring(300) : news.Description)
+                @Html.Raw(news.Description.Length > 300 ? news.Description.Substring(0,300) : news.Description)
                 @if (String.IsNullOrEmpty(news.Link)) {
                 <a href="/Home/News/@news.Id">կարդալ ավելին....</a>
                 }

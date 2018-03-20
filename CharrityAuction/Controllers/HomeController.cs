@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace CharrityAuction.Controllers
 {
@@ -22,8 +23,11 @@ namespace CharrityAuction.Controllers
             lots.RemoveAll(l => l.Id == secondTop.Id);
             lots.RemoveAll(l => l.Id == thirdTop.Id);
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
-
-            return View(lots);
+            if (Request.IsAuthenticated)
+            {
+                ViewBag.WinnedBids = BidModel.GetWinnerBids(User.Identity.GetUserId());
+            }
+                return View(lots);
         }
         public ActionResult ChangeLanguage(string lang)
         {
@@ -85,6 +89,20 @@ namespace CharrityAuction.Controllers
         {
             var news = NewsModel.GetNewsById(id).First();
             return View(news);
+        }
+
+        public ActionResult Partners(int id)
+        {
+            var partners = Partner.GetPartner(null, id);
+            return View(partners);
+        }
+
+        public ActionResult PartnerItems(int id)
+        {
+            var partner = Partner.GetPartner(id, null).First();
+            ViewBag.Partner = partner;
+            var lots = LotModel.GetLotByPartnerId(id);
+            return View(lots);
         }
     }
 }
