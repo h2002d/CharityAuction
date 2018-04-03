@@ -7,9 +7,11 @@
 <div class="container">
     @foreach (var bid in Model)
     {
-        <div class="row" style="background-color:@(bid.isWinner?"green":"none")">
-            <div class="col-sm-2">
-                <span>@bid.User.Name @bid.User.LastName</span>
+        <div class="row  news-item payment-item" style="background-color:@(bid.isWinner?"green":"none")">
+            <div class="col-sm-4">
+                <span class="admin-label">User:</span> @bid.User.Name @bid.User.LastName<br />
+                <span class="admin-label">Phone:</span>@bid.User.Phone
+
             </div>
             <div class="col-sm-2">
                 <span>@bid.Amount դրամ</span>
@@ -19,7 +21,7 @@
                 <span>@bid.CreateDate.ToString("dd.MM.yyyy hh:mm")</span>
             </div>
             <div class="col-sm-2">
-                <input type="button" value="Հաստատել" class="btn btn-info"onclick="setWinner(@bid.Id)"/> 
+                <input type="button" value="Հաստատել" class="btn btn-info" onclick="setWinner(@bid.Id)" />
             </div>
         </div>
     }

@@ -1,6 +1,6 @@
 ﻿@model List<CharrityAuction.Models.Partner>
 @{
-    ViewBag.Title = "Co-worker";
+    ViewBag.Title = Resource.MenuStars;
 }
 
 
@@ -10,15 +10,15 @@
     }
     @foreach (var item in Model)
             {
-                if (count % 3 == 0 && count == 0)
+                if (count % 6 == 0 && count == 0)
                 {
             @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
                 }
 
-        <div class="col-sm-4 bordered">
-            <div class="row lot-partners-div" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
+        <div class="col-sm-2 bordered">
+            <div class="row lot-partners-div" id="@item.Id">
                 <div class="col-sm-12 container" style="padding:0;">
-                    <img style="width:100%; height:auto;" src="@item.ImageSource" />
+                    <img style="width:100%; height:auto;" src="@(item.ImageSource.Split('.')[0]+"_thumb."+item.ImageSource.Split('.')[1])" />
                 </div>
                 <br />
                 <div class="col-sm-12" align="center">
@@ -27,7 +27,7 @@
                
             </div>
         </div>
-        if (count % 2 == 0 && count != 0)
+        if (count % 5 == 0 && count != 0)
         {
             @Html.Raw("</div>");
                     count = 0;

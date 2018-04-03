@@ -1,5 +1,10 @@
-﻿body {
-    padding-bottom: 20px;
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 50px; /* bottom = footer height */
 }
 
 a {
@@ -20,6 +25,42 @@ a {
     width: 100%;
     height: auto;
 }
+/*.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 .dropdown-menu {
     background: linear-gradient(rgb(126,212,227), rgb(76,168,183), rgb(119,208,222));
@@ -30,8 +71,9 @@ a {
 .dl-horizontal dt {
     white-space: normal;
 }
-.login-form-container{
-    width:45%;
+
+.login-form-container {
+    width: 45%;
 }
 /* Set width on the form input elements since they're 100% wide by default */
 /*input,
@@ -48,7 +90,12 @@ textarea {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
+.lot-container-div {
+    font-size: 12px;
+    padding: 5px;
+    cursor: pointer;
+    position:relative;
+}
 .nav > li {
     display: inline-flex !important;
     float: none !important;
@@ -56,21 +103,31 @@ textarea {
 
 .lot-preview {
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.bordered:hover {
-    border: 1px solid black;
+.bordered {
+    border: 1px solid #ddd;
+    margin:2px;
 }
+    .bordered:hover {
+        border-color: rgb(0,119,162);
+    }
 
 .lot-preview img {
     -webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
     transition: opacity 1s;
 }
 
-    .lot-preview img:hover {
+    .lot-preview img:hover  {
         opacity: 0.3;
     }
-
+.lot-preview .centered:hover ~.lot-preview img {
+    
+    opacity: 0.3;
+}
 .lot-preview:hover .centered {
     color: black;
 }
@@ -78,7 +135,10 @@ textarea {
 .lot-preview:hover .bottom-left {
     color: black;
 }
-
+.buyer-item {
+    font-size: 12px;
+    padding: 5px;
+}
 .btn-bid {
     font-size: 18px;
     -webkit-transition: display 1s; /* For Safari 3.1 to 6.0 */
@@ -87,6 +147,7 @@ textarea {
     width: 100%;
     background-color: #1565C0;
     border: none !important;
+  
 }
 
     .btn-bid:hover {
@@ -147,9 +208,11 @@ textarea {
     background: linear-gradient(rgb(220,243,249), rgb(120,208,222), rgb(220,243,249));
     color: rgb(21,113,128) !important;
 }
-.login-menu a:hover{
-    color:black;
+
+.login-menu a:hover {
+    color: black;
 }
+
 .navbar-logo {
     font-size: 30px;
     font-weight: 800;
@@ -346,20 +409,24 @@ textarea {
     border-color: #D9D9D9;
 }
 
-    .menu-header a,.login-menu-item {
+    .menu-header a, .login-menu-item {
         color: white;
         text-transform: uppercase;
     }
-    .login-menu-item:hover{
-        color:black;
-    }
+
+        .login-menu-item:hover {
+            color: black;
+        }
+
 .non-float {
     float: none !important;
 }
-.non-padding{
-    padding-left:0 !important;
-    padding-right:0 !important;
+
+.non-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
+
 .bottom-left {
     position: absolute;
     bottom: 20px;
@@ -413,11 +480,11 @@ span.arrow-right {
 }
 
 .arrowlft {
-    margin-top: 50px;
+    margin-top: 15px;
 }
 
 .arrowrgt {
-    margin-top: 50px;
+    margin-top: 15px;
 }
 
 .offer-pg-cont {
@@ -593,7 +660,13 @@ span.arrow-right {
     padding-bottom: 20px;
     margin-bottom: 30px;
 }
-
+.lot-partners-div {
+    font-size: 12px;
+    padding: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    height:195px;
+}
 .news-item {
     border-bottom: 1px solid rgba(165, 165, 165, 1);
     cursor: pointer;
@@ -640,3 +713,60 @@ h1.fromLeft:after {
     height: 100%;
     display: none;
 }
+
+.charity-item {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0,0,0,1);
+}
+.charity-label{
+    color:#1565C0;
+}
+.lot-header-index {
+    font-weight: 700;
+    color: rgb(0,119,162);
+    font-size: 15px;
+}
+.good-buyer-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px ;
+    color: rgb(0,119,162);
+}
+.buyer-item-name{
+    margin-bottom:50px;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    color: #fff;
+    background-color: #1565C0;
+    padding:10px 10px;
+}
+.social-media-icons {
+    cursor: pointer;
+}
+.novir-bar{
+    color:rgb(109,208,222);
+    cursor:pointer;
+}
+    .novir-bar:focus, .novir-bar:hover {
+        color: rgb(76,168,183);
+        text-decoration: none;
+    }
+.a-href:hover{
+    color: deepskyblue !important;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.affix {
+      top: 0;
+      width: 17%;
+      z-index: 9999 !important;
+  }

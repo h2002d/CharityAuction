@@ -53,7 +53,7 @@ namespace CharrityAuction.Controllers
             {
                 LotModel lot = LotModel.GetLotById(bid.LotId).First();
                 if(lot.DeadLine<DateTime.Now)
-                    return Json("Տվյալ աճուրդն արդեն ավարտվել է", JsonRequestBehavior.AllowGet);
+                    return Json("@Resource.LotDayPassed", JsonRequestBehavior.AllowGet);
 
                 if (bid.Amount < lot.CurrentBid + lot.Step)
                     return Json("Amount is low than the current bid's", JsonRequestBehavior.AllowGet);

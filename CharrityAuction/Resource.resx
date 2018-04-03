@@ -127,7 +127,7 @@
     <value>ՀԱՅՏ</value>
   </data>
   <data name="CurrentBid" xml:space="preserve">
-    <value>ԸՆԹԱՑԻԿ ՀԱՅՏԵՐ</value>
+    <value>ԸՆԹԱՑԻԿ ՀԱՅՏԵՐԻ ԱՐԺԵՔԸ</value>
   </data>
   <data name="DeadLine" xml:space="preserve">
     <value>Հայտերի ընդունման վերջնաժամկետը</value>
@@ -210,5 +210,116 @@
   </data>
   <data name="PaymentApproved" xml:space="preserve">
     <value>Ձեր վճարումը կատարված է մեր աշխատակիցները կկապվնեն ձեզ հետ:&lt;br&gt; Ձեր հայտի համարն է  &lt;b&gt;#{0}&lt;/b&gt;</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Գնորդ</value>
+  </data>
+  <data name="CharityMoney" xml:space="preserve">
+    <value>Գումարը</value>
+  </data>
+  <data name="CharityPurpose" xml:space="preserve">
+    <value>Նպատակը</value>
+  </data>
+  <data name="LoginDontHave" xml:space="preserve">
+    <value>Չունեք հաշիվ</value>
+  </data>
+  <data name="LoginRegister" xml:space="preserve">
+    <value>ստեղծեք</value>
+  </data>
+  <data name="LoginRegisterAsNewUser" xml:space="preserve">
+    <value>նոր հաշիվ</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Մուտք գործեք մասնակցելու համար</value>
+  </data>
+  <data name="LotDate" xml:space="preserve">
+    <value>Ամսաթիվ</value>
+  </data>
+  <data name="LotDayPassed" xml:space="preserve">
+    <value>Տվյալ աճուրդն </value>
+  </data>
+  <data name="LotDetails" xml:space="preserve">
+    <value>Լոթի նկարագրությունը</value>
+  </data>
+  <data name="LotOccureDate" xml:space="preserve">
+    <value>Ամսաթիվ</value>
+  </data>
+  <data name="LotRulesRegulations" xml:space="preserve">
+    <value>Կանոննր և կանոնակարգեր</value>
+  </data>
+  <data name="LotValue" xml:space="preserve">
+    <value>Արժեք</value>
+  </data>
+  <data name="NewsReadMore" xml:space="preserve">
+    <value>կարդալ ավելին....</value>
+  </data>
+  <data name="RegistrationConfirmPassword" xml:space="preserve">
+    <value>Կրկնեք գաղտնաբառը</value>
+  </data>
+  <data name="RegistrationEmail" xml:space="preserve">
+    <value>Էլ.հասցե</value>
+  </data>
+  <data name="RegistrationLastName" xml:space="preserve">
+    <value>Ազգանուն</value>
+  </data>
+  <data name="RegistrationName" xml:space="preserve">
+    <value>Անուն</value>
+  </data>
+  <data name="RegistrationNickname" xml:space="preserve">
+    <value>Ստեղծել կեղծանուն</value>
+  </data>
+  <data name="RegistrationNicknameInfo" xml:space="preserve">
+    <value>Ցուցադրվելու է ձեր գնումներում</value>
+  </data>
+  <data name="RegistrationPassword" xml:space="preserve">
+    <value>Գաղտնաբառ</value>
+  </data>
+  <data name="RegistrationPhone" xml:space="preserve">
+    <value>Հեռախոսահամար</value>
+  </data>
+  <data name="RegistrationPrivacy" xml:space="preserve">
+    <value>Ես կարդացել եմ և ընդունում եմ օգտագործման կանոնոնները</value>
+  </data>
+  <data name="RegistrationRequiredFields" xml:space="preserve">
+    <value>Լրացրեք պահանջվող դաշտերը</value>
+  </data>
+  <data name="RegistrationTitle" xml:space="preserve">
+    <value>Գրանցվիր մասնակցելու համար</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Հիշել</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Կանոններ</value>
+  </data>
+  <data name="InvalidLogin" xml:space="preserve">
+    <value>Էլ. հասցեն կամ գաղտնաբառը սխալ են</value>
+  </data>
+  <data name="RegistrationErrorMessage" xml:space="preserve">
+    <value>{0} դաշտը դատարկ է</value>
+  </data>
+  <data name="RegistrationPasswordError" xml:space="preserve">
+    <value>Գաղտնաբառը պետք է լինի {2} նիշից ոչ պակաս</value>
+  </data>
+  <data name="RegistrationPasswordNotMatching" xml:space="preserve">
+    <value>Գաղտնաբառերը չեն համընկնում</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Պահպանել</value>
+  </data>
+  <data name="UserSettings" xml:space="preserve">
+    <value>Խմբագրեք ձեր անձնական տվյալները</value>
+  </data>
+  <data name="PassedSecondString" xml:space="preserve">
+    <value>արդեն ավարտվել է</value>
+  </data>
+  <data name="MinBidAlert" xml:space="preserve">
+    <value>Նշված գումարը փոքր է թույլատրելի շեմից</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Փնտրել</value>
+  </data>
+  <data name="SearchResults" xml:space="preserve">
+    <value>Որոնման արդյունքներ:</value>
   </data>
 </root>

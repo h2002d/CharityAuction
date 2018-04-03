@@ -27,12 +27,13 @@ namespace CharrityAuction.Controllers
             {
                 ViewBag.WinnedBids = BidModel.GetWinnerBids(User.Identity.GetUserId());
             }
+            
                 return View(lots);
         }
         public ActionResult ChangeLanguage(string lang)
         {
             new SiteLanguages().SetLanguage(lang);
-            return RedirectToAction("Index", "Home");
+            return Redirect(Request.UrlReferrer.ToString());
         }
         public ActionResult About()
         {
@@ -48,6 +49,15 @@ namespace CharrityAuction.Controllers
             return View();
         }
 
+        public ActionResult Search(string query)
+        {
+            ViewBag.Categories = CategoryModel.GetCategoryById(null);
+
+            ViewBag.Query = query;
+            var lots = LotModel.GetLotByQuery(query);
+            return View(lots);
+        }
+
         public ActionResult Item(int id)
         {
             var lot = LotModel.GetLotById(id).First();
@@ -56,6 +66,7 @@ namespace CharrityAuction.Controllers
 
         public ActionResult Category(int id)
         {
+            ViewBag.Categories = CategoryModel.GetCategoryById(null);
             ViewBag.Category = CategoryModel.GetCategoryById(id).First();
             var lots = LotModel.GetLotByCategoryId(id);
             return View(lots);
@@ -103,6 +114,17 @@ namespace CharrityAuction.Controllers
             ViewBag.Partner = partner;
             var lots = LotModel.GetLotByPartnerId(id);
             return View(lots);
+        }
+
+        public ActionResult Buyers()
+        {
+            var payments = Payment.GetApprovedPaymentById(null);
+            return View(payments);
+        }
+
+        public ActionResult Privacy()
+        {
+            return View();
         }
     }
 }

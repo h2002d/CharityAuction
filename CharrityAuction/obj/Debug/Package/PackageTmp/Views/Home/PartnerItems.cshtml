@@ -17,7 +17,7 @@
     {
         <div class="row lot-preview lot-partners" id="@lot.Id">
             <div class="col-sm-3"><img src="@lot.ImageSource" style="width:100%; height:auto;" /></div>
-            <div class="col-sm-4">@lot.Name</div>
+            <div class="col-sm-4" style="white-space:normal;">@lot.Name</div>
             <div class="col-sm-5">
                 <span class="admin-label">@Resource.EstimatedValue: </span> @lot.EstimatedValue<br />
                 <span class="admin-label">@Resource.CurrentBid: </span>@lot.CurrentBid
@@ -32,7 +32,7 @@
                 }
                 else
                 {
-                    <b>Տվյալ աճուրդն արդեն ավարտվել է</b>
+                    <b>@Resource.LotDayPassed</b>
                 }
                 <br />
                 <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@lot.Id'" />

@@ -18,11 +18,11 @@
             <div class="col-sm-8">
                 @Html.Raw(news.Description.Length > 300 ? news.Description.Substring(0,300) : news.Description)
                 @if (String.IsNullOrEmpty(news.Link)) {
-                <a href="/Home/News/@news.Id">կարդալ ավելին....</a>
+                <a href="/Home/News/@news.Id">@Resource.NewsReadMore</a>
                 }
                 else
                 {
-                    <a href="@news.Link">կարդալ ավելին....</a>
+                    <a href="@news.Link">@Resource.NewsReadMore</a>
 
                 }
             </div>

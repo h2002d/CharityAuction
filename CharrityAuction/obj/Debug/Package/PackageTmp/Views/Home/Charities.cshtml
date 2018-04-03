@@ -3,19 +3,14 @@
     ViewBag.Title = "Charities";
 }
 
-<h2>Charities</h2>
-<table id="charities">
-    <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
+<h2 style="color:#0094ff;">@Resource.MenuWhoWeHelp</h2>
+<div class="container">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.Help</td>
-            <td>@item.Money</td>
-            <td>@item.OccureDate.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
-       </tr>
+        <div class="row news-item charity-item">
+            <div class="col-sm-6"><span class="charity-label">@Resource.CharityPurpose</span><br />@item.Help</div>
+            <div class="col-sm-2"><span class="charity-label">@Resource.CharityMoney</span><br />@item.Money @Resource.AMD</div>
+            <div class="col-sm-2"><span class="charity-label">@Resource.LotDate</span><br />@item.OccureDate.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture)</div>
+        </div>
     }
-</table>
+</div>

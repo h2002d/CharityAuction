@@ -6,11 +6,7 @@
 
 <h2>Create News</h2>
 
-@using (Ajax.BeginForm("CreateNews", new AjaxOptions()
-{
-    OnSuccess = "OnSuccess()",
-    OnFailure = "OnFailure()"
-}))
+@using (Html.BeginForm("CreateNews", "Admin"))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -24,35 +20,31 @@
        
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name_EN, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <p>English</p>
                 @Html.EditorFor(model => model.Name_EN, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name_EN, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name_AM, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-5">
+                <p>Հայերեն</p>
                 @Html.EditorFor(model => model.Name_AM, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name_AM, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Description_EN, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Description_EN, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description_EN, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description_AM, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Description_AM, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description_AM, "", new { @class = "text-danger" })
             </div>
         </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.VideoSource, htmlAttributes: new { @class = "control-label col-md-2" })

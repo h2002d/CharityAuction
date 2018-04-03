@@ -188,7 +188,6 @@ D:\Projects\CharityAuction\CharrityAuction\bin\Microsoft.AI.DependencyCollector.
 D:\Projects\CharityAuction\CharrityAuction\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Projects\CharityAuction\CharrityAuction\bin\Microsoft.AI.WindowsServer.xml
 D:\Projects\CharityAuction\CharrityAuction\bin\Microsoft.AI.Web.xml
-D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.csprojResolveAssemblyReference.cache
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.Resource.resources
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.Resource.en.resources
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.csproj.GenerateResource.Cache
@@ -197,3 +196,4 @@ D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.dll
 D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.pdb
 D:\Projects\CharityAuction\CharrityAuction\bin\ImageResizer.dll
 D:\Projects\CharityAuction\CharrityAuction\bin\ImageResizer.xml
+D:\Projects\CharityAuction\CharrityAuction\obj\Debug\CharrityAuction.csprojResolveAssemblyReference.cache

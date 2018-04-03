@@ -57,7 +57,7 @@ namespace CharrityAuction.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
+                : message == ManageMessageId.SetInfoSuccess ? "Your info was updated successfully"
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
@@ -75,6 +75,27 @@ namespace CharrityAuction.Controllers
             return View(model);
         }
 
+        public ActionResult UserInfo()
+        {
+            UserViewModel model = new UserViewModel(User.Identity.GetUserId());
+            return PartialView(model);
+        }
+        [HttpPost]
+        public ActionResult UserInfo(UserViewModel user)
+        {
+            ManageMessageId message;
+            try
+            {
+                user.Save();
+                message = ManageMessageId.SetInfoSuccess;
+            }
+            catch
+            {
+                throw new Exception();
+                message = ManageMessageId.Error;
+            }
+            return Json(message.ToString(),JsonRequestBehavior.AllowGet);
+        }
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
@@ -217,7 +238,7 @@ namespace CharrityAuction.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -377,7 +398,7 @@ namespace CharrityAuction.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
-            SetTwoFactorSuccess,
+            SetInfoSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,

@@ -50,6 +50,45 @@ namespace CharrityAuction.DAO
             }
         }
 
+        internal List<Payment> getApprovedPaymentById(int? id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_GetApprovedPayment", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                        if (id == null)
+                            command.Parameters.AddWithValue("@Id", DBNull.Value);
+                        else
+                            command.Parameters.AddWithValue("@Id", id);
+
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<Payment> newsList = new List<Payment>();
+                        while (rdr.Read())
+                        {
+                            Payment payment = new Payment();
+                            payment.Id = Convert.ToInt32(rdr["Id"]);
+                            payment.BidId = Convert.ToInt32(rdr["BidId"]);
+                            payment.Type = Convert.ToInt32(rdr["Type"]);
+                            payment.Status = Convert.ToInt32(rdr["Status"]);
+                            payment.UserId = rdr["UserId"].ToString();
+                            payment.Amount = Convert.ToDecimal(rdr["Amount"]);
+                            payment.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+
+                            newsList.Add(payment);
+                        }
+                        return newsList;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
         internal int savePayment(Payment payment)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))

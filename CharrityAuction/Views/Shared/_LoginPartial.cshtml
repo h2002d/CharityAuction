@@ -10,12 +10,16 @@
             {
                 <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText" }) <text>&nbsp;</text></li>
             }
-
-            <li>
-                @Html.ActionLink(CharrityAuction.Resource.Profile, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
+        <br />
+            <ul class="nav navbar-nav navbar-right">
+
+
+                <li>
+                    @Html.ActionLink(User.Identity.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
     }
 }
 else
@@ -25,7 +29,7 @@ else
         {
             <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText login-menu-item" })</li>
         }
-        <li>@Html.ActionLink(CharrityAuction.Resource.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink",@class="login-menu-item" })</li>
-        <li>@Html.ActionLink(CharrityAuction.Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink",@class="login-menu-item" })</li>
+        <li>@Html.ActionLink(CharrityAuction.Resource.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login-menu-item" })</li>
+        <li>@Html.ActionLink(CharrityAuction.Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-menu-item" })</li>
     </ul>
 }

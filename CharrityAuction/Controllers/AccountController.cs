@@ -91,7 +91,7 @@ namespace CharrityAuction.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", Resource.InvalidLogin);
                     return View(model);
             }
         }
@@ -177,6 +177,8 @@ namespace CharrityAuction.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+                
+
                 AddErrors(result);
             }
 
@@ -449,8 +451,14 @@ namespace CharrityAuction.Controllers
 
         private void AddErrors(IdentityResult result)
         {
+            int i = 0;
             foreach (var error in result.Errors)
             {
+                if (error.Contains("already")& i==0)
+                {
+                    i++;
+                    continue;
+                }
                 ModelState.AddModelError("", error);
             }
         }

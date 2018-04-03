@@ -9,10 +9,14 @@
 
 </head>
 <body>
+
     @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
     <div class="navbar">
         <div class="container non-padding">
             <div class="row">
+                
                 <div class="col-sm-4 col-sm-offset-4" style="margin-bottom:1px;margin-top:20px;" align="center">
                     <a class="navbar-brand navbar-logo non-float" href="/">
                         <img src='/images/logo.png' class='navbar-image' />
@@ -20,16 +24,21 @@
                 </div>
                 <div class="col-sm-4">
                 </div>
-                <div class="col-sm-4 col-sm-offset-4" align="center">
+                </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="text" id="searchArea" class="form-control" placeholder="@Resource.Search" />
+                </div>
+                <div class="col-sm-4 " align="center">
                     <h4>
                         Մասնակցի՛ր, հաղթի՛ր, օգնի՛ր
                     </h4>
-                 
+
                 </div>
                 <div class="col-sm-4 ">
                     @Html.Partial("_LoginPartial")
                 </div>
-               
+
             </div>
         </div>
         <div class="menu-header" align="center">
@@ -43,65 +52,65 @@
             <div class="navbar-collapse collapse" align="center">
                 <ul class="nav navbar-nav main-nav non-float">
                     <li>@Html.ActionLink(CharrityAuction.Resource.Main, "Index", "Home")</li>
-                   @if (!this.User.IsInRole("Administrator"))
-                   {
-                    <li>@Html.ActionLink(CharrityAuction.Resource.AboutUs, "About", "Home")</li>
-                    <li>@Html.ActionLink(CharrityAuction.Resource.News, "NewsFeed", "Home")</li>
+                    @if (!this.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink(CharrityAuction.Resource.AboutUs, "About", "Home")</li>
+                        <li>@Html.ActionLink(CharrityAuction.Resource.News, "NewsFeed", "Home")</li>
 
-                    @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuMedia</a>
+                        @*<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuMedia</a>
 
-                        <ul class="dropdown-menu">
+                                <ul class="dropdown-menu">
 
-                            <li>
-                                <a href="#" id="">@CharrityAuction.Resource.MenuPhoto</a>
-                            </li>
-                            <li>
-                                <a href="#" id="">@CharrityAuction.Resource.MenuVideo</a>
-                            </li>
+                                    <li>
+                                        <a href="#" id="">@CharrityAuction.Resource.MenuPhoto</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" id="">@CharrityAuction.Resource.MenuVideo</a>
+                                    </li>
 
-                        </ul>
-                    </li>*@
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuCoWorkers</a>
+                                </ul>
+                            </li>*@
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">@CharrityAuction.Resource.MenuCoWorkers</a>
 
-                        <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-content">
 
-                            <li>
-                                <a href="/Home/Partners/0" id="">@CharrityAuction.Resource.MenuStars</a>
-                            </li>
-                            <li>
-                                <a href="/Home/Partners/1" id="">@CharrityAuction.Resource.MenuCoWorkers</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuRules</a>
+                                <li>
+                                    <a href="/Home/Partners/0" id="">@CharrityAuction.Resource.MenuStars</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Partners/1" id="">@CharrityAuction.Resource.MenuCoWorkers</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">@CharrityAuction.Resource.MenuRules</a>
 
-                        <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-content">
 
-                            <li>
-                                <a href="#" id="">@CharrityAuction.Resource.MenuPayment</a>
-                            </li>
+                                <li>
+                                    <a href="/Home/Privacy" id="">@CharrityAuction.Resource.MenuPayment</a>
+                                </li>
 
 
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@CharrityAuction.Resource.MenuReport</a>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">@CharrityAuction.Resource.MenuReport</a>
+                            <ul class="dropdown-menu dropdown-content">
 
-                        <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Home/Charities" id="">@CharrityAuction.Resource.MenuWhoWeHelp</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Buyers" id="">@CharrityAuction.Resource.MenuGoodBuyers</a>
+                                </li>
 
-                            <li>
-                                <a href="/Home/Charities" id="">@CharrityAuction.Resource.MenuWhoWeHelp</a>
-                            </li>
-                            <li>
-                                <a href="#" id="">@CharrityAuction.Resource.MenuGoodBuyers</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                   }
+                            </ul>
+                        </li>
+                    }
                     @if (this.User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Categories", "Categories", "Admin")</li>
@@ -113,18 +122,19 @@
 
                     }
                 </ul>
-                
+
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Developed by Novir</p>
-        </footer>
-    </div>
 
+    </div>
+    <div class="footer">
+        <div style="float:left">
+            <p>&copy; bariauction.am @DateTime.Now.Year - Developed by <a class="novir-bar" href="https://web.facebook.com/novirarm/" target="_blank">Novir</a></p>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/bootstrap")
     @if (this.User.IsInRole("Administrator"))
     {
@@ -132,5 +142,6 @@
     }
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/main.js"></script>
+
 </body>
 </html>

@@ -2,56 +2,80 @@
 @{
     ViewBag.Title = ViewBag.Category.Name;
 }
-<div class="row category-header" >
-    <div class="col-sm-6 category-header-name">@ViewBag.Category.Name</div>
-    <div class="col-sm-6">
-        <select class="form-control" style="float:right;" id="sort-select" onchange="orderBy(@ViewBag.Category.Id)">
-            <option value="1">Closing next</option>
-            <option value="2">Recently added</option>
-            <option value="3">Bid amount(high to low)</option>
-        </select>
-    </div>
-</div>
-<div class="row" id="items">
-    <div class="col-sm-12">
-        @{
-            var count = 0;
-        }
-        @foreach (var item in Model)
+<div class="row" style="margin-top:30px;">
+    <div class="col-sm-3">
+        <div class="vertical-menu">
+            @foreach (var categories in ViewBag.Categories)
             {
-                if (count % 3 == 0 && count == 0)
+                <a class="category-menu" href="/home/category/@categories.Id">@categories.Name</a>
+            }
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="row category-header">
+            <div class="col-sm-6 category-header-name">@ViewBag.Category.Name</div>
+            <div class="col-sm-6">
+                <select class="form-control" style="float:right;" id="sort-select" onchange="orderBy(@ViewBag.Category.Id)">
+                    <option value="1">Closing next</option>
+                    <option value="2">Recently added</option>
+                    <option value="3">Bid amount(high to low)</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" id="items">
+            @foreach (var item in Model)
+            {
+                @*if (count % 3 == 0 && count == 0)
                 {
-                @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
-                }
+                    @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }*@
 
-            <div class="col-sm-4">
-                @if (this.User.IsInRole("Administrator"))
-                {
-                    <a href="/home/editlot/@item.Id">Edit lot</a>
-                }
-                <div class="row lot-preview" id="@item.Id" style="font-size:12px; padding:5px; margin-bottom:20px; cursor:pointer;">
-                    <div class="col-sm-12 container" style="padding:0;">
+                <div class="col-sm-4" align="center">
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <a href="/admin/editlot/@item.Id">Edit lot</a>
+                    }
+                    <div class="row lot-preview bordered lot-container-div " id="@item.Id">
+                        <div class="col-sm-12 container" style="padding:0;">
 
-                        <img style="width:100%; height:auto;" src="@item.ImageSource" />
-                        <input type="button" class="btn btn-danger top-right btn-bid" value="Bid" />
+                            <img style="width:100%; height:auto;" src="@(item.ImageSource.Split('.')[0]+"_thumb."+item.ImageSource.Split('.')[1])" />
+
+                        </div>
+                        <h5 class="lot-header-index">
+                            @(item.Name.Length <= 20 ? item.Name : item.Name.Substring(0, 20))<br />
+                        </h5>
+                        <p class="product-header">
+                            @{
+                                var span = item.DeadLine - DateTime.Now;
+                            }
+                            @if (span.TotalMilliseconds >= 0)
+                            {
+                                <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
+                                    <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
+                            }
+                            else
+                            {
+                                <b>@CharrityAuction.Resource.LotDayPassed</b>
+                                    <br />
+                                    <b>@CharrityAuction.Resource.PassedSecondString</b>
+
+                            }
+                        </p>
+                        <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
 
                     </div>
-                    <p class="product-header">
-                        @item.Name<br />
-                        @CharrityAuction.Resource.Value: @item.CurrentBid ֏.
-                    </p>
                 </div>
-            </div>
-            if (count % 2 == 0 && count != 0)
-            {
-                @Html.Raw("</div>");
-                    count = 0;
-                }
-                else
-                {
-                    count++;
-                }
+                    @*if (count % 2 == 0 && count != 0)
+                    {
+                        @Html.Raw("</div>");
+                        count = 0;
+                    }
+                    else
+                    {
+                        count++;
+                    }*@
 
-            }
+                                }
+        </div>
+
     </div>
-</div>

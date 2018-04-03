@@ -13,7 +13,10 @@
             <div class="col-sm-2"><span class="admin-label">Bid:</span> #@payment.BidId</div>
             <div class="col-sm-2"><span class="admin-label">Payment type:</span>@(payment.Type==0?"Cash":"Card")<br />
             <span class="admin-label">Amount:</span> @payment.Amount</div>
-            <div class="col-sm-3"><span class="admin-label">User:</span> @payment.User.Name @payment.User.LastName</div>
+            <div class="col-sm-3">
+                <span class="admin-label">User:</span> @payment.User.Name @payment.User.LastName<br />
+                <span class="admin-label">Phone:</span>@payment.User.Phone
+            </div>
             <div class="col-sm-2">
                 <span class="admin-label">Status:</span>
                 <select class="form-control" style="float:right;" id="status-select">

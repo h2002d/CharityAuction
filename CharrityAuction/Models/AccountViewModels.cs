@@ -64,31 +64,31 @@ namespace CharrityAuction.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceName= "RegistrationErrorMessage", ErrorMessageResourceType =typeof(Resource))]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(ResourceType =typeof(Resource), Name ="RegistrationEmail")]
         public string Email { get; set; }
-        [Required]
-        [Display(Name = "Name")]
+        [Required(ErrorMessageResourceName = "RegistrationErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationName")]
         public string Name { get; set; }
-        [Required]
-        [Display(Name = "Last Name")]
+        [Required(ErrorMessageResourceName = "RegistrationErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationLastName")]
         public string LastName { get; set; }
-        [Required]
-        [Display(Name = "Phone number")]
+        [Required(ErrorMessageResourceName = "RegistrationErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationPhone")]
         public string Phone { get; set; }
-        [Required]
-        [Display(Name = "Nickname")]
+        [Required(ErrorMessageResourceName = "RegistrationErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationNickname")]
         public string Nickname { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessageResourceName = "RegistrationErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [StringLength(100, ErrorMessageResourceName = "RegistrationPasswordError",ErrorMessageResourceType = typeof(Resource), MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationPassword")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationConfirmPassword")]
+        [Compare("Password", ErrorMessageResourceName = "RegistrationPasswordNotMatching", ErrorMessageResourceType = typeof(Resource))]
         public string ConfirmPassword { get; set; }
     }
 
@@ -100,14 +100,14 @@ namespace CharrityAuction.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceName = "RegistrationPasswordError", ErrorMessageResourceType = typeof(Resource), MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessageResourceName = "RegistrationPasswordNotMatching", ErrorMessageResourceType = typeof(Resource))]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

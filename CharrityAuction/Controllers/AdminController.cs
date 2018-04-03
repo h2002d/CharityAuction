@@ -344,6 +344,15 @@ namespace CharrityAuction.Controllers
                                         Server.MapPath("~/images/partners"), thumbnailpic);
                 // file is uploaded
                 file.SaveAs(path);
+
+                ResizeSettings resizeSetting = new ResizeSettings
+                {
+
+                    Width = 150,
+                    Height = 150,
+                    Format = file.FileName.Split('.')[1]
+                };
+                ImageBuilder.Current.Build(path, thumbpath, resizeSetting);
                 // after successfully uploading redirect the user
                 return Json("File Uploaded", JsonRequestBehavior.AllowGet);
             }

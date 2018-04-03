@@ -7,11 +7,7 @@
 <h2>CreateLot</h2>
 
 
-@using (Ajax.BeginForm("CreateLot", new AjaxOptions()
-{
-    OnSuccess = "OnSuccess()",
-    OnFailure = "OnFailure()"
-}))
+@using (Html.BeginForm("CreateLot", "Admin"))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)

@@ -1,0 +1,55 @@
+﻿@model CharrityAuction.Models.UserViewModel
+
+
+@using (Ajax.BeginForm("UserInfo", "Manage",
+                                             new AjaxOptions
+{
+ OnSuccess = "OnSuccess",
+OnFailure = "OnFailure",
+LoadingElementId = "progress"
+
+
+}, new { @class = "form-horizontal form-registration", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" align="center">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserId)
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationName</label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "registration-input" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-6">
+                <label class="registration-input-description">@Resource.RegistrationLastName</label>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "registration-input" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row registration-row">
+            <div class="col-sm-12">
+                <label class="registration-input-description">@Resource.RegistrationPhone</label>
+                @Html.TextBoxFor(m => m.Phone, new { @class = "registration-input" })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row registration-row">
+            <div class="col-sm-12">
+                <label class="registration-input-description" style="float:left;">
+                    @Resource.RegistrationNickname
+                    <span class="screenname-side-note">@Resource.RegistrationNicknameInfo</span>
+                </label>
+                @Html.TextBoxFor(m => m.Nickname, new { @class = "registration-input" })
+                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <input type="submit" value="@Resource.Submit" class="registration-btn"/>
+            </div>
+        </div>
+    </div>
+}

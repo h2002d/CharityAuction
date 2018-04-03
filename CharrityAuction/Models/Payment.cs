@@ -17,7 +17,7 @@ namespace CharrityAuction.Models
         public DateTime CreateDate { get; set; }
         public UserViewModel User { get { return new UserViewModel(UserId); } }
         public BidModel Bid { get { return BidModel.GetBidById(BidId).First(); } }
-
+        public LotModel Lot { get { return LotModel.GetLotById(Bid.LotId).First(); } }
         static DAO.PaymentDAO DAO = new CharrityAuction.DAO.PaymentDAO();
         #endregion
 
@@ -29,6 +29,12 @@ namespace CharrityAuction.Models
         public static List<Payment> GetPaymentById(int? id)
         {
             return DAO.getPaymentById(id);
+        }
+
+
+        public static List<Payment> GetApprovedPaymentById(int? id)
+        {
+            return DAO.getApprovedPaymentById(id);
         }
 
         public void SetStatus(int status)

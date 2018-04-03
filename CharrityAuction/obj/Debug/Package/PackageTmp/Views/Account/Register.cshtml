@@ -5,37 +5,38 @@
 
 <div class="container registration-container">
     <div class="registration-header">
-        <h3>Register to bid.</h3>
+        <h3>@Resource.RegistrationTitle</h3>
     </div>
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal form-registration", role = "form" }))
     {
         @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
         <hr />
         <div class="row">
             <div class="col-sm-6">
-                <label class="registration-input-description">First Name</label>
+                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationName</label>
                 @Html.TextBoxFor(m => m.Name, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-6">
-                <label class="registration-input-description">Last Name</label>
+                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationLastName</label>
                 @Html.TextBoxFor(m => m.LastName, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description">Phone </label>
+                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationPhone</label>
                 @Html.TextBoxFor(m => m.Phone, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description" style="float:left;">
-                    Create nickname
-                    <span class="screenname-side-note">Displayed publicly when you bid</span>
+                <label class="registration-input-description glyphicon-asterisk" style="float:left;">
+                    @Resource.RegistrationNickname
+                    <span class="screenname-side-note">@Resource.RegistrationNicknameInfo</span>
                 </label>
                 @Html.TextBoxFor(m => m.Nickname, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
@@ -43,21 +44,21 @@
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description">Email</label>
+                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationEmail</label>
                 @Html.TextBoxFor(m => m.Email, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description">Password</label>
+                <label class="registration-input-description">@Resource.RegistrationPassword</label>
                 @Html.PasswordFor(m => m.Password, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description">Confirm Password</label>
+                <label class="registration-input-description">@Resource.RegistrationConfirmPassword</label>
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
@@ -65,14 +66,13 @@
         <div class="row registration-row">
             <div class="col-sm-12">
                 <input type="checkbox" id="terms-checkbox" />
-                <label> I agree that I have read and accept the terms of the Privacy Policy and the Terms of Use.</label>
+                <label for="termsAccept">@Resource.RegistrationPrivacy</label>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <input type="submit" class="registration-btn" value="Register" />
+                <input type="button" class="registration-btn disabled" value="@Resource.Register" />
             </div>
-            @Html.ValidationSummary("Fill in required fields.", new { @class = "text-danger" })
         </div>
     }
 </div>

@@ -73,7 +73,10 @@ namespace CharrityAuction.DAO
                         command.Parameters.AddWithValue("@Name_AM", news.Name_AM);
                         command.Parameters.AddWithValue("@Description_EN", news.Description_EN);
                         command.Parameters.AddWithValue("@Description_AM", news.Description_AM);
-                        command.Parameters.AddWithValue("@VideoSource", news.VideoSource);
+                        if (String.IsNullOrEmpty(news.VideoSource))
+                            command.Parameters.AddWithValue("@VideoSource", DBNull.Value);
+                        else
+                            command.Parameters.AddWithValue("@VideoSource", news.VideoSource);
                         if (String.IsNullOrEmpty(news.Link))
                             command.Parameters.AddWithValue("@Link", DBNull.Value);
                         else

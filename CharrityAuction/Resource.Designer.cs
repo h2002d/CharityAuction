@@ -88,7 +88,34 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ԸՆԹԱՑԻԿ ՀԱՅՏԵՐ.
+        ///   Looks up a localized string similar to Գնորդ.
+        /// </summary>
+        public static string Buyer {
+            get {
+                return ResourceManager.GetString("Buyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գումարը.
+        /// </summary>
+        public static string CharityMoney {
+            get {
+                return ResourceManager.GetString("CharityMoney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Նպատակը.
+        /// </summary>
+        public static string CharityPurpose {
+            get {
+                return ResourceManager.GetString("CharityPurpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ԸՆԹԱՑԻԿ ՀԱՅՏԵՐԻ ԱՐԺԵՔԸ.
         /// </summary>
         public static string CurrentBid {
             get {
@@ -143,6 +170,15 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Էլ. հասցեն կամ գաղտնաբառը սխալ են.
+        /// </summary>
+        public static string InvalidLogin {
+            get {
+                return ResourceManager.GetString("InvalidLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Վերջին հայտերը.
         /// </summary>
         public static string LastBids {
@@ -157,6 +193,96 @@ namespace CharrityAuction {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Չունեք հաշիվ.
+        /// </summary>
+        public static string LoginDontHave {
+            get {
+                return ResourceManager.GetString("LoginDontHave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ստեղծեք.
+        /// </summary>
+        public static string LoginRegister {
+            get {
+                return ResourceManager.GetString("LoginRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to նոր հաշիվ.
+        /// </summary>
+        public static string LoginRegisterAsNewUser {
+            get {
+                return ResourceManager.GetString("LoginRegisterAsNewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Մուտք գործեք մասնակցելու համար.
+        /// </summary>
+        public static string LoginTitle {
+            get {
+                return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ամսաթիվ.
+        /// </summary>
+        public static string LotDate {
+            get {
+                return ResourceManager.GetString("LotDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Տվյալ աճուրդն .
+        /// </summary>
+        public static string LotDayPassed {
+            get {
+                return ResourceManager.GetString("LotDayPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Լոթի նկարագրությունը.
+        /// </summary>
+        public static string LotDetails {
+            get {
+                return ResourceManager.GetString("LotDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ամսաթիվ.
+        /// </summary>
+        public static string LotOccureDate {
+            get {
+                return ResourceManager.GetString("LotOccureDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Կանոննր և կանոնակարգեր.
+        /// </summary>
+        public static string LotRulesRegulations {
+            get {
+                return ResourceManager.GetString("LotRulesRegulations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Արժեք.
+        /// </summary>
+        public static string LotValue {
+            get {
+                return ResourceManager.GetString("LotValue", resourceCulture);
             }
         }
         
@@ -269,6 +395,15 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Նշված գումարը փոքր է թույլատրելի շեմից.
+        /// </summary>
+        public static string MinBidAlert {
+            get {
+                return ResourceManager.GetString("MinBidAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to րոպե.
         /// </summary>
         public static string Minutes {
@@ -296,11 +431,38 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to կարդալ ավելին.....
+        /// </summary>
+        public static string NewsReadMore {
+            get {
+                return ResourceManager.GetString("NewsReadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to արդեն ավարտվել է.
+        /// </summary>
+        public static string PassedSecondString {
+            get {
+                return ResourceManager.GetString("PassedSecondString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ձեր վճարումը կատարված է մեր աշխատակիցները կկապվնեն ձեզ հետ:&lt;br&gt; Ձեր հայտի համարն է  &lt;b&gt;#{0}&lt;/b&gt;.
         /// </summary>
         public static string PaymentApproved {
             get {
                 return ResourceManager.GetString("PaymentApproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Կանոններ.
+        /// </summary>
+        public static string Privacy {
+            get {
+                return ResourceManager.GetString("Privacy", resourceCulture);
             }
         }
         
@@ -323,11 +485,182 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Կրկնեք գաղտնաբառը.
+        /// </summary>
+        public static string RegistrationConfirmPassword {
+            get {
+                return ResourceManager.GetString("RegistrationConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Էլ.հասցե.
+        /// </summary>
+        public static string RegistrationEmail {
+            get {
+                return ResourceManager.GetString("RegistrationEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} դաշտը դատարկ է.
+        /// </summary>
+        public static string RegistrationErrorMessage {
+            get {
+                return ResourceManager.GetString("RegistrationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ազգանուն.
+        /// </summary>
+        public static string RegistrationLastName {
+            get {
+                return ResourceManager.GetString("RegistrationLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Անուն.
+        /// </summary>
+        public static string RegistrationName {
+            get {
+                return ResourceManager.GetString("RegistrationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ստեղծել կեղծանուն.
+        /// </summary>
+        public static string RegistrationNickname {
+            get {
+                return ResourceManager.GetString("RegistrationNickname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ցուցադրվելու է ձեր գնումներում.
+        /// </summary>
+        public static string RegistrationNicknameInfo {
+            get {
+                return ResourceManager.GetString("RegistrationNicknameInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գաղտնաբառ.
+        /// </summary>
+        public static string RegistrationPassword {
+            get {
+                return ResourceManager.GetString("RegistrationPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գաղտնաբառը պետք է լինի {2} նիշից ոչ պակաս.
+        /// </summary>
+        public static string RegistrationPasswordError {
+            get {
+                return ResourceManager.GetString("RegistrationPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գաղտնաբառերը չեն համընկնում.
+        /// </summary>
+        public static string RegistrationPasswordNotMatching {
+            get {
+                return ResourceManager.GetString("RegistrationPasswordNotMatching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Հեռախոսահամար.
+        /// </summary>
+        public static string RegistrationPhone {
+            get {
+                return ResourceManager.GetString("RegistrationPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ես կարդացել եմ և ընդունում եմ օգտագործման կանոնոնները.
+        /// </summary>
+        public static string RegistrationPrivacy {
+            get {
+                return ResourceManager.GetString("RegistrationPrivacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Լրացրեք պահանջվող դաշտերը.
+        /// </summary>
+        public static string RegistrationRequiredFields {
+            get {
+                return ResourceManager.GetString("RegistrationRequiredFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Գրանցվիր մասնակցելու համար.
+        /// </summary>
+        public static string RegistrationTitle {
+            get {
+                return ResourceManager.GetString("RegistrationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ՄՆԱՑԵԼ Է.
         /// </summary>
         public static string Remains {
             get {
                 return ResourceManager.GetString("Remains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Հիշել.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Փնտրել.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Որոնման արդյունքներ:.
+        /// </summary>
+        public static string SearchResults {
+            get {
+                return ResourceManager.GetString("SearchResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Պահպանել.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Խմբագրեք ձեր անձնական տվյալները.
+        /// </summary>
+        public static string UserSettings {
+            get {
+                return ResourceManager.GetString("UserSettings", resourceCulture);
             }
         }
         

@@ -133,7 +133,7 @@
     <value>TIME LEFT TO BID</value>
   </data>
   <data name="EstimatedValue" xml:space="preserve">
-    <value>ESTIMATED VALUE</value>
+    <value>EST. VALUE</value>
   </data>
   <data name="LastBids" xml:space="preserve">
     <value>Last bids</value>
@@ -210,5 +210,116 @@
   </data>
   <data name="PaymentApproved" xml:space="preserve">
     <value>Your payment approved our staff will contact you for further information.&lt;br&gt;Your bid number is &lt;b&gt;#{0}&lt;/b&gt;</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Buyer</value>
+  </data>
+  <data name="CharityMoney" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="CharityPurpose" xml:space="preserve">
+    <value>Purpose</value>
+  </data>
+  <data name="LoginDontHave" xml:space="preserve">
+    <value>Don't have account?</value>
+  </data>
+  <data name="LoginRegister" xml:space="preserve">
+    <value>register</value>
+  </data>
+  <data name="LoginRegisterAsNewUser" xml:space="preserve">
+    <value>as new user</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Please login to make a bid</value>
+  </data>
+  <data name="LotDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="LotDayPassed" xml:space="preserve">
+    <value>Lot is closed</value>
+  </data>
+  <data name="LotDetails" xml:space="preserve">
+    <value>Additional Lot Detail</value>
+  </data>
+  <data name="LotOccureDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="LotRulesRegulations" xml:space="preserve">
+    <value>Rules &amp; Regulations</value>
+  </data>
+  <data name="LotValue" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="NewsReadMore" xml:space="preserve">
+    <value>read more...</value>
+  </data>
+  <data name="RegistrationConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="RegistrationEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="RegistrationLastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="RegistrationName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="RegistrationNickname" xml:space="preserve">
+    <value>Create nickname</value>
+  </data>
+  <data name="RegistrationNicknameInfo" xml:space="preserve">
+    <value>Displayed publicly when you bid</value>
+  </data>
+  <data name="RegistrationPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="RegistrationPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="RegistrationPrivacy" xml:space="preserve">
+    <value>I agree that I have read and accept the terms of the Privacy Policy and the Terms of Use.</value>
+  </data>
+  <data name="RegistrationRequiredFields" xml:space="preserve">
+    <value>Please fill in required fields</value>
+  </data>
+  <data name="RegistrationTitle" xml:space="preserve">
+    <value>Register to bid.</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacy &amp; Policy</value>
+  </data>
+  <data name="InvalidLogin" xml:space="preserve">
+    <value>Username and/or password are not matching</value>
+  </data>
+  <data name="RegistrationErrorMessage" xml:space="preserve">
+    <value>{0} is empty</value>
+  </data>
+  <data name="RegistrationPasswordError" xml:space="preserve">
+    <value>The {0} must be at least {2} characters long.</value>
+  </data>
+  <data name="RegistrationPasswordNotMatching" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="UserSettings" xml:space="preserve">
+    <value>Change your account settings</value>
+  </data>
+  <data name="PassedSecondString" xml:space="preserve">
+    <value>Deadline passed</value>
+  </data>
+  <data name="MinBidAlert" xml:space="preserve">
+    <value>Amount is lower than the min bid amount</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Search results for:</value>
   </data>
 </root>

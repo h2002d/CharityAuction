@@ -253,8 +253,14 @@
     <Content Include="images\arrow_left.gif" />
     <Content Include="images\arrow_right.gif" />
     <Content Include="images\debit_cards.jpg" />
+    <Content Include="images\facebookIcon.png" />
+    <Content Include="images\facebookIconInactive.png" />
+    <Content Include="images\instagramIcon.png" />
+    <Content Include="images\instagramIconInactive.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\removeIcon.png" />
+    <Content Include="images\vkIcon.png" />
+    <Content Include="images\vkIconInactive.png" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -350,6 +356,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -427,6 +435,10 @@
     <Content Include="Views\Home\Partners.cshtml" />
     <Content Include="Views\Home\PartnerItems.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Home\Buyers.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Manage\UserInfo.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -477,6 +489,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties Content_4bootstrap_1css_1map__JSONSchema="http://json.schemastore.org/sprite" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

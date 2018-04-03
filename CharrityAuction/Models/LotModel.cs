@@ -79,6 +79,10 @@ namespace CharrityAuction.Models
             return DAO.getLotById(Id);
         }
 
+        public static List<LotModel>GetLotByQuery(string query)
+        {
+            return DAO.getLotByQuery(query);
+        }
         public static List<LotModel> GetLotByCategoryId(int CategoryId)
         {
             return DAO.getLotByCategoryId(CategoryId);
