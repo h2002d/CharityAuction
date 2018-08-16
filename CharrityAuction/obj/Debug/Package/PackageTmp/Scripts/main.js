@@ -14,17 +14,7 @@
     //            }
                 //        });
                 $('#vertical-menu').attr('data-offset-top', topDistance);
-    $('#terms-checkbox').change(function () {
-        if ($(this).is(':checked')) {
-            $(".registration-btn").prop("type", "submit");
-            $(".registration-btn").removeClass("disabled");
-        }
-        else {
-            $(".registration-btn").prop("type", "button");
-            $(".registration-btn").addClass("disabled");
 
-        }
-                });
     $('#searchArea').bind("enterKey", function (e) {
         window.location = "/home/Search?query=" + $(this).val().replace(/</g, "&lt;").replace(/>/g, "&gt;");;
     });
@@ -64,30 +54,7 @@
         }
     });
     
-    var items = $(".portfolio-item");
-    var scrollContainer = $(".offer-pg-cont");
-    function scrollContent(direction) {
-        var amount = (direction === "left" ? "-=5px" : "+=5px");
-        scrollContainer.animate({
-            scrollLeft: amount
-        }, 1, function () {
-            if (scrolling) {
-                scrollContent(direction);
-            }
-        });
-    }
-    $('.arrow-right').bind("mouseover", function (event) {
-        scrolling = true;
-        scrollContent("right");
-    }).bind("mouseout", function (event) {
-        scrolling = false;
-    });
-    $('.arrow-left').bind("mouseover", function (event) {
-        scrolling = true;
-        scrollContent("left");
-    }).bind("mouseout", function (event) {
-        scrolling = false;
-    });
+   
    
 
    
@@ -117,10 +84,41 @@
     //});
    
 });
+$(document).on('click', '#searchButton', function () {
+    $('#searchArea').trigger("enterKey");
+});
 $(document).on('click', '.lot-preview', function () {
         window.location.href = '/home/item/' + $(this).prop('id');
 });
 
+$(document).on("mouseover", '.arrow-right', function (event) {
+    scrolling = true;
+    scrollContent("right");
+});
+$(document).on("mouseout", '.arrow-right', function (event) {
+    scrolling = false;
+});
+
+$(document).on("mouseover", '.arrow-left', function (event) {
+    scrolling = true;
+    scrollContent("left");
+});
+$(document).on("mouseout", '.arrow-left', function (event) {
+    scrolling = false;
+});
+
+var items = $(".portfolio-item");
+var scrollContainer = $(".offer-pg-cont");
+function scrollContent(direction) {
+    var amount = (direction === "left" ? "-=5px" : "+=5px");
+    scrollContainer.animate({
+        scrollLeft: amount
+    }, 1, function () {
+        if (scrolling) {
+            scrollContent(direction);
+        }
+    });
+}
 $(document).on('click', '.lot-partners-div', function () {
     window.location.href = '/home/partneritems/' + $(this).prop('id');
 });
@@ -129,9 +127,20 @@ $(document).on('click', '.close-login',function () {
     $("#cover").css("display", "none");
 
 });
+$(document).on('change','#terms-checkbox',function () {
+    if ($(this).is(':checked')) {
+        $(".registration-btn").prop("type", "submit");
+        $(".registration-btn").removeClass("disabled");
+    }
+    else {
+        $(".registration-btn").prop("type", "button");
+        $(".registration-btn").addClass("disabled");
+
+    }
+});
 $(document).on('click', '.myImg', function () {
     var modal = document.getElementById('myModal');
-
+    $('#imageIndex').val($(this).attr('id'));
     // Get the image and insert it inside the modal - use its "alt" text as a caption
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementById("caption");
@@ -175,8 +184,11 @@ function makePayment(id) {
     window.location.href = '/Payment/MakePayment?id='+id+'&type='+type;
 }
 function OnSuccess(response) {
-
-    alert(response);
+    if (response == 11) {
+        $('.nickname-validator').text('Nickname already exists');
+    } else {
+        location.reload();
+    }
 }
 function OnFailure(response) {
     alert("Error occured.");

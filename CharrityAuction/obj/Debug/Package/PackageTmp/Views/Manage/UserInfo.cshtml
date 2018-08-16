@@ -43,7 +43,7 @@ LoadingElementId = "progress"
                     <span class="screenname-side-note">@Resource.RegistrationNicknameInfo</span>
                 </label>
                 @Html.TextBoxFor(m => m.Nickname, new { @class = "registration-input" })
-                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger nickname-validator" })
             </div>
         </div>
         <div class="row">

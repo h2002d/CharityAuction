@@ -15,26 +15,26 @@
         <hr />
         <div class="row">
             <div class="col-sm-6">
-                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationName</label>
+                <label class="registration-input-description">@Resource.RegistrationName</label>
                 @Html.TextBoxFor(m => m.Name, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-6">
-                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationLastName</label>
+                <label class="registration-input-description">@Resource.RegistrationLastName</label>
                 @Html.TextBoxFor(m => m.LastName, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationPhone</label>
+                <label class="registration-input-description">@Resource.RegistrationPhone</label>
                 @Html.TextBoxFor(m => m.Phone, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description glyphicon-asterisk" style="float:left;">
+                <label class="registration-input-description" style="float:left;">
                     @Resource.RegistrationNickname
                     <span class="screenname-side-note">@Resource.RegistrationNicknameInfo</span>
                 </label>
@@ -44,7 +44,7 @@
         </div>
         <div class="row registration-row">
             <div class="col-sm-12">
-                <label class="registration-input-description glyphicon-asterisk">@Resource.RegistrationEmail</label>
+                <label class="registration-input-description">@Resource.RegistrationEmail</label>
                 @Html.TextBoxFor(m => m.Email, new { @class = "registration-input" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>

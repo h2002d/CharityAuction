@@ -90,12 +90,14 @@ textarea {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
 .lot-container-div {
     font-size: 12px;
     padding: 5px;
     cursor: pointer;
-    position:relative;
+    position: relative;
 }
+
 .nav > li {
     display: inline-flex !important;
     float: none !important;
@@ -110,35 +112,43 @@ textarea {
 
 .bordered {
     border: 1px solid #ddd;
-    margin:2px;
+    margin: 2px;
 }
+
     .bordered:hover {
         border-color: rgb(0,119,162);
     }
 
-.lot-preview img {
-    -webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
+/*.lot-preview img {
+    -webkit-transition: opacity 1s;
     transition: opacity 1s;
-}
+}*/
 
-    .lot-preview img:hover  {
-        opacity: 0.3;
-    }
-.lot-preview .centered:hover ~.lot-preview img {
-    
+.lot-preview img:hover {
     opacity: 0.3;
 }
+
+.lot-preview .centered:hover ~ .lot-preview img {
+    opacity: 0.3;
+}
+
 .lot-preview:hover .centered {
     color: black;
+}
+
+.lot-preview .bottom-left:hover ~ .lot-preview img {
+    opacity: 0.3;
 }
 
 .lot-preview:hover .bottom-left {
     color: black;
 }
+
 .buyer-item {
     font-size: 12px;
     padding: 5px;
 }
+
 .btn-bid {
     font-size: 18px;
     -webkit-transition: display 1s; /* For Safari 3.1 to 6.0 */
@@ -147,10 +157,11 @@ textarea {
     width: 100%;
     background-color: #1565C0;
     border: none !important;
-  
+    color: white;
 }
 
     .btn-bid:hover {
+        color:white;
         background-color: #0D47A1;
     }
 
@@ -201,6 +212,7 @@ textarea {
     font-size: 16px;
     height: 62px;
     margin: 5px 0;
+    background-color: #ff0000;
 }
 
 .navbar-collapse .nav li a:hover, .navbar-collapse .nav li a:focus {
@@ -575,6 +587,9 @@ span.arrow-right {
     max-width: 700px;
 }
 
+#items .col-sm-4 {
+    padding: 0;
+}
 /* Caption of Modal Image */
 #caption {
     margin: auto;
@@ -660,16 +675,16 @@ span.arrow-right {
     padding-bottom: 20px;
     margin-bottom: 30px;
 }
+
 .lot-partners-div {
     font-size: 12px;
     padding: 5px;
     margin-bottom: 20px;
     cursor: pointer;
-    height:195px;
 }
+
 .news-item {
     border-bottom: 1px solid rgba(165, 165, 165, 1);
-    cursor: pointer;
     margin-bottom: 30px;
 }
 
@@ -719,23 +734,28 @@ h1.fromLeft:after {
     color: rgba(0, 0, 0, 0.4);
     border-color: rgba(0,0,0,1);
 }
-.charity-label{
-    color:#1565C0;
+
+.charity-label {
+    color: #1565C0;
 }
+
 .lot-header-index {
     font-weight: 700;
     color: rgb(0,119,162);
     font-size: 15px;
 }
+
 .good-buyer-label {
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 15px ;
+    font-size: 15px;
     color: rgb(0,119,162);
 }
-.buyer-item-name{
-    margin-bottom:50px;
+
+.buyer-item-name {
+    margin-bottom: 50px;
 }
+
 .footer {
     position: absolute;
     left: 0;
@@ -744,29 +764,64 @@ h1.fromLeft:after {
     width: 100%;
     color: #fff;
     background-color: #1565C0;
-    padding:10px 10px;
+    padding: 10px 10px;
 }
+
 .social-media-icons {
     cursor: pointer;
 }
-.novir-bar{
-    color:rgb(109,208,222);
-    cursor:pointer;
+
+.novir-bar {
+    color: rgb(109,208,222);
+    cursor: pointer;
 }
+
     .novir-bar:focus, .novir-bar:hover {
         color: rgb(76,168,183);
         text-decoration: none;
     }
-.a-href:hover{
+
+.a-href:hover {
     color: deepskyblue !important;
 }
+
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
 }
+
 .affix {
-      top: 0;
-      width: 17%;
-      z-index: 9999 !important;
-  }
+    top: 0;
+    width: 17%;
+    z-index: 9999 !important;
+}
+
+#searchArea {
+    margin-top: 40px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/searchicon.png');
+    background-position: right;
+    background-repeat: no-repeat;
+}
+#searchButton {
+    height: 100%;
+    width: 50px;
+    background: none;
+    border: 0;
+    -webkit-appearance: none;
+    right: 0px;
+    position: absolute;
+    top: 0px;
+}
+
+.lot-index-container {
+    color: black;
+}
+
+    .lot-index-container:hover {
+        color: black;
+        text-decoration: none;
+    }
+   

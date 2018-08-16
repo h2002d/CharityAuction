@@ -322,4 +322,25 @@
   <data name="SearchResults" xml:space="preserve">
     <value>Որոնման արդյունքներ:</value>
   </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Ավարտված</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Մոռացել եք գաղտնաբառը</value>
+  </data>
+  <data name="PleaseConfirm" xml:space="preserve">
+    <value>Էլ. հասցեն հաստատված չէ, մուտք գործելու համար հաստատեք էլ. հասցեն </value>
+  </data>
+  <data name="EmailCheck" xml:space="preserve">
+    <value>Ձեր էլ. հասցեին ուղարկվել է գաղտնաբառը վերականգնող նամակ</value>
+  </data>
+  <data name="EmailReset" xml:space="preserve">
+    <value>Վերականգնել</value>
+  </data>
+  <data name="EnterMail" xml:space="preserve">
+    <value>Մուտքագրեք էլ. հասցեն</value>
+  </data>
+  <data name="PasswodReset" xml:space="preserve">
+    <value>Գաղտնաբառի վերականգնում</value>
+  </data>
 </root>

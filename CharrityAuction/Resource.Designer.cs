@@ -142,6 +142,15 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ձեր էլ. հասցեին ուղարկվել է գաղտնաբառը վերականգնող նամակ.
+        /// </summary>
+        public static string EmailCheck {
+            get {
+                return ResourceManager.GetString("EmailCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Շնորհավորում ենք: Դուք հաղթել եք բարեգործական Աճուրդում: Խնդրում ենք մինչև _______________ կատարել _________________ դրամ վճարումը Ձեր նախընտրած եղանակով(քարտով, կանխիկ, փոխանցում)` հաղթած ԼՈՏ-ը ստանալու համար:
         ///Կարող եք նաև զանգահարել XXX-XX-XX-XX հեռախոսահամարով, և մեր աշխատակիցը ավելի մանրամասն տեղեկատվություն կտրամադրի Ձեզ վճարման կարգի և ԼՈՏ-ի ստացման պայմանների մասին:Վճարելու համար անցեք հետևյալ  &lt;a href=&apos;{0}&apos;&gt;հղումով&lt;/a&gt;.
         /// </summary>
@@ -152,11 +161,47 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Վերականգնել.
+        /// </summary>
+        public static string EmailReset {
+            get {
+                return ResourceManager.GetString("EmailReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ավարտված.
+        /// </summary>
+        public static string Ended {
+            get {
+                return ResourceManager.GetString("Ended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Մուտքագրեք էլ. հասցեն.
+        /// </summary>
+        public static string EnterMail {
+            get {
+                return ResourceManager.GetString("EnterMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ԳՆԱՀԱՏՎԱԾ ԱՐԺԵՔԸ.
         /// </summary>
         public static string EstimatedValue {
             get {
                 return ResourceManager.GetString("EstimatedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Մոռացել եք գաղտնաբառը.
+        /// </summary>
+        public static string ForgetPassword {
+            get {
+                return ResourceManager.GetString("ForgetPassword", resourceCulture);
             }
         }
         
@@ -449,11 +494,29 @@ namespace CharrityAuction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Գաղտնաբառի վերականգնում.
+        /// </summary>
+        public static string PasswodReset {
+            get {
+                return ResourceManager.GetString("PasswodReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ձեր վճարումը կատարված է մեր աշխատակիցները կկապվնեն ձեզ հետ:&lt;br&gt; Ձեր հայտի համարն է  &lt;b&gt;#{0}&lt;/b&gt;.
         /// </summary>
         public static string PaymentApproved {
             get {
                 return ResourceManager.GetString("PaymentApproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Էլ. հասցեն հաստատված չէ, մուտք գործելու համար հաստատեք էլ. հասցեն .
+        /// </summary>
+        public static string PleaseConfirm {
+            get {
+                return ResourceManager.GetString("PleaseConfirm", resourceCulture);
             }
         }
         

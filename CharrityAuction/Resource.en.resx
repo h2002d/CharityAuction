@@ -322,4 +322,25 @@
   <data name="SearchResult" xml:space="preserve">
     <value>Search results for:</value>
   </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Closed lots</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="PleaseConfirm" xml:space="preserve">
+    <value>Email not confirmed, please confirm your email for further actions</value>
+  </data>
+  <data name="EmailCheck" xml:space="preserve">
+    <value>Please check your email to reset your password.</value>
+  </data>
+  <data name="EmailReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="EnterMail" xml:space="preserve">
+    <value>Enter your email.</value>
+  </data>
+  <data name="PasswodReset" xml:space="preserve">
+    <value>Password Reset</value>
+  </data>
 </root>

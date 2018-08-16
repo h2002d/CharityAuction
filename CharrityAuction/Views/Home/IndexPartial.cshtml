@@ -11,36 +11,37 @@
             {
                 <a href="/admin/editlot/@item.Id">Edit lot</a>
             }
-            <div class="row lot-preview bordered lot-container-div " id="@item.Id">
-                <div class="col-sm-12 container" style="padding:0;">
+            <a class="lot-index-container" href="/home/item/@item.Id">
+                <div class="row lot-preview bordered lot-container-div " id="@item.Id">
+                    <div class="col-sm-12 container" style="padding:0;">
 
-                    <img style="width:100%; height:auto;" src="@(item.ImageSource.Split('.')[0]+"_thumb."+item.ImageSource.Split('.')[1])" />
+                        <img style="width:100%; height:auto;" src="@(item.ImageSource.Split('.')[0]+"_thumb."+item.ImageSource.Split('.')[1])" />
+
+                    </div>
+                    <h5 class="lot-header-index">
+                        @(item.Name.Length <= 20 ? item.Name : item.Name.Substring(0, 20))<br />
+                    </h5>
+                    <p class="product-header">
+                        @{
+                            var span = item.DeadLine - DateTime.Now;
+                        }
+                        @if (span.TotalMilliseconds >= 0)
+                        {
+                            <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
+                                <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
+                        }
+                        else
+                        {
+                            <b>@CharrityAuction.Resource.LotDayPassed</b>
+                                <br />
+                                <b>@CharrityAuction.Resource.PassedSecondString</b>
+
+                        }
+                    </p>
+                    <input type="button" class="btn btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
 
                 </div>
-                <h5 class="lot-header-index">
-                    @(item.Name.Length <= 20 ? item.Name : item.Name.Substring(0, 20))<br />
-                </h5>
-                <p class="product-header">
-                    @{
-                        var span = item.DeadLine - DateTime.Now;
-                    }
-                    @if (span.TotalMilliseconds >= 0)
-                    {
-                        <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
-                                <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
-                    }
-                    else
-                    {
-                        <b>@CharrityAuction.Resource.LotDayPassed</b>
-                                <br />
-                                    <b>@CharrityAuction.Resource.PassedSecondString</b>
-
-                    }
-                </p>
-                <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
-
-            </div>
-        </div>
+            </a> </div>
                         }
 </div>
 

@@ -113,7 +113,7 @@
                     }
                     else
                     {
-                        <p style="color:red;">@Resource.LotDayPassed</p>
+                        <p style="color:red;">@Resource.LotDayPassed @Resource.PassedSecondString</p>
                     }
                 </div>
             </div>
@@ -182,7 +182,7 @@
         var min = parseInt($(this).attr('min'));
         if (amount < min)
         {
-            alert("@Resource.MinBidAlert")
+            alert("@Resource.MinBidAlert ")
         }
         $.ajax({
             type: "POST",
@@ -198,7 +198,7 @@
         });
     }
     function deadlinePassed() {
-        alert('@Resource.LotDayPassed')
+        alert('@Resource.LotDayPassed @Resource.PassedSecondString')
     }
 
 

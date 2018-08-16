@@ -59,7 +59,7 @@ namespace CharrityAuction.Controllers
         {
             if (id == null)
                 id = CategoryModel.GetCategoryById(null).First().Id;
-            var lots = LotModel.GetLotByCategoryId(Convert.ToInt32(id));
+            var lots = LotModel.AdminGetLotByCategoryId(Convert.ToInt32(id));
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
             
             return View(lots);
@@ -175,7 +175,7 @@ namespace CharrityAuction.Controllers
 
         public ActionResult EditCharity(int id)
         {
-            var charity = Charity.GetCharityById(id);
+            var charity = Charity.GetCharityById(id).First();
             return View("CharityCreate", charity);
         }
 

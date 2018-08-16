@@ -75,7 +75,7 @@ namespace CharrityAuction.Controllers
             var bids = BidModel.GetBidByLotId(id);
             if (bids.Count >= 5)
             {
-                var tops = bids.Skip(Math.Max(0, bids.Count() - 5)).Take(5);
+                List<BidModel> tops = bids.Take(5).ToList();
                 return PartialView(tops);
             }
             else

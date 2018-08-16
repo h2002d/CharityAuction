@@ -71,6 +71,118 @@ namespace CharrityAuction.DAO
                 }
             }
         }
+         internal List<LotModel> geAlltLotById(int? id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_GetAllLots", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                        if (id == null)
+                            command.Parameters.AddWithValue("@Id", DBNull.Value);
+                        else
+                            command.Parameters.AddWithValue("@Id", id);
+
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<LotModel> lotList = new List<LotModel>();
+                        while (rdr.Read())
+                        {
+                            LotModel lot = new LotModel();
+                            lot.Id = Convert.ToInt32(rdr["Id"]);
+                            lot.ImageSource = rdr["ImageSource"].ToString();
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
+
+                            lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
+                            lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
+                            lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
+
+                            lot.CategoryId = Convert.ToInt32(rdr["CategoryId"]);
+                            lot.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
+                            lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity= Convert.ToBoolean(rdr["isShownCelebrity"]);
+
+                            lotList.Add(lot);
+                        }
+                        return lotList;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+        internal List<LotModel> getEndedLots()
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_GetEndedLots", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                  
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<LotModel> lotList = new List<LotModel>();
+                        while (rdr.Read())
+                        {
+                            LotModel lot = new LotModel();
+                            lot.Id = Convert.ToInt32(rdr["Id"]);
+                            lot.ImageSource = rdr["ImageSource"].ToString();
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
+
+                            lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
+                            lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
+                            lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
+
+                            lot.CategoryId = Convert.ToInt32(rdr["CategoryId"]);
+                            lot.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
+                            lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity = Convert.ToBoolean(rdr["isShownCelebrity"]);
+
+                            lotList.Add(lot);
+                        }
+                        return lotList;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
 
         internal List<LotModel> getLotByQuery(string query)
         {
@@ -199,14 +311,17 @@ namespace CharrityAuction.DAO
                 switch (orderId)
                 {
                     case 1:
-                        str.Append(" ORDER BY DeadLine ASC");
+                        str.Append(" AND DeadLine>GETDATE() ORDER BY DeadLine ASC");
                         break;
                     case 2:
-                        str.Append(" ORDER BY Id DESC");
+                        str.Append(" AND DeadLine>GETDATE() ORDER BY Id DESC");
 
                         break;
                     case 3:
-                        str.Append(" ORDER BY CurrentBid DESC");
+                        str.Append(" AND DeadLine>GETDATE() ORDER BY CurrentBid DESC");
+                        break;
+                    case 4:
+                        str.Append(" AND DeadLine<GETDATE()");
                         break;
                 }
                 using (SqlCommand command = new SqlCommand(str.ToString(), sqlConnection))
@@ -316,7 +431,64 @@ namespace CharrityAuction.DAO
             }
         }
 
-        
+
+        internal List<LotModel> getAdminLotByCategoryId(int categoryId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_AdminGetLotByCategory", sqlConnection))
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@CategoryId", categoryId);
+                        string culture = Thread.CurrentThread.CurrentCulture.Parent.Name.ToUpper();
+
+                        SqlDataReader rdr = command.ExecuteReader();
+                        List<LotModel> lotList = new List<LotModel>();
+                        while (rdr.Read())
+                        {
+                            LotModel lot = new LotModel();
+                            lot.Id = Convert.ToInt32(rdr["Id"]);
+                            lot.ImageSource = rdr["ImageSource"].ToString();
+
+                            lot.Name = rdr["Name_" + culture].ToString();
+                            lot.Name_AM = rdr["Name_AM"].ToString();
+                            lot.Name_EN = rdr["Name_EN"].ToString();
+                            lot.Info = rdr["Info_" + culture].ToString();
+                            lot.Info_AM = rdr["Info_AM"].ToString();
+                            lot.Info_EN = rdr["Info_EN"].ToString();
+                            lot.Description = rdr["Description_" + culture].ToString();
+                            lot.Description_AM = rdr["Description_AM"].ToString();
+                            lot.Description_EN = rdr["Description_EN"].ToString();
+                            lot.Policy = rdr["Policy_" + culture].ToString();
+                            lot.Policy_AM = rdr["Policy_AM"].ToString();
+                            lot.Policy_EN = rdr["Policy_EN"].ToString();
+                            lot.CurrentBid = Convert.ToDecimal(rdr["CurrentBid"].ToString());
+                            lot.Step = Convert.ToDecimal(rdr["Step"].ToString());
+                            lot.EstimatedValue = Convert.ToDecimal(rdr["EstimatedValue"].ToString());
+
+                            lot.CategoryId = Convert.ToInt32(rdr["CategoryId"]);
+                            lot.CreateDate = Convert.ToDateTime(rdr["CreateDate"]);
+                            lot.DeadLine = Convert.ToDateTime(rdr["DeadLine"]);
+                            lot.OccureDate = Convert.ToDateTime(rdr["OccureDate"]);
+
+                            lot.PartnerId = Convert.ToInt32(rdr["PartnerId"]);
+                            lot.isShownCelebrity = Convert.ToBoolean(rdr["isShownCelebrity"]);
+                            lotList.Add(lot);
+                        }
+                        return lotList;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+
 
         internal List<LotModel> getLotByCategoryIdOrder(int categoryId,int orderId)
         {
@@ -326,14 +498,17 @@ namespace CharrityAuction.DAO
                 switch(orderId)
                 {
                     case 1:
-                        str.Append(" ORDER BY DeadLine DESC");
+                        str.Append(" AND DeadLine>GETDATE() ORDER BY DeadLine DESC");
                         break;
                     case 2:
-                        str.Append(" ORDER BY Id DESC");
+                        str.Append(" AND DeadLine>GETDATE() ORDER BY Id DESC");
 
                         break;
                     case 3:
-                        str.Append(" ORDER BY CurrentBid DESC");
+                        str.Append(" AND DeadLine>GETDATE() ORDER BY CurrentBid DESC");
+                        break;
+                    case 4:
+                        str.Append(" AND DeadLine<GETDATE()");
                         break;
                 }
                 using (SqlCommand command = new SqlCommand(str.ToString(), sqlConnection))

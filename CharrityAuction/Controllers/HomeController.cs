@@ -48,7 +48,13 @@ namespace CharrityAuction.Controllers
 
             return View();
         }
+        public ActionResult Ended()
+        {
+            ViewBag.Categories = CategoryModel.GetCategoryById(null);
 
+            var lots = LotModel.GetEndedLots();
+            return View(lots);
+        }
         public ActionResult Search(string query)
         {
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
@@ -104,6 +110,7 @@ namespace CharrityAuction.Controllers
 
         public ActionResult Partners(int id)
         {
+            ViewBag.Title = id == 0 ? Resource.MenuStars : Resource.MenuCoWorkers;
             var partners = Partner.GetPartner(null, id);
             return View(partners);
         }

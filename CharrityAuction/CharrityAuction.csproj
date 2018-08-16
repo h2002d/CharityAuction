@@ -259,6 +259,7 @@
     <Content Include="images\instagramIconInactive.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\removeIcon.png" />
+    <Content Include="images\searchicon.png" />
     <Content Include="images\vkIcon.png" />
     <Content Include="images\vkIconInactive.png" />
     <Content Include="Scripts\admin.js" />
@@ -439,6 +440,7 @@
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Manage\UserInfo.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Ended.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

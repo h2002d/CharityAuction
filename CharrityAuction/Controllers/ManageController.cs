@@ -86,7 +86,11 @@ namespace CharrityAuction.Controllers
             ManageMessageId message;
             try
             {
-                user.Save();
+               int code= user.Save();
+                if(code==11)
+                {
+                    return Json(code, JsonRequestBehavior.AllowGet);
+                }
                 message = ManageMessageId.SetInfoSuccess;
             }
             catch

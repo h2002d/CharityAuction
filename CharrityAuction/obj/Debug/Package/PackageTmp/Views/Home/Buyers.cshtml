@@ -3,18 +3,17 @@
     ViewBag.Title = "Buyers";
 }
 <div class="row" id="items">
-    @foreach (var item in Model)
-            {
-        @*if (count % 3 == 0 && count == 0)
-            {
-                @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
-            }*@
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+
 
         <div class="col-sm-4" align="center">
             <div class="row bordered buyer-item">
                 <div class="col-sm-7 container" style="padding:0;">
 
-                    <img style="width:100%; height:auto;" src="@(item.Lot.ImageSource.Split('.')[0]+"_thumb."+item.Lot.ImageSource.Split('.')[1])" />
+                    <img style="width:100%; height:auto;" src="@(item.Lot.ImageSource.Split('.')[0] + "_thumb." + item.Lot.ImageSource.Split('.')[1])" />
 
                 </div>
                 <div class="col-sm-5" style="text-align:left;">
@@ -26,16 +25,9 @@
             </div>
         </div>
     </div>
-        @*if (count % 2 == 0 && count != 0)
-            {
-                @Html.Raw("</div>");
-                count = 0;
-            }
-            else
-            {
-                count++;
-            }*@
 
+
+        }
     }
 </div>
 

@@ -58,6 +58,9 @@ namespace CharrityAuction.Models
         public DateTime OccureDate { get; set; }
 
         public Decimal CurrentBid { get; set; }
+
+       
+
         public Decimal Step { get; set; }
         public Decimal EstimatedValue { get; set; }
         public List<LotImages> Images { get
@@ -78,6 +81,14 @@ namespace CharrityAuction.Models
         {
             return DAO.getLotById(Id);
         }
+        public static List<LotModel> GetAllLotById(int? Id)
+        {
+            return DAO.geAlltLotById(Id);
+        }
+        public static List<LotModel> GetEndedLots()
+        {
+            return DAO.getEndedLots();
+        }
 
         public static List<LotModel>GetLotByQuery(string query)
         {
@@ -86,6 +97,10 @@ namespace CharrityAuction.Models
         public static List<LotModel> GetLotByCategoryId(int CategoryId)
         {
             return DAO.getLotByCategoryId(CategoryId);
+        }
+        public static List<LotModel> AdminGetLotByCategoryId(int CategoryId)
+        {
+            return DAO.getAdminLotByCategoryId(CategoryId);
         }
 
         public static List<LotModel> GetLotByOrder(int id)

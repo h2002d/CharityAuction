@@ -8,70 +8,70 @@
             <p class="centered" style="white-space:normal;">
                 <span style="font-size:30px;">@ViewBag.Top.Name</span> <br />
             </p>
-            <img src="@ViewBag.Top.ImageSource" style="width:100%;height:100%;" />
-            
-
             @{
-                var spantop = ViewBag.Top.DeadLine - DateTime.Now;
+            var spantop = ViewBag.Top.DeadLine - DateTime.Now;
             }
             @if (spantop.TotalMilliseconds >= 0)
             {
-                <b class="bottom-left">
+            <b class="bottom-left">
 
-                    @CharrityAuction.Resource.Remains @spantop.Days @CharrityAuction.Resource.Day @spantop.Hours @CharrityAuction.Resource.Hours @spantop.Minutes @CharrityAuction.Resource.Minutes<br />
-                </b>
+                @CharrityAuction.Resource.Remains @spantop.Days @CharrityAuction.Resource.Day @spantop.Hours @CharrityAuction.Resource.Hours @spantop.Minutes @CharrityAuction.Resource.Minutes<br />
+            </b>
             }
 
             else
             {
-                <b class="bottom-left">@Resource.LotDayPassed</b>
-                <br />
+            <b class="bottom-left">@Resource.LotDayPassed @Resource.PassedSecondString</b>
+            <br />
             }
+            <img src="@ViewBag.Top.ImageSource" style="width:100%;height:100%;" />
         </div>
         <div class="col-sm-4 lot-preview short-div" id="@ViewBag.SecondTop.Id" style="height:268px;">
 
             <p class="centered" style="white-space:normal;">
                 <span>@ViewBag.SecondTop.Name</span>
             </p>
-            <img src="@ViewBag.SecondTop.ImageSource" style="width:100%;height:100%;" />
 
             @{
-                var spanSecondtop = ViewBag.SecondTop.DeadLine - DateTime.Now;
+            var spanSecondtop = ViewBag.SecondTop.DeadLine - DateTime.Now;
             }
             @if (spanSecondtop.TotalMilliseconds >= 0)
             {
-                <b class="bottom-left">
+            <b class="bottom-left">
 
-                    @CharrityAuction.Resource.Remains @spanSecondtop.Days @CharrityAuction.Resource.Day @spanSecondtop.Hours @CharrityAuction.Resource.Hours @spanSecondtop.Minutes @CharrityAuction.Resource.Minutes<br />
-                </b>
+                @CharrityAuction.Resource.Remains @spanSecondtop.Days @CharrityAuction.Resource.Day @spanSecondtop.Hours @CharrityAuction.Resource.Hours @spanSecondtop.Minutes @CharrityAuction.Resource.Minutes<br />
+            </b>
 
             }
 
             else
             {
-                <b class="bottom-left">@Resource.LotDayPassed</b>
+            <b class="bottom-left">@Resource.LotDayPassed @Resource.PassedSecondString</b>
             }
+            <img src="@ViewBag.SecondTop.ImageSource" style="width:100%;height:100%;" />
+
         </div>
         <div class="col-sm-4 lot-preview short-div" id="@ViewBag.ThirdTop.Id" style="height:268px;">
             <p class="centered" style="white-space:normal;">
                 <span>@ViewBag.ThirdTop.Name</span>
             </p>
-            <img src="@ViewBag.ThirdTop.ImageSource" style="width:100%;height:100%;" />
 
             @{
-                var spanThirdtop = ViewBag.ThirdTop.DeadLine - DateTime.Now;
+            var spanThirdtop = ViewBag.ThirdTop.DeadLine - DateTime.Now;
             }
             @if (spanThirdtop.TotalMilliseconds >= 0)
             {
-                <b class="bottom-left">
-                    @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
-                </b>
+            <b class="bottom-left">
+                @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
+            </b>
             }
 
             else
             {
-                <b class="bottom-left">@Resource.LotDayPassed</b>
+            <b class="bottom-left">@Resource.LotDayPassed @Resource.PassedSecondString</b>
             }
+            <img src="@ViewBag.ThirdTop.ImageSource" style="width:100%;height:100%;" />
+
         </div>
 
     </div>
@@ -80,9 +80,9 @@
             <div class="vertical-menu" id="vertical-menu" data-spy="affix" data-offset-top="536">
                 @foreach (var categories in ViewBag.Categories)
                 {
-                    <a class="category-menu" href="/home/category/@categories.Id">@categories.Name</a>
+                <a class="category-menu" href="/home/category/@categories.Id">@categories.Name</a>
                 }
-            </div>
+                </div>
         </div>
         <div class="col-sm-9">
             <div class="row" style="margin-bottom:20px;">
@@ -92,23 +92,26 @@
                         <option value="1">Closing next</option>
                         <option value="2">Recently added</option>
                         <option value="3">Bid amount(high to low)</option>
+                        <option value="4">Close</option>
+
                     </select>
                 </div>
             </div>
 
             <div class="row" id="items">
                 @foreach (var item in Model)
-            {
-                    @*if (count % 3 == 0 && count == 0)
-                        {
-                            @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
-                        }*@
+                {
+                @*if (count % 3 == 0 && count == 0)
+                {
+                @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                }*@
 
-                    <div class="col-sm-4" align="center">
-                        @if (this.User.IsInRole("Administrator"))
-                        {
-                            <a href="/admin/editlot/@item.Id">Edit lot</a>
-                        }
+                <div class="col-sm-4" align="center">
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                    <a href="/admin/editlot/@item.Id">Edit lot</a>
+                    }
+                    <a class="lot-index-container" href="/home/item/@item.Id">
                         <div class="row lot-preview bordered lot-container-div " id="@item.Id">
                             <div class="col-sm-12 container" style="padding:0;">
 
@@ -120,36 +123,37 @@
                             </h5>
                             <p class="product-header">
                                 @{
-                                    var span = item.DeadLine - DateTime.Now;
+                                var span = item.DeadLine - DateTime.Now;
                                 }
                                 @if (span.TotalMilliseconds >= 0)
                                 {
-                                    <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
-                                    <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
+                                <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
+                                <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
                                 }
                                 else
                                 {
-                                    <b>@CharrityAuction.Resource.LotDayPassed</b>
-                                    <br />
-                                    <b>@CharrityAuction.Resource.PassedSecondString</b>
+                                <b>@CharrityAuction.Resource.LotDayPassed</b>
+                                <br />
+                                <b>@CharrityAuction.Resource.PassedSecondString</b>
 
                                 }
-                                </p>
-                                <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
+                            </p>
+                            <input type="button" class="btn btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
 
                         </div>
-                    </div>
-                    @*if (count % 2 == 0 && count != 0)
-                        {
-                            @Html.Raw("</div>");
-                            count = 0;
-                        }
-                        else
-                        {
-                            count++;
-                        }*@
+                    </a>
+                </div>
+                @*if (count % 2 == 0 && count != 0)
+                {
+                @Html.Raw("</div>");
+                count = 0;
+                }
+                else
+                {
+                count++;
+                }*@
 
-                                    }
+                }
             </div>
         </div>
     </div>

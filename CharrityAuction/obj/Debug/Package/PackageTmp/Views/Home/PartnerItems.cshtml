@@ -15,31 +15,32 @@
 <div class="container">
     @foreach (var lot in Model)
     {
-        <div class="row lot-preview lot-partners" id="@lot.Id">
-            <div class="col-sm-3"><img src="@lot.ImageSource" style="width:100%; height:auto;" /></div>
-            <div class="col-sm-4" style="white-space:normal;">@lot.Name</div>
-            <div class="col-sm-5">
-                <span class="admin-label">@Resource.EstimatedValue: </span> @lot.EstimatedValue<br />
-                <span class="admin-label">@Resource.CurrentBid: </span>@lot.CurrentBid
-                <br />
-                @{
-                    var span = lot.DeadLine - DateTime.Now;
-                }
-                @if (span.TotalMilliseconds >= 0)
-                {
-                    <b>@span.Days @CharrityAuction.Resource.Day @span.Hours @CharrityAuction.Resource.Hours @span.Minutes @CharrityAuction.Resource.Minutes</b><br />
-
-                }
-                else
-                {
-                    <b>@Resource.LotDayPassed</b>
-                }
-                <br />
-                <input type="button" class="btn btn-danger btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@lot.Id'" />
-
-            </div>
-        </div>
+        <a href="/home/item/@lot.Id" class="lot-index-container">
+            <div class="row lot-preview lot-partners" id="@lot.Id">
+                <div class="col-sm-3"><img src="@lot.ImageSource" style="width:100%; height:auto;" /></div>
+                <div class="col-sm-4" style="white-space:normal;">@lot.Name</div>
+                <div class="col-sm-5">
+                    <span class="admin-label">@Resource.EstimatedValue: </span> @lot.EstimatedValue<br />
+                    <span class="admin-label">@Resource.CurrentBid: </span>@lot.CurrentBid
+                    <br />
+                    @{
+                        var span = lot.DeadLine - DateTime.Now;
                     }
+                    @if (span.TotalMilliseconds >= 0)
+                {
+                        <b>@span.Days @CharrityAuction.Resource.Day @span.Hours @CharrityAuction.Resource.Hours @span.Minutes @CharrityAuction.Resource.Minutes</b><br />
+
+                    }
+                    else
+                    {
+                        <b>@Resource.LotDayPassed @Resource.PassedSecondString</b>
+                    }
+                    <br />
+                    <input type="button" class="btn btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@lot.Id'" />
+
+                </div>
+            </div>
+        </a>
+                        }
 
 </div>
-

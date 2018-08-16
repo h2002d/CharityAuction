@@ -40,9 +40,9 @@ namespace CharrityAuction.Models
             this.UserId = user.UserId;
 
         }
-        public void Save()
+        public int Save()
         {
-            DAO.saveUser(this);
+            return DAO.saveUser(this);
         }
     }
 }

@@ -77,7 +77,18 @@ namespace CharrityAuction.Controllers
             {
                 return View(model);
             }
-
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", Resource.InvalidLogin);
+                return View(model);
+            }
+            //Add this to check if the email was confirmed.
+            if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+            {
+                ModelState.AddModelError("", Resource.PleaseConfirm);
+                return View(model);
+            }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -168,13 +179,21 @@ namespace CharrityAuction.Controllers
                     userInfo.Nickname = model.Nickname;
                     userInfo.Phone = model.Phone;
                     userInfo.UserId = user.Id;
-                    userInfo.Save();
+                    int errorCode=userInfo.Save();
+                    if(errorCode==11)
+                    {
+                        ModelState.AddModelError("", "Nickname already exists");
+                        return View(model);
+                    }
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                   MailModel mail = new MailModel();
+                    mail.Email = UserManager.FindById(user.Id).Email;
+                    mail.Subject = "Confirm Email";
+                    mail.Body = "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>";
+                    mail.SendMail();
                     return RedirectToAction("Index", "Home");
                 }
                 
@@ -225,10 +244,14 @@ namespace CharrityAuction.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                MailModel mail = new MailModel();
+                mail.Subject = "Reset password!";
+                mail.Email = UserManager.FindById(user.Id).Email;
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                mail.Body = string.Format("Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                mail.SendMail();
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form

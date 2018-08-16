@@ -5,20 +5,28 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right login-menu">
             @foreach (var i in CharrityAuction.SiteLanguages.AvailableLanguages)
             {
-                <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText" }) <text>&nbsp;</text></li>
+                <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = " login-menu-item" }) <text>&nbsp;</text></li>
             }
         </ul>
         <br />
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right login-menu">
+                @{ 
+                    CharrityAuction.Models.UserViewModel model = new CharrityAuction.Models.UserViewModel(User.Identity.GetUserId());
+                    string nickname = "";
+                    if (model != null)
+                    {
 
+                        nickname = model.Nickname;
+                    }
+                }
 
                 <li>
-                    @Html.ActionLink(User.Identity.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @Html.ActionLink(nickname, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class= " login-menu-item" })
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                <li><a  class="login-menu-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
     }
 }
@@ -27,7 +35,7 @@ else
     <ul class="nav navbar-nav navbar-right login-menu">
         @foreach (var i in CharrityAuction.SiteLanguages.AvailableLanguages)
         {
-            <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = "headerText login-menu-item" })</li>
+            <li>@Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, new { @class = " login-menu-item" })</li>
         }
         <li>@Html.ActionLink(CharrityAuction.Resource.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login-menu-item" })</li>
         <li>@Html.ActionLink(CharrityAuction.Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-menu-item" })</li>
