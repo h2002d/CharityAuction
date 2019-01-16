@@ -6,8 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHMsLg0t4Mk2j+Xp8Enbr0QAAAAACAAAAAAAQZgAAAAEAACAAAADHUGDBjLrrFLb36A/Cgm/NXP8bIN3JLzZYJ5HOb8qChgAAAAAOgAAAAAIAACAAAADg0y5XOuPz9L7fvGoXU6IO95hYyKtHJMuleJrw2TlNBiAAAAAlNshAwIEfeORxE8AVyAb5jDL0Zb1X2SOXwu2c8DbmjEAAAABvA8/fim8SW8Hf8APZDoXGbpYOecviGbDYlg/MQuhpipGzvDtyHiUzdVzegshxrTItLk1YCsSi/JhyMytf/VHL</EncryptedPassword>
-    <_PublishTargetUrl>ftp://FTP.SITE4NOW.NET/site1</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA02/3gnWWBk+5zfD+f10CJQAAAAACAAAAAAAQZgAAAAEAACAAAAD9CtmIpJO22w2+3e9z7Y3Hke51j8p4F7YOGVW4bi5gRQAAAAAOgAAAAAIAACAAAAChqeMGNGpYniFtR90+zbHenr6wwxSa8NjvoViq/kBVkiAAAADmsi21DBW/Lk4oVZhrXK19asQmwchVQBU8Q8VgVbk33kAAAADykf0wY6NRMFGnspM/4cfQjSkRIAm8ydqi7YuLlVUrsNBlBo+DxUw8AH0KQJje6000hn+/hw+zbhFAz2ykn6I0</EncryptedPassword>
+    <_PublishTargetUrl>ftp://ftp-eu.site4now.net/site1</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -23,13 +23,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:27:03</publishTime>
     </File>
     <File Include="bin/CharrityAuction.dll">
-      <publishTime>05/30/2018 22:47:30</publishTime>
+      <publishTime>08/16/2018 12:56:06</publishTime>
     </File>
     <File Include="bin/CharrityAuction.pdb">
-      <publishTime>05/30/2018 22:47:30</publishTime>
+      <publishTime>08/16/2018 12:56:06</publishTime>
     </File>
     <File Include="bin/en/CharrityAuction.resources.dll">
-      <publishTime>05/30/2018 22:47:30</publishTime>
+      <publishTime>08/16/2018 12:56:07</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 20:32:26</publishTime>
@@ -695,13 +695,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2018 09:21:13</publishTime>
     </File>
     <File Include="Views/Bid/_LotLastBidPartial.cshtml">
-      <publishTime>03/22/2018 11:49:03</publishTime>
+      <publishTime>03/22/2018 15:58:03</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>03/22/2018 11:53:17</publishTime>
     </File>
     <File Include="Views/Home/Buyers.cshtml">
-      <publishTime>05/30/2018 22:35:49</publishTime>
+      <publishTime>06/01/2018 07:38:23</publishTime>
     </File>
     <File Include="Views/Home/Category.cshtml">
       <publishTime>05/05/2018 11:30:38</publishTime>
@@ -788,7 +788,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 08:26:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/03/2018 14:24:53</publishTime>
+      <publishTime>08/16/2018 13:41:32</publishTime>
     </File>
   </ItemGroup>
 </Project>
