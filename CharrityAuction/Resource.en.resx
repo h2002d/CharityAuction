@@ -130,7 +130,7 @@
     <value>CURRENT BID</value>
   </data>
   <data name="DeadLine" xml:space="preserve">
-    <value>TIME LEFT TO BID</value>
+    <value>TIME LEFT</value>
   </data>
   <data name="EstimatedValue" xml:space="preserve">
     <value>EST. VALUE</value>
@@ -142,7 +142,7 @@
     <value>Login</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value>Main</value>
+    <value>Home</value>
   </data>
   <data name="MainDetails" xml:space="preserve">
     <value>Bid</value>
@@ -175,10 +175,10 @@
     <value>Video</value>
   </data>
   <data name="MenuWhoWeHelp" xml:space="preserve">
-    <value>Who we help</value>
+    <value>Who do we help</value>
   </data>
   <data name="MenuCoWorkers" xml:space="preserve">
-    <value>Co-Workers</value>
+    <value>Partners</value>
   </data>
   <data name="MenuPayment" xml:space="preserve">
     <value>Payment</value>
@@ -187,16 +187,16 @@
     <value>Rules</value>
   </data>
   <data name="MenuStars" xml:space="preserve">
-    <value>Stars</value>
+    <value>Good Stars</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Day</value>
+    <value>D.</value>
   </data>
   <data name="Hours" xml:space="preserve">
-    <value>Hours</value>
+    <value>H.</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>Minutes</value>
+    <value>M.</value>
   </data>
   <data name="Remains" xml:space="preserve">
     <value>REMAINS</value>
@@ -236,7 +236,7 @@
     <value>Date</value>
   </data>
   <data name="LotDayPassed" xml:space="preserve">
-    <value>Lot is closed</value>
+    <value>AUCTION CLOSED</value>
   </data>
   <data name="LotDetails" xml:space="preserve">
     <value>Additional Lot Detail</value>
@@ -278,7 +278,7 @@
     <value>Phone</value>
   </data>
   <data name="RegistrationPrivacy" xml:space="preserve">
-    <value>I agree that I have read and accept the terms of the Privacy Policy and the Terms of Use.</value>
+    <value>I agree that I have read and accept the terms of the &lt;a href='/Home/Privacy' style="color:#0973bf"&gt;Privacy Policy&lt;/a&gt; and the Terms of Use.</value>
   </data>
   <data name="RegistrationRequiredFields" xml:space="preserve">
     <value>Please fill in required fields</value>
@@ -311,7 +311,7 @@
     <value>Change your account settings</value>
   </data>
   <data name="PassedSecondString" xml:space="preserve">
-    <value>Deadline passed</value>
+    <value />
   </data>
   <data name="MinBidAlert" xml:space="preserve">
     <value>Amount is lower than the min bid amount</value>

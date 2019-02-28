@@ -1,9 +1,9 @@
 ﻿@model List<CharrityAuction.Models.BidModel>
 <table id="bids">
     <tr>
-        <th>@Resource.Buyer</th>
-        <th>@Resource.LotValue</th>
-        <th colspan="2">@Resource.LotDate</th>
+        <th class="color-blue">@Resource.Buyer</th>
+        <th class="color-blue">@Resource.LotValue</th>
+        <th colspan="2" style="text-align:center;" class="color-blue">@Resource.LotDate</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -11,7 +11,7 @@
             <td>@item.User.Nickname</td>
             <td>@item.Amount</td>
             <td>@item.CreateDate.ToString("hh:mm tt", System.Globalization.CultureInfo.InvariantCulture)</td>
-            <td>@item.CreateDate.ToString("dd MM yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
+            <td>@item.CreateDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
 
         </tr>
     }

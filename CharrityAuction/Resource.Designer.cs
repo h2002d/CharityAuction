@@ -19,7 +19,7 @@ namespace CharrityAuction {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -70,7 +70,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Դրամ.
+        ///   Looks up a localized string similar to Դր..
         /// </summary>
         public static string AMD {
             get {
@@ -79,7 +79,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ՀԱՅՏ.
+        ///   Looks up a localized string similar to ԿԱՏԱՐԵԼ ՀԱՅՏ.
         /// </summary>
         public static string Bid {
             get {
@@ -115,7 +115,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ԸՆԹԱՑԻԿ ՀԱՅՏԵՐԻ ԱՐԺԵՔԸ.
+        ///   Looks up a localized string similar to ԸՆԹԱՑԻԿ ԱՐԺԵՔԸ.
         /// </summary>
         public static string CurrentBid {
             get {
@@ -206,7 +206,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ժամ.
+        ///   Looks up a localized string similar to ժ..
         /// </summary>
         public static string Hours {
             get {
@@ -278,7 +278,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ամսաթիվ.
+        ///   Looks up a localized string similar to Վերջնաժամկետ.
         /// </summary>
         public static string LotDate {
             get {
@@ -296,7 +296,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Լոթի նկարագրությունը.
+        ///   Looks up a localized string similar to Լոթի նկարագրություն.
         /// </summary>
         public static string LotDetails {
             get {
@@ -449,7 +449,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to րոպե.
+        ///   Looks up a localized string similar to ր..
         /// </summary>
         public static string Minutes {
             get {
@@ -647,7 +647,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ես կարդացել եմ և ընդունում եմ օգտագործման կանոնոնները.
+        ///   Looks up a localized string similar to Ես կարդացել եմ և ընդունում եմ օգտագործման &lt;a href=&apos;/Home/Privacy&apos; style=&quot;color:#0973bf&quot;&gt;կանոնոնները&lt;/a&gt;.
         /// </summary>
         public static string RegistrationPrivacy {
             get {

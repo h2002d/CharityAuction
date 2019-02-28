@@ -69,7 +69,7 @@ namespace CharrityAuction.DAO
                         command.Parameters.AddWithValue("@Help_EN", charity.Help_EN);
                         command.Parameters.AddWithValue("@Help_AM", charity.Help_AM);
                         command.Parameters.AddWithValue("@Money", charity.Money);
-                        command.Parameters.AddWithValue("@OccureDate", charity.Money);
+                        command.Parameters.AddWithValue("@OccureDate", charity.OccureDate);
 
                         return Convert.ToInt32(command.ExecuteScalar());
 

@@ -179,8 +179,8 @@ namespace CharrityAuction.Controllers
                     userInfo.Nickname = model.Nickname;
                     userInfo.Phone = model.Phone;
                     userInfo.UserId = user.Id;
-                    int errorCode=userInfo.Save();
-                    if(errorCode==11)
+                    int errorCode = userInfo.Save();
+                    if (errorCode == 11)
                     {
                         ModelState.AddModelError("", "Nickname already exists");
                         return View(model);
@@ -189,14 +189,14 @@ namespace CharrityAuction.Controllers
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                   MailModel mail = new MailModel();
+                    MailModel mail = new MailModel();
                     mail.Email = UserManager.FindById(user.Id).Email;
                     mail.Subject = "Confirm Email";
                     mail.Body = "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>";
                     mail.SendMail();
                     return RedirectToAction("Index", "Home");
                 }
-                
+
 
                 AddErrors(result);
             }
@@ -236,7 +236,7 @@ namespace CharrityAuction.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null && !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
@@ -477,7 +477,7 @@ namespace CharrityAuction.Controllers
             int i = 0;
             foreach (var error in result.Errors)
             {
-                if (error.Contains("already")& i==0)
+                if (error.Contains("already") & i == 0)
                 {
                     i++;
                     continue;

@@ -121,13 +121,13 @@
     <value>Մեր մասին</value>
   </data>
   <data name="AMD" xml:space="preserve">
-    <value>Դրամ</value>
+    <value>Դր.</value>
   </data>
   <data name="Bid" xml:space="preserve">
-    <value>ՀԱՅՏ</value>
+    <value>ԿԱՏԱՐԵԼ ՀԱՅՏ</value>
   </data>
   <data name="CurrentBid" xml:space="preserve">
-    <value>ԸՆԹԱՑԻԿ ՀԱՅՏԵՐԻ ԱՐԺԵՔԸ</value>
+    <value>ԸՆԹԱՑԻԿ ԱՐԺԵՔԸ</value>
   </data>
   <data name="DeadLine" xml:space="preserve">
     <value>Հայտերի ընդունման վերջնաժամկետը</value>
@@ -193,10 +193,10 @@
     <value>օր</value>
   </data>
   <data name="Hours" xml:space="preserve">
-    <value>ժամ</value>
+    <value>ժ.</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>րոպե</value>
+    <value>ր.</value>
   </data>
   <data name="Remains" xml:space="preserve">
     <value>ՄՆԱՑԵԼ Է</value>
@@ -233,13 +233,13 @@
     <value>Մուտք գործեք մասնակցելու համար</value>
   </data>
   <data name="LotDate" xml:space="preserve">
-    <value>Ամսաթիվ</value>
+    <value>Վերջնաժամկետ</value>
   </data>
   <data name="LotDayPassed" xml:space="preserve">
     <value>Տվյալ աճուրդն </value>
   </data>
   <data name="LotDetails" xml:space="preserve">
-    <value>Լոթի նկարագրությունը</value>
+    <value>Լոթի նկարագրություն</value>
   </data>
   <data name="LotOccureDate" xml:space="preserve">
     <value>Ամսաթիվ</value>
@@ -278,7 +278,7 @@
     <value>Հեռախոսահամար</value>
   </data>
   <data name="RegistrationPrivacy" xml:space="preserve">
-    <value>Ես կարդացել եմ և ընդունում եմ օգտագործման կանոնոնները</value>
+    <value>Ես կարդացել եմ և ընդունում եմ օգտագործման &lt;a href='/Home/Privacy' style="color:#0973bf"&gt;կանոնոնները&lt;/a&gt;</value>
   </data>
   <data name="RegistrationRequiredFields" xml:space="preserve">
     <value>Լրացրեք պահանջվող դաշտերը</value>

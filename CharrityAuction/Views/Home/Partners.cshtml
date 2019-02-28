@@ -1,19 +1,17 @@
 ﻿@model List<CharrityAuction.Models.Partner>
-@{
-    ViewBag.Title = Resource.MenuStars;
-}
-<h2>@ViewBag.Title</h2>
+
+<h2 style="color:#0094ff;margin-bottom:40px;">@ViewBag.Title</h2>
 
 <div class="col-sm-12">
     @{
         var count = 0;
     }
     @foreach (var item in Model)
-            {
-                if (count % 4 == 0 && count == 0)
-                {
+    {
+        if (count % 4 == 0 && count == 0)
+        {
             @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
-                }
+        }
 
         <div class="col-sm-3 bordered">
             <div class="row lot-partners-div" id="@item.Id">
@@ -24,19 +22,19 @@
                 <div class="col-sm-12" align="center">
                     <p style="color:#808080 ;font-size:12px;">@item.Name</p>
                 </div>
-               
+
             </div>
         </div>
         if (count % 3 == 0 && count != 0)
         {
             @Html.Raw("</div>");
-                    count = 0;
-                }
-                else
-                {
-                    count++;
-                }
+            count = 0;
+        }
+        else
+        {
+            count++;
+        }
 
-            }
+    }
 </div>
 

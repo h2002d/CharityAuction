@@ -55,10 +55,12 @@
                 </div>
                 <div class="col-sm-9">
                     @*<ul>
-                        <li>Occure Date:</li>
-                    </ul>*@
-                    <p>@Model.OccureDate.ToString("dd MM yyyy hh:mm ",
-                                               System.Globalization.CultureInfo.InvariantCulture)</p>
+                            <li>Occure Date:</li>
+                        </ul>*@
+                    <p>
+                        @Model.OccureDate.ToString("dd/MM/yyyy hh:mm ",
+                                            System.Globalization.CultureInfo.InvariantCulture)
+                    </p>
                     <hr />
                 </div>
             </div>
@@ -87,29 +89,33 @@
             <br />
             <div class="row">
                 <div class="col-sm-12" style="background-color:#f5f5f5; padding:10px 10px;">
-                    <p style="font-weight:700;">@CharrityAuction.Resource.DeadLine <br /> <span style="color:#c8c5c5;">@Model.DeadLine.ToString("dd MM yyyy hh:mm ",
-                                               System.Globalization.CultureInfo.InvariantCulture)</span></p>
+                    <p style="font-weight:700;" class="color-blue">
+                        @CharrityAuction.Resource.DeadLine <br /> <span style="color:#c8c5c5;">
+                            @Model.DeadLine.ToString("dd/MM/yyyy hh:mm ",
+        System.Globalization.CultureInfo.InvariantCulture)
+                        </span>
+                    </p>
                     @{
                         var span = Model.DeadLine - DateTime.Now;
                     }
                     @if (span.TotalMilliseconds >= 0)
                     {
 
-                    <ul class="countdown">
-                        <li>
-                            <span class="days">@span.Days</span>
-                            <p class="timeRefDays">@CharrityAuction.Resource.Day</p>
-                        </li>
-                        <li>
-                            <span class="hours">@span.Hours</span>
-                            <p class="timeRefHours">@CharrityAuction.Resource.Hours</p>
-                        </li>
-                        <li>
-                            <span class="minutes">@span.Minutes</span>
-                            <p class="timeRefMinutes">@CharrityAuction.Resource.Minutes</p>
-                        </li>
+                        <ul class="countdown">
+                            <li>
+                                <span class="days">@span.Days</span>
+                                <p class="timeRefDays">@CharrityAuction.Resource.Day</p>
+                            </li>
+                            <li>
+                                <span class="hours">@span.Hours</span>
+                                <p class="timeRefHours">@CharrityAuction.Resource.Hours</p>
+                            </li>
+                            <li>
+                                <span class="minutes">@span.Minutes</span>
+                                <p class="timeRefMinutes">@CharrityAuction.Resource.Minutes</p>
+                            </li>
 
-                    </ul>
+                        </ul>
                     }
                     else
                     {
@@ -119,45 +125,46 @@
             </div>
             <div class="row">
                 <div class="col-sm-7 lot-price">
-                    <p style="font-weight:700;">@CharrityAuction.Resource.CurrentBid</p>
-                    <p>@Model.CurrentBid @CharrityAuction.Resource.AMD</p>
+                    <p style="font-weight:700;" class="color-blue">@CharrityAuction.Resource.CurrentBid</p>
+                    <p class="money">@Model.CurrentBid @CharrityAuction.Resource.AMD</p>
                 </div>
                 <div class="col-sm-5 lot-price">
-                    <p style="font-weight:700;">@CharrityAuction.Resource.EstimatedValue</p>
-                    <p>@Model.EstimatedValue @CharrityAuction.Resource.AMD</p>
+                    <p style="font-weight:700;" class="color-blue">@CharrityAuction.Resource.EstimatedValue</p>
+                    <p class="money">@Model.EstimatedValue @CharrityAuction.Resource.AMD</p>
                 </div>
 
             </div>
-            <div class="row">
-                <p style="font-weight:700;">@CharrityAuction.Resource.LastBids</p>
-                <hr />
+            <div class="row container-lastBids">
+                <p style="font-weight:700;text-align: center;font-size: 25px;" class="color-blue">@CharrityAuction.Resource.LastBids</p>
                 @Html.Action("_LotLastBidPartial", "Bid", Model.Id)
                 <hr />
             </div>
             <div class="row">
-
-                <input type="number" min="@(Model.CurrentBid+Model.Step)" id="txtBid" value="@(Model.CurrentBid+Model.Step)" class="lot-input form-control" />
-               @if (Model.DeadLine > DateTime.Now)
-               {
-                   if (Request.IsAuthenticated)
-                   {
-                    <input type="button" value="@CharrityAuction.Resource.Bid" onclick="makeBid()" class="btn btn-danger btn-lot-bid" />
-                   }
-                   else
-                   {
-                    <input type="button" value="@CharrityAuction.Resource.Bid" onclick="bidRegistration()" class="btn btn-danger btn-lot-bid" />
-                   }
-               }
-               else
-               {
-                <input type="button" value="@CharrityAuction.Resource.Bid" onclick="deadlinePassed()" class="btn btn-danger btn-lot-bid" />
-               }
+                <div class="col-sm-10">
+                    <input type="number" min="@(Model.CurrentBid+Model.Step)" id="txtBid" value="@(Model.CurrentBid+Model.Step)" class="lot-input form-control" />
+                </div>
+                <div class="col-sm-2" style="font-weight: 700;font-size: 24px;line-height: 75px;text-align: left;padding: 0;">
+                    @Resource.AMD
+                </div>
+                @if (Model.DeadLine > DateTime.Now)
+                {
+                    if (Request.IsAuthenticated)
+                    {
+                        <input type="button" value="@CharrityAuction.Resource.Bid" onclick="makeBid()" class="btn btn-danger btn-lot-bid" />
+                    }
+                    else
+                    {
+                        <input type="button" value="@CharrityAuction.Resource.Bid" onclick="bidRegistration()" class="btn btn-danger btn-lot-bid" />
+                    }
+                }
+                else
+                {
+                    <input type="button" value="@CharrityAuction.Resource.Bid" onclick="deadlinePassed()" class="btn btn-danger btn-lot-bid" />
+                }
             </div>
-            @*<div class="row">
-                <input type="button" value="WATCHLIST" class="btn btn-info btn-lot-bid" style="background-color:#041F56;" />
-            </div>*@
         </div>
     </div>
+</div>
 </div>
 <div class="container h-100 createModule" id="bidLogin">
     <span class="close close-login" style="float:right">x</span>
@@ -171,7 +178,7 @@
 <script>
     //Countdown plugin
 
-   
+
     function bidRegistration() {
         $("#bidLogin").css("display", "block");
         $("#cover").css("display", "block");

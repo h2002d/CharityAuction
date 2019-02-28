@@ -2,9 +2,17 @@
     //var scroll_pos = 0;
     //        $(window).scroll(function () {
     //            scroll_pos = $(this).scrollTop();
-    
-    var distance = $('.vertical-menu').offset();
-    var topDistance = distance.top;
+    try {
+
+
+        var distance = $('.vertical-menu').offset();
+        var topDistance = distance.top;
+
+    } catch (err) {
+
+        // обработка ошибки
+
+    }
  
     //            if ((topDistance + 100) < scroll_pos) {
     //                $(".vertical-menu").addClass("fixed-category");

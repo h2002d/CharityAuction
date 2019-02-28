@@ -22,7 +22,6 @@ a {
 }
 
 .navbar-image {
-    width: 100%;
     height: auto;
 }
 /*.dropbtn {
@@ -144,6 +143,17 @@ textarea {
     color: black;
 }
 
+    .lot-preview:hover .bottom-left.passed {
+        color: red;
+    }
+
+.bottom-center {
+    position: absolute;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+
 .buyer-item {
     font-size: 12px;
     padding: 5px;
@@ -161,7 +171,7 @@ textarea {
 }
 
     .btn-bid:hover {
-        color:white;
+        color: white;
         background-color: #0D47A1;
     }
 
@@ -181,11 +191,29 @@ textarea {
 .lot-headings {
     font-size: 16px;
     font-weight: 800;
+    color: #1565C0;
+}
+
+.color-blue {
+    color: #1565C0;
+}
+
+.container-lastBids {
+    margin-top: 50px;
 }
 
 .timer {
     text-align: center;
     font-size: 60px;
+}
+
+.countdown li span {
+    color: #ba3030
+}
+
+.money {
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .lot-price {
@@ -302,7 +330,7 @@ textarea {
     text-decoration: none
 }
 
-    .category-menu:hover {
+    .active-menu, .category-menu:hover {
         text-decoration: none;
         background: #5A86B8;
         color: #FFF;
@@ -363,6 +391,7 @@ textarea {
     height: 54px;
     font-size: 18px;
     width: 100%;
+    border:1px solid red;
 }
 
 .registration-input-description {
@@ -805,6 +834,7 @@ h1.fromLeft:after {
     background-position: right;
     background-repeat: no-repeat;
 }
+
 #searchButton {
     height: 100%;
     width: 50px;
@@ -824,4 +854,3 @@ h1.fromLeft:after {
         color: black;
         text-decoration: none;
     }
-   
