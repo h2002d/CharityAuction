@@ -2,13 +2,20 @@
 @{
     ViewBag.Title = ViewBag.Partner.Name;
 }
-<a style="color:#0973bf" href="/Home/Partners/0">@Resource.MenuStars</a>
+@if (!ViewBag.Partner.isCelebrity)
+{
+    <a style="color:#0973bf" href="/Home/Partners/0">@Resource.MenuStars</a>
+}
+else
+{
+    <a style="color:#0973bf" href="/Home/Partners/1">@Resource.MenuCoWorkers</a>
+}
 <div class="row category-header">
     <div class="col-sm-2">
         <img style="width:100%;height:auto;" src="@ViewBag.Partner.ImageSource" />
     </div>
     <div class="col-sm-10">
-        <h3 >@ViewBag.Partner.Name</h3><br />
+        <h3>@ViewBag.Partner.Name</h3><br />
         <span>@ViewBag.Partner.Description</span>
     </div>
 </div>
@@ -27,7 +34,7 @@
                         var span = lot.DeadLine - DateTime.Now;
                     }
                     @if (span.TotalMilliseconds >= 0)
-                {
+                    {
                         <b>@span.Days @CharrityAuction.Resource.Day @span.Hours @CharrityAuction.Resource.Hours @span.Minutes @CharrityAuction.Resource.Minutes</b><br />
 
                     }
@@ -41,6 +48,6 @@
                 </div>
             </div>
         </a>
-                        }
+    }
 
 </div>

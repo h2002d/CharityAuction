@@ -296,7 +296,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Լոթի նկարագրություն.
+        ///   Looks up a localized string similar to Լոթի նկարագիր.
         /// </summary>
         public static string LotDetails {
             get {
@@ -314,7 +314,7 @@ namespace CharrityAuction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Կանոննր և կանոնակարգեր.
+        ///   Looks up a localized string similar to Կանոններ և կանոնակարգեր.
         /// </summary>
         public static string LotRulesRegulations {
             get {

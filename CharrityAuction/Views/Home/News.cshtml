@@ -5,6 +5,7 @@
 }
 
 
+<a style="color:#0973bf" href="/Home/newsfeed/"> @Resource.News</a>
 <div class="jumbotron" style="background-color:none!important;">
     <div class="container">
         <h2 class="col-sm-12">@Model.Name</h2>
@@ -24,7 +25,7 @@
                     </div>
                     <div class='offer-pg-cont col-sm-10'>
                         <div class='offer-pg'>
-                            @{ 
+                            @{
                                 int indexer = 0;
                             }
                             @foreach (var item in Model.Images)
@@ -50,25 +51,25 @@
 <div id="myModal" class="modal">
     <input type="hidden" id="imageIndex" />
     <span style="z-index:99999999999999;" class="close">&times;</span>
-   
+
     <div id="myCarousel" class="carousel">
         <!-- Indicators -->
         @*<ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            @{
-                int i = 1;
-                foreach (var image in Model.Images)
-                {
-                    <li data-target="#myCarousel" data-slide-to="@i"></li>
-                    i++;
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                @{
+                    int i = 1;
+                    foreach (var image in Model.Images)
+                    {
+                        <li data-target="#myCarousel" data-slide-to="@i"></li>
+                        i++;
+                    }
                 }
-            }
-        </ol>*@
+            </ol>*@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner modal-content">
-            @{ 
-                int index  = 0;
+            @{
+                int index = 0;
             }
             @foreach (var item in Model.Images)
             {

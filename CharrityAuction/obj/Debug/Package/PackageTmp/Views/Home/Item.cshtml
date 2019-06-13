@@ -207,7 +207,19 @@
     function deadlinePassed() {
         alert('@Resource.LotDayPassed @Resource.PassedSecondString')
     }
-
+    $(document).ready(function () {
+        setInterval(function () {
+            var mins = parseInt($('.minutes').text());
+            if (mins > 0) {
+                $('.minutes').text(mins - 1);
+            } else if (mins == 0)
+            {
+                var hours = parseInt($('.hours').text());
+                $('.hours').text(hours - 1);
+                $('.minutes').text(59);
+            }
+        }, 60*1000);
+    });
 
 
 </script>
@@ -215,7 +227,10 @@
     .countdown {
         list-style: none;
     }
-
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        opacity: 1;
+    }
         .countdown li {
             width: 24.4333%;
             display: inline-block;

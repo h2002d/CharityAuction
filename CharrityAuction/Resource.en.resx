@@ -190,13 +190,13 @@
     <value>Good Stars</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>D.</value>
+    <value>d.</value>
   </data>
   <data name="Hours" xml:space="preserve">
-    <value>H.</value>
+    <value>h.</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>M.</value>
+    <value>m.</value>
   </data>
   <data name="Remains" xml:space="preserve">
     <value>REMAINS</value>

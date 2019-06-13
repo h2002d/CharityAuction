@@ -239,13 +239,13 @@
     <value>Տվյալ աճուրդն </value>
   </data>
   <data name="LotDetails" xml:space="preserve">
-    <value>Լոթի նկարագրություն</value>
+    <value>Լոթի նկարագիր</value>
   </data>
   <data name="LotOccureDate" xml:space="preserve">
     <value>Ամսաթիվ</value>
   </data>
   <data name="LotRulesRegulations" xml:space="preserve">
-    <value>Կանոննր և կանոնակարգեր</value>
+    <value>Կանոններ և կանոնակարգեր</value>
   </data>
   <data name="LotValue" xml:space="preserve">
     <value>Արժեք</value>
