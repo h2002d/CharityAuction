@@ -19,9 +19,13 @@ namespace CharrityAuction.Controllers
             var thirdTop= LotModel.GetTopLots(3);
             ViewBag.ThirdTop = thirdTop;
             var lots = LotModel.GetLotById(null);
+            try{
             lots.RemoveAll(l => l.Id == top.Id);
             lots.RemoveAll(l => l.Id == secondTop.Id);
             lots.RemoveAll(l => l.Id == thirdTop.Id);
+            }
+            catch{
+            }
             ViewBag.Categories = CategoryModel.GetCategoryById(null);
             if (Request.IsAuthenticated)
             {
