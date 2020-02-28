@@ -11,7 +11,7 @@
             @{
             var spantop = ViewBag.Top.DeadLine - DateTime.Now;
             }
-            @if (spantop.TotalMilliseconds >= 0)
+            @if (spantop!=null&&spantop.TotalMilliseconds >= 0)
             {
             <b class="bottom-left bottom-center">
 
