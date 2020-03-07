@@ -35,7 +35,7 @@
             @{
             var spanSecondtop = ViewBag.SecondTop.DeadLine - DateTime.Now;
             }
-            @if (spanSecondtop.TotalMilliseconds >= 0)
+            @if (spanSecondtop!=null&&spanSecondtop.TotalMilliseconds >= 0)
             {
             <b class="bottom-left">
 
@@ -59,7 +59,7 @@
             @{
             var spanThirdtop = ViewBag.ThirdTop.DeadLine - DateTime.Now;
             }
-            @if (spanThirdtop.TotalMilliseconds >= 0)
+            @if (spanThirdtop!=null&&spanThirdtop.TotalMilliseconds >= 0)
             {
             <b class="bottom-left">
                 @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
