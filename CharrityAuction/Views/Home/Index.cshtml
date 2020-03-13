@@ -3,6 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 <div class="container">
+       @if(ViewBag.SecondTop!=null){
     <div class="row" style="max-height:536px;">
         <div class="col-sm-8 lot-preview" id="@ViewBag.Top.Id" style="height:536px;">
             <p class="centered" style="white-space:normal;">
@@ -26,6 +27,8 @@
             }
             <img src="@ViewBag.Top.ImageSource" style="width:100%;height:100%;" />
         </div>
+        }
+        @if(ViewBag.SecondTop!=null){
         <div class="col-sm-4 lot-preview short-div" id="@ViewBag.SecondTop.Id" style="height:268px;">
 
             <p class="centered" style="white-space:normal;">
@@ -51,6 +54,8 @@
             <img src="@ViewBag.SecondTop.ImageSource" style="width:100%;height:100%;" />
 
         </div>
+        }
+         @if(ViewBag.ThirdTop!=null){
         <div class="col-sm-4 lot-preview short-div" id="@ViewBag.ThirdTop.Id" style="height:268px;">
             <p class="centered" style="white-space:normal;">
                 <span>@ViewBag.ThirdTop.Name</span>
@@ -75,6 +80,7 @@
         </div>
 
     </div>
+    }
     <div class="row" style="margin-top:30px;">
         <div class="col-sm-3">
             <div class="vertical-menu" id="vertical-menu" data-spy="affix" data-offset-top="536">
