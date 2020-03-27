@@ -1,180 +1,184 @@
 ﻿@model List<CharrityAuction.Models.LotModel>
-@{
-    ViewBag.Title = "Home Page";
-}
-<div class="container">
-       @if(ViewBag.SecondTop!=null){
-    <div class="row" style="max-height:536px;">
-        <div class="col-sm-8 lot-preview" id="@ViewBag.Top.Id" style="height:536px;">
-            <p class="centered" style="white-space:normal;">
-                <span style="font-size:30px;">@ViewBag.Top.Name</span> <br />
-            </p>
-            @{
-            var spantop = ViewBag.Top.DeadLine - DateTime.Now;
-            }
-            @if (spantop!=null&&spantop.TotalMilliseconds >= 0)
-            {
-            <b class="bottom-left bottom-center">
-
-                @CharrityAuction.Resource.Remains @spantop.Days @CharrityAuction.Resource.Day @spantop.Hours @CharrityAuction.Resource.Hours @spantop.Minutes @CharrityAuction.Resource.Minutes<br />
-            </b>
-            }
-
-            else
-            {
-            <b class="bottom-left bottom-center passed">@Resource.LotDayPassed @Resource.PassedSecondString</b>
-            <br />
-            }
-            <img src="@ViewBag.Top.ImageSource" style="width:100%;height:100%;" />
-        </div>
-        }
-        @if(ViewBag.SecondTop!=null){
-        <div class="col-sm-4 lot-preview short-div" id="@ViewBag.SecondTop.Id" style="height:268px;">
-
-            <p class="centered" style="white-space:normal;">
-                <span>@ViewBag.SecondTop.Name</span>
-            </p>
-
-            @{
-            var spanSecondtop = ViewBag.SecondTop.DeadLine - DateTime.Now;
-            }
-            @if (spanSecondtop!=null&&spanSecondtop.TotalMilliseconds >= 0)
-            {
-            <b class="bottom-left">
-
-                @CharrityAuction.Resource.Remains @spanSecondtop.Days @CharrityAuction.Resource.Day @spanSecondtop.Hours @CharrityAuction.Resource.Hours @spanSecondtop.Minutes @CharrityAuction.Resource.Minutes<br />
-            </b>
-
-            }
-
-            else
-            {
-            <b class="bottom-left passed">@Resource.LotDayPassed @Resource.PassedSecondString</b>
-            }
-            <img src="@ViewBag.SecondTop.ImageSource" style="width:100%;height:100%;" />
-
-        </div>
-        }
-         @if(ViewBag.ThirdTop!=null){
-        <div class="col-sm-4 lot-preview short-div" id="@ViewBag.ThirdTop.Id" style="height:268px;">
-            <p class="centered" style="white-space:normal;">
-                <span>@ViewBag.ThirdTop.Name</span>
-            </p>
-
-            @{
-            var spanThirdtop = ViewBag.ThirdTop.DeadLine - DateTime.Now;
-            }
-            @if (spanThirdtop!=null&&spanThirdtop.TotalMilliseconds >= 0)
-            {
-            <b class="bottom-left">
-                @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
-            </b>
-            }
-
-            else
-            {
-            <b class="bottom-left passed">@Resource.LotDayPassed @Resource.PassedSecondString</b>
-            }
-            <img src="@ViewBag.ThirdTop.ImageSource" style="width:100%;height:100%;" />
-
-        </div>
-
-    </div>
+    @{
+        ViewBag.Title = "Home Page";
     }
-    <div class="row" style="margin-top:30px;">
-        <div class="col-sm-3">
-            <div class="vertical-menu" id="vertical-menu" data-spy="affix" data-offset-top="536">
-                @foreach (var categories in ViewBag.Categories)
-                {
-                <a class="category-menu" href="/home/category/@categories.Id">@categories.Name</a>
-                }
-                </div>
-        </div>
-        <div class="col-sm-9">
-            <div class="row" style="margin-bottom:20px;">
-
-                <div class="col-sm-12">
-                    <select class="form-control" style="float:right;" id="sort-select" onchange="orderIndexBy()">
-                        <option selected value="1">Closing next</option>
-                        <option value="4">Closed</option>
-                        <option value="2">Recently added</option>
-                        <option value="3">Bid amount(high to low)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row" id="items">
-                @foreach (var item in Model)
-                {
-                @*if (count % 3 == 0 && count == 0)
-                {
-                @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
-                }*@
-
-                <div class="col-sm-4" align="center">
-                    @if (this.User.IsInRole("Administrator"))
-                    {
-                    <a href="/admin/editlot/@item.Id">Edit lot</a>
+    <div class="container">
+        @if (ViewBag.SecondTop != null)
+        {
+            <div class="row" style="max-height:536px;">
+                <div class="col-sm-8 lot-preview" id="@ViewBag.Top.Id" style="height:536px;">
+                    <p class="centered" style="white-space:normal;">
+                        <span style="font-size:30px;">@ViewBag.Top.Name</span> <br />
+                    </p>
+                    @{
+                        var spantop = ViewBag.Top.DeadLine - DateTime.Now;
                     }
-                    <a class="lot-index-container" href="/home/item/@item.Id">
-                        <div class="row lot-preview bordered lot-container-div " id="@item.Id">
-                            <div class="col-sm-12 container" style="padding:0;">
+                    @if (spantop != null && spantop.TotalMilliseconds >= 0)
+                    {
+                        <b class="bottom-left bottom-center">
 
-                                <img style="width:100%; height:auto;" src="@(item.ImageSource.Split('.')[0]+"_thumb."+item.ImageSource.Split('.')[1])" />
+                            @CharrityAuction.Resource.Remains @spantop.Days @CharrityAuction.Resource.Day @spantop.Hours @CharrityAuction.Resource.Hours @spantop.Minutes @CharrityAuction.Resource.Minutes<br />
+                        </b>
+                    }
 
-                            </div>
-                            <h5 class="lot-header-index">
-                                @(item.Name.Length <= 20 ? item.Name : item.Name.Substring(0, 20))<br />
-                            </h5>
-                            <p class="product-header">
-                                @{
-                                var span = item.DeadLine - DateTime.Now;
-                                }
-                                @if (span.TotalMilliseconds >= 0)
-                                {
-                                <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
-                                <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
-                                }
-                                else
-                                {
-                                <b style="color:red">@CharrityAuction.Resource.LotDayPassed</b>
-                                <br />
-                                <b style="color:red">@CharrityAuction.Resource.PassedSecondString</b>
-
-                                }
-                            </p>
-                            <input type="button" class="btn btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
-
-                        </div>
-                    </a>
+                    else
+                    {
+                        <b class="bottom-left bottom-center passed">@Resource.LotDayPassed @Resource.PassedSecondString</b>
+                        <br />
+                    }
+                    <img src="@ViewBag.Top.ImageSource" style="width:100%;height:100%;" />
                 </div>
-                @*if (count % 2 == 0 && count != 0)
-                {
-                @Html.Raw("</div>");
-                count = 0;
+
+            </div>
+        }
+        @if (ViewBag.SecondTop != null)
+        {
+            <div class="col-sm-4 lot-preview short-div" id="@ViewBag.SecondTop.Id" style="height:268px;">
+
+                <p class="centered" style="white-space:normal;">
+                    <span>@ViewBag.SecondTop.Name</span>
+                </p>
+
+                @{
+                    var spanSecondtop = ViewBag.SecondTop.DeadLine - DateTime.Now;
                 }
+                @if (spanSecondtop != null && spanSecondtop.TotalMilliseconds >= 0)
+                {
+                    <b class="bottom-left">
+
+                        @CharrityAuction.Resource.Remains @spanSecondtop.Days @CharrityAuction.Resource.Day @spanSecondtop.Hours @CharrityAuction.Resource.Hours @spanSecondtop.Minutes @CharrityAuction.Resource.Minutes<br />
+                    </b>
+
+                }
+
                 else
                 {
-                count++;
-                }*@
-
+                    <b class="bottom-left passed">@Resource.LotDayPassed @Resource.PassedSecondString</b>
                 }
+                <img src="@ViewBag.SecondTop.ImageSource" style="width:100%;height:100%;" />
+
+            </div>
+        }
+        @if (ViewBag.ThirdTop != null)
+        {
+            <div class="col-sm-4 lot-preview short-div" id="@ViewBag.ThirdTop.Id" style="height:268px;">
+                <p class="centered" style="white-space:normal;">
+                    <span>@ViewBag.ThirdTop.Name</span>
+                </p>
+
+                @{
+                    var spanThirdtop = ViewBag.ThirdTop.DeadLine - DateTime.Now;
+                }
+                @if (spanThirdtop != null && spanThirdtop.TotalMilliseconds >= 0)
+                {
+                    <b class="bottom-left">
+                        @CharrityAuction.Resource.Remains @spanThirdtop.Days @CharrityAuction.Resource.Day @spanThirdtop.Hours @CharrityAuction.Resource.Hours @spanThirdtop.Minutes @CharrityAuction.Resource.Minutes<br />
+                    </b>
+                }
+
+                else
+                {
+                    <b class="bottom-left passed">@Resource.LotDayPassed @Resource.PassedSecondString</b>
+                }
+                <img src="@ViewBag.ThirdTop.ImageSource" style="width:100%;height:100%;" />
+
+            </div>
+
+        }
+        <div class="row" style="margin-top:30px;">
+            <div class="col-sm-3">
+                <div class="vertical-menu" id="vertical-menu" data-spy="affix" data-offset-top="536">
+                    @foreach (var categories in ViewBag.Categories)
+                    {
+                        <a class="category-menu" href="/home/category/@categories.Id">@categories.Name</a>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="row" style="margin-bottom:20px;">
+
+                    <div class="col-sm-12">
+                        <select class="form-control" style="float:right;" id="sort-select" onchange="orderIndexBy()">
+                            <option selected value="1">Closing next</option>
+                            <option value="4">Closed</option>
+                            <option value="2">Recently added</option>
+                            <option value="3">Bid amount(high to low)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="items">
+                    @foreach (var item in Model)
+                    {
+                        @*if (count % 3 == 0 && count == 0)
+                            {
+                            @Html.Raw("<div class=\"row\" id=\"" + count + "\">");
+                            }*@
+
+                        <div class="col-sm-4" align="center">
+                            @if (this.User.IsInRole("Administrator"))
+                            {
+                                <a href="/admin/editlot/@item.Id">Edit lot</a>
+                            }
+                            <a class="lot-index-container" href="/home/item/@item.Id">
+                                <div class="row lot-preview bordered lot-container-div " id="@item.Id">
+                                    <div class="col-sm-12 container" style="padding:0;">
+
+                                        <img style="width:100%; height:auto;" src="@(item.ImageSource.Split('.')[0]+"_thumb."+item.ImageSource.Split('.')[1])" />
+
+                                    </div>
+                                    <h5 class="lot-header-index">
+                                        @(item.Name.Length <= 20 ? item.Name : item.Name.Substring(0, 20))<br />
+                                    </h5>
+                                    <p class="product-header">
+                                        @{
+                                            var span = item.DeadLine - DateTime.Now;
+                                        }
+                                        @if (span.TotalMilliseconds >= 0)
+                                        {
+                                            <b><span style="color:rgb(0,119,162); font-weight:700;">@span.Days</span> @CharrityAuction.Resource.Day <span style="color:rgb(0,119,162);">@span.Hours</span> @CharrityAuction.Resource.Hours <span style="color:rgb(0,119,162);">@span.Minutes</span> @CharrityAuction.Resource.Minutes</b><br />
+                                            <b>@CharrityAuction.Resource.Value: <span style="color:rgb(0,119,162);">@item.CurrentBid դր.</span></b><br />
+                                        }
+                                        else
+                                        {
+                                            <b style="color:red">@CharrityAuction.Resource.LotDayPassed</b>
+                                            <br />
+                                            <b style="color:red">@CharrityAuction.Resource.PassedSecondString</b>
+
+                                        }
+                                    </p>
+                                    <input type="button" class="btn btn-bid btn-main" value="@CharrityAuction.Resource.MainDetails" onclick="javascript:: window.location.href='/home/item/@item.Id'" />
+
+                                </div>
+                            </a>
+                        </div>
+                        @*if (count % 2 == 0 && count != 0)
+                            {
+                            @Html.Raw("</div>");
+                            count = 0;
+                            }
+                            else
+                            {
+                            count++;
+                            }*@
+
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
-@*@if (ViewBag.WinnedBids!=null) {
-    <div class="container h-100 createModule" style="display: @(ViewBag.WinnedBids.Count > 0 ? "block" : "none") !important" id="bidLogin">
-        <span class="close close-login close-winbid" style="float:right">x</span>
-        <br />
-        <div class="row h-100 justify-content-center align-items-center" style="padding:10px;">
-            Շնորհավորում ենք: Դուք հաղթել եք բարեգործական Աճուրդում: Խնդրում ենք մինչև _______________ կատարել _________________ դրամ վճարումը Ձեր նախընտրած եղանակով(քարտով, կանխիկ, փոխանցում)` հաղթած ԼՈՏ-ը ստանալու համար:
-            Կարող եք նաև զանգահարել XXX-XX-XX-XX հեռախոսահամարով, և մեր աշխատակիցը ավելի մանրամասն տեղեկատվություն կտրամադրի Ձեզ վճարման կարգի և ԼՈՏ-ի ստացման պայմանների մասին
+    @*@if (ViewBag.WinnedBids!=null) {
+        <div class="container h-100 createModule" style="display: @(ViewBag.WinnedBids.Count > 0 ? "block" : "none") !important" id="bidLogin">
+            <span class="close close-login close-winbid" style="float:right">x</span>
+            <br />
+            <div class="row h-100 justify-content-center align-items-center" style="padding:10px;">
+                Շնորհավորում ենք: Դուք հաղթել եք բարեգործական Աճուրդում: Խնդրում ենք մինչև _______________ կատարել _________________ դրամ վճարումը Ձեր նախընտրած եղանակով(քարտով, կանխիկ, փոխանցում)` հաղթած ԼՈՏ-ը ստանալու համար:
+                Կարող եք նաև զանգահարել XXX-XX-XX-XX հեռախոսահամարով, և մեր աշխատակիցը ավելի մանրամասն տեղեկատվություն կտրամադրի Ձեզ վճարման կարգի և ԼՈՏ-ի ստացման պայմանների մասին
+            </div>
         </div>
-    </div>
-    }*@
-<script>
-    $(document).ready(function () {
-        orderIndexBy();
-    });
-</script>
+        }*@
+    <script>
+        $(document).ready(function () {
+            orderIndexBy();
+        });
+    </script>
